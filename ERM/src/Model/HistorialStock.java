@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Jose_Gonzalez
@@ -12,7 +14,7 @@ public class HistorialStock {
     private String Descripcion;
     private String Referencia;
     private int Cantidad_Nva;
-    private String Fecha;
+    private Date Fecha;
 
     public HistorialStock() {
     }
@@ -65,11 +67,11 @@ public class HistorialStock {
         this.Cantidad_Nva = Cantidad_Nva;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return Fecha;
     }
 
-    public void setFecha(String Fecha) {
+    public void setFecha(Date Fecha) {
         this.Fecha = Fecha;
     }
     

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4bfe3327-52a4-4450-a23f-28582f696ebf">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="path" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT h.Cod_ProductoFK,
+p.Proveedor,
+(SELECT Nombre_Almacen FROM Almacen WHERE Cod_Almacen = p.Cod_AlmacenFK)AS NombreAlmacen,
+h.Descripcion,
+h.Cantidad_Nva,
+h.Fecha,
+h.Referencia 
+FROM Historial_Stock h 
+INNER JOIN Producto p 
+ON h.Cod_ProductoFK = p.Cod_Producto 
+ORDER BY h.Fecha DESC;]]>
+	</queryString>
+	<field name="Cod_ProductoFK" class="java.lang.String"/>
+	<field name="Proveedor" class="java.lang.String"/>
+	<field name="NombreAlmacen" class="java.lang.String"/>
+	<field name="Descripcion" class="java.lang.String"/>
+	<field name="Cantidad_Nva" class="java.lang.Integer"/>
+	<field name="Fecha" class="java.sql.Date"/>
+	<field name="Referencia" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<staticText>
+				<reportElement uuid="82939ab2-6a64-481c-beab-6c4d7e7d40a8" x="247" y="45" width="306" height="27"/>
+				<textElement>
+					<font fontName="Cambria" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORME DE STOCK]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="0842962b-e5c1-4ac3-af3d-24611bc5405b" x="23" y="0" width="121" height="72"/>
+				<imageExpression><![CDATA[$P{path}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement uuid="24eee5ba-6daa-443d-a45d-75a19eaf5186" x="-20" y="20" width="595" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="e8422dce-8a64-4f30-b8db-aadc60c78885" x="0" y="1" width="64" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f934e07f-4a90-4f47-9441-047c79aa2c7e" x="129" y="1" width="82" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Almacén]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9e707110-59ce-4ffe-a31e-4150334820ab" x="211" y="1" width="105" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="015505c6-3acc-4f07-a286-9c3ae143b324" x="316" y="1" width="79" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f9408844-4615-4f73-a977-9d942bf2905f" x="395" y="1" width="79" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="79ca3599-bb39-4939-b89b-687f1180f620" x="473" y="1" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e8422dce-8a64-4f30-b8db-aadc60c78885" x="64" y="0" width="64" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement uuid="974e56b5-32f6-467a-8c42-3b9e900b0df1" positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="56a30ea0-0fe5-4dc2-9d28-d042e9561b6e" x="0" y="0" width="64" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cod_ProductoFK}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="3653a231-4089-496a-8739-1e70000b854b" x="129" y="0" width="82" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NombreAlmacen}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="9936b518-fe03-4a07-94d5-7192c8a45f5c" x="211" y="0" width="105" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Descripcion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="0c42db7d-59af-4bd6-aff7-bc2cd23cf79f" x="316" y="0" width="79" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cantidad_Nva}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="dcf117dc-7b66-4023-8a54-2001e182f827" x="395" y="0" width="79" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="1f6e286e-392a-44af-ba84-18548cfc4eaa" x="474" y="0" width="79" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Referencia}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="56a30ea0-0fe5-4dc2-9d28-d042e9561b6e" x="64" y="0" width="65" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Proveedor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="03854d09-f4b9-44b5-b35b-71add872408d" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="dd4f9ef8-80bd-495a-b04e-cfc2c646ad00" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="e9b389ab-dab7-463d-9b57-558a1398076f" x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

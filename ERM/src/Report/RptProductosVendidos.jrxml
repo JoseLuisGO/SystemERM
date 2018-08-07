@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cba12778-5206-4359-9323-17d85ce40d9a">
+	<property name="ireport.zoom" value="2.000000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="70"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="fecha_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_termino" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="path" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT 
+d.Cod_ProductoFK, 
+(SELECT Descripcion FROM Producto WHERE Cod_Producto = d.Cod_ProductoFK)as nombreProducto, 
+(SELECT Nombre_Almacen 
+FROM Almacen 
+INNER JOIN Producto 
+ON Producto.Cod_AlmacenFK = Almacen.Cod_Almacen
+WHERE Producto.Cod_Producto= d.Cod_ProductoFK) as Almacen,
+((SELECT SUM(d.Subtotal)) / (SELECT SUM(d.Cantidad_Detalle))) as PrecioVenta,
+(SELECT SUM(d.Cantidad_Detalle))as totalCantidad,
+(SELECT SUM(d.Subtotal))as SubTotalProd 
+FROM Detalle_Venta d 
+INNER JOIN Venta v ON d.Id_VentaFK = v.Id_Venta
+ WHERE v.Fecha_Venta BETWEEN $P{fecha_inicio} AND $P{fecha_termino} 
+ GROUP BY d.Cod_ProductoFK ASC;]]>
+	</queryString>
+	<field name="Cod_ProductoFK" class="java.lang.String"/>
+	<field name="nombreProducto" class="java.lang.String"/>
+	<field name="Almacen" class="java.lang.String"/>
+	<field name="PrecioVenta" class="java.math.BigDecimal"/>
+	<field name="totalCantidad" class="java.math.BigDecimal"/>
+	<field name="SubTotalProd" class="java.math.BigDecimal"/>
+	<variable name="SubTotalProd_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{SubTotalProd}]]></variableExpression>
+	</variable>
+	<group name="Cod_ProductoFK">
+		<groupExpression><![CDATA[$F{Cod_ProductoFK}]]></groupExpression>
+		<groupHeader>
+			<band height="2"/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="58" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="654ad16a-c039-44f4-a708-48ad6b10fc9b" style="Title" x="164" y="25" width="372" height="33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="20"/>
+				</textElement>
+				<text><![CDATA[REPORTE PRODUCTOS VENDIDOS]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="545f5e95-d257-4d3d-b64d-025f2c014505" x="31" y="0" width="70" height="58"/>
+				<imageExpression><![CDATA[$P{path}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="69" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="633ee72f-cad7-4e2e-b105-9462dee599e3" x="31" y="20" width="38" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="31089e9c-8d1e-4824-8dc5-48c88c5ae438" x="80" y="20" width="55" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_termino}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c19fe596-b5be-448f-8f55-ab243f145bb8" x="69" y="20" width="11" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2e118489-b31f-4e3e-8cad-18d348defae3" style="Column header" x="0" y="54" width="80" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="10"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b7af2c31-5b2b-40e1-a59d-037884526435" style="Column header" x="80" y="54" width="106" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="10"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="deebf160-c05d-4146-b233-ff33afb983ce" style="Column header" x="259" y="54" width="82" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="10"/>
+				</textElement>
+				<text><![CDATA[Precio Unitario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e3d60508-e40e-4292-998d-26c1e71884cf" style="Column header" x="341" y="54" width="86" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="10"/>
+				</textElement>
+				<text><![CDATA[Total Vendido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="44d58b64-a9ab-48aa-b205-18d7eb32dd05" style="Column header" x="429" y="54" width="114" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="10"/>
+				</textElement>
+				<text><![CDATA[Sub Total Recaudado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4c40243d-9a43-4909-93f2-a0fde1d0aa89" style="Column header" x="0" y="20" width="31" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b7af2c31-5b2b-40e1-a59d-037884526435" style="Column header" x="186" y="54" width="73" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="10"/>
+				</textElement>
+				<text><![CDATA[Almacén]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement uuid="f133d3c3-3871-4cf4-9e10-15cb314872c7" style="Detail" x="80" y="0" width="106" height="15"/>
+				<textElement>
+					<font fontName="Cambria" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreProducto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0594aae7-14ed-49b0-a50c-7a015ec411c7" style="SubTitle" x="0" y="0" width="80" height="15"/>
+				<textElement>
+					<font fontName="Cambria" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cod_ProductoFK}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="6ac03ede-2c36-418e-bdbb-c6c79e411425" style="Detail" x="259" y="0" width="82" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PrecioVenta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="efa5603b-c517-47d0-b8e4-adf358458efd" style="Detail" x="341" y="0" width="86" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalCantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="22214300-65cc-4ba3-a534-ae1feedd3001" style="Detail" x="429" y="0" width="114" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SubTotalProd}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="6ac03ede-2c36-418e-bdbb-c6c79e411425" style="Detail" x="186" y="0" width="73" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Almacen}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="84b932bf-5f75-41bc-99fa-d1dafe20f790" style="Column header" x="374" y="0" width="78" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[Total recaudado :]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement uuid="1c3d82a5-d969-4bbf-a16d-f3dd1f7b6832" mode="Transparent" x="452" y="0" width="103" height="20" forecolor="#666666" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SubTotalProd_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="bf9e30d4-3788-4d5a-8bf9-1c14faaa39b1" style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="8a4d3fc5-ae68-4e06-8176-11964e27b3d7" style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="bf2ec4cd-c08f-495a-b0fa-2d7b7a5361a0" style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

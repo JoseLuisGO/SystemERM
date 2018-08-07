@@ -27,7 +27,7 @@ CREATE TABLE `almacen` (
   `Nombre_Almacen` varchar(30) DEFAULT NULL,
   `Descripcion` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`Cod_Almacen`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,6 +36,7 @@ CREATE TABLE `almacen` (
 
 LOCK TABLES `almacen` WRITE;
 /*!40000 ALTER TABLE `almacen` DISABLE KEYS */;
+INSERT INTO `almacen` VALUES (1,'Almacen ERM','Ubicado en oficina central.'),(2,'Camioneta Ing.','Veh?culo para ventas for?neas.'),(3,'Camioneta Celina','Veh?culo para ventas for?neas.');
 /*!40000 ALTER TABLE `almacen` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,6 +278,50 @@ LOCK TABLES `venta` WRITE;
 /*!40000 ALTER TABLE `venta` DISABLE KEYS */;
 /*!40000 ALTER TABLE `venta` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'inventario_erm'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `getUtilidad` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getUtilidad`(idVentaIN int)
+BEGIN 
+DECLARE pVenta float;
+DECLARE pCompra float;
+DECLARE utilidad float;
+
+set pVenta = (select sum(Producto.Precio_Venta) from producto 
+inner join detalle_Venta 
+on detalle_Venta.Cod_ProductoFK = Producto.Cod_Producto
+inner join venta 
+on venta.Id_Venta = detalle_venta.Id_VentaFK
+where venta.Id_Venta = idVentaIN);
+
+set pCompra = (select sum(Precio_Compra) from producto 
+inner join detalle_Venta 
+on detalle_Venta.Cod_ProductoFK = Producto.Cod_Producto
+inner join venta 
+on venta.Id_Venta = detalle_venta.Id_VentaFK
+where venta.Id_Venta = idVentaIN);
+
+set utilidad = (pVenta - pCompra);
+
+select(utilidad);
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -287,4 +332,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-01 21:31:22
+-- Dump completed on 2018-08-06 14:56:36

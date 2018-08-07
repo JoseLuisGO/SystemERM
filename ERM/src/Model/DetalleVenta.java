@@ -9,7 +9,7 @@ public class DetalleVenta {
     private int Cod_Detalle;
     private long Cantidad_Detalle;
     private String Cod_ProductoFK ;
-    private long Precio_Venta; 
+    private float Precio_Venta; 
     private int Id_VentaFK;
     private float Subtotal;
 
@@ -40,11 +40,11 @@ public class DetalleVenta {
         this.Cod_ProductoFK = Cod_ProductoFK;
     }
 
-    public long getPrecio_Venta() {
+    public float getPrecio_Venta() {
         return Precio_Venta;
     }
 
-    public void setPrecio_Venta(long Precio_Venta) {
+    public void setPrecio_Venta(float Precio_Venta) {
         this.Precio_Venta = Precio_Venta;
     }
 

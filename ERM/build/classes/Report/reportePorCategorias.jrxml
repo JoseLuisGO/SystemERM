@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="882e0fa4-5001-4764-91dd-38d2e857f18c">
+	<property name="ireport.zoom" value="1.2396694214876034"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="19"/>
+	<parameter name="fecha_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_termino" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="path" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT 
+a.Cod_Almacen as Cod_Almacen1,
+a.Nombre_Almacen as Nom_Almacen,
+a.Descripcion as Descripcion_Almacen,
+(SELECT SUM(dv.subtotal) 
+FROM Detalle_venta dv
+INNER JOIN Producto p ON 
+p.Cod_Producto = dv.Cod_ProductoFK 
+INNER JOIN venta v
+ON dv.Id_VentaFK = v.Id_Venta 
+WHERE (v.Fecha_Venta BETWEEN 
+$P{fecha_inicio} AND $P{fecha_termino})
+and p.Cod_AlmacenFK = Cod_Almacen1) as SubTotalPVenta,
+(SELECT SUM(dv.SubPrecio_Compra) 
+FROM Detalle_venta dv
+INNER JOIN Producto p ON 
+p.Cod_Producto = dv.Cod_ProductoFK 
+INNER JOIN venta v
+ON dv.Id_VentaFK = v.Id_Venta 
+WHERE (v.Fecha_Venta BETWEEN 
+$P{fecha_inicio} AND $P{fecha_termino})
+and p.Cod_AlmacenFK = Cod_Almacen1) as SubTotalPCompra
+FROM Almacen a;]]>
+	</queryString>
+	<field name="Cod_Almacen1" class="java.lang.Integer"/>
+	<field name="Nom_Almacen" class="java.lang.String"/>
+	<field name="Descripcion_Almacen" class="java.lang.String"/>
+	<field name="SubTotalPVenta" class="java.math.BigDecimal"/>
+	<field name="SubTotalPCompra" class="java.math.BigDecimal"/>
+	<variable name="n_almacen" class="java.lang.Long" calculation="Count">
+		<variableExpression><![CDATA[$F{Nom_Almacen}]]></variableExpression>
+	</variable>
+	<variable name="tot_ventas" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{SubTotalPVenta}]]></variableExpression>
+	</variable>
+	<variable name="tot_compras" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{SubTotalPCompra}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="24ad98fa-7fd3-40dc-94fb-6a0d979b0b38" x="186" y="45" width="326" height="34"/>
+				<textElement>
+					<font fontName="Cambria" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VENTAS POR ALMACÉN]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="545f5e95-d257-4d3d-b64d-025f2c014505" x="39" y="0" width="86" height="79"/>
+				<imageExpression><![CDATA[$P{path}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="9e87f2b3-b0b0-4dbf-ba7d-8b9623141ad4" x="12" y="19" width="73" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de ventas :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="af603f24-4b6f-429d-9d7f-1729ffe96541" x="154" y="19" width="23" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<text><![CDATA[a]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="848e65e7-d1c1-489f-b76b-427204831d48" mode="Transparent" x="85" y="19" width="69" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="4eb73fcd-4037-4d6a-a8ed-0e2ce932be83" mode="Transparent" x="177" y="19" width="100" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_termino}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b2b667fb-0789-499f-8018-6e6bd6d0cc10" x="0" y="10" width="111" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Almacén ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e6d4cf1a-6a89-4d3b-9e7c-f48a1ffabe54" x="296" y="10" width="100" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Compras]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d9a38db6-f96d-4372-ac06-9997dedff675" x="396" y="10" width="100" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Ventas]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="d65dfa2d-d9e0-48ca-98a2-d80dbab8db69" positionType="FixRelativeToBottom" x="0" y="24" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="956e2d06-6cf2-4f6f-a16b-2b0e4641c447" x="111" y="10" width="185" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement uuid="e811e43a-86e9-43f1-9078-1a693fe565da" x="0" y="0" width="111" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nom_Almacen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="42b0e88b-d462-4198-a0b4-5f0c778814cd" x="396" y="0" width="100" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SubTotalPVenta}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="c40db2bc-083d-433a-91a0-a2a58053b37d" positionType="FixRelativeToBottom" x="0" y="14" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="46ac60b2-395f-4bb4-a410-716ebcd80a21" x="296" y="0" width="100" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SubTotalPCompra}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement uuid="c8307cb0-7e55-4695-8782-33bfff07fb43" mode="Transparent" x="111" y="0" width="185" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Descripcion_Almacen}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="34" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="06489670-f63d-48ba-b42b-238b90be644e" x="0" y="14" width="159" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cf22f5bc-b080-437b-a4f8-da3d8a14c1f9" x="432" y="14" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="2a7f18b1-5ecd-4cdd-be6b-e23002b3c316" x="515" y="14" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6cdb01fa-1c74-4943-95d0-06dd62d4ce92" mode="Transparent" x="49" y="29" width="62" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[N° Almacenes :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="27e6ca37-3e67-4784-a42f-718b050bd299" mode="Transparent" x="39" y="46" width="72" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[  Total Compras :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4dfa737e-b853-431b-9ebb-89f4e77c6286" mode="Transparent" x="49" y="63" width="62" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ Total Ventas :]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement uuid="6d5117d2-d749-48a9-b935-aa2525a228a0" x="111" y="29" width="100" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{n_almacen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="280c04cc-bea7-4f7d-a1f9-07cb3d730f86" x="111" y="46" width="100" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tot_compras}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="76884a43-3f3b-4289-bdcf-8fe6c4271e22" x="111" y="63" width="100" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tot_ventas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="false">
+				<reportElement uuid="c9c60be7-3cb0-41cb-98ee-3f7666ba6354" mode="Transparent" x="409" y="29" width="100" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tot_ventas}-$V{tot_compras}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="344b5b4f-5683-4b6d-96ea-2747b96ed892" mode="Transparent" x="328" y="29" width="81" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[   Total Ganancias :]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

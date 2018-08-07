@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Jose_Gonzalez
@@ -9,11 +11,11 @@ public class Venta {
     private int Id_Venta;
     private int Id_UsuarioFK;
     private int Id_ClienteFK;
-    private String Fecha_Venta ;
+    private Date Fecha_Venta ;
     private String Tipo_Comprobante;
     private String Factura;
     private String Tipo_Pago;
-    private int Tipo_Cambio;
+    private String Tipo_Cambio;
     private int Descuento;
     private float SubTotal;
     private float Total_Venta ;
@@ -45,11 +47,11 @@ public class Venta {
         this.Id_ClienteFK = Id_ClienteFK;
     }
 
-    public String getFecha_Venta() {
+    public Date getFecha_Venta() {
         return Fecha_Venta;
     }
 
-    public void setFecha_Venta(String Fecha_Venta) {
+    public void setFecha_Venta(Date Fecha_Venta) {
         this.Fecha_Venta = Fecha_Venta;
     }
 
@@ -77,11 +79,11 @@ public class Venta {
         this.Tipo_Pago = Tipo_Pago;
     }
 
-    public int getTipo_Cambio() {
+    public String getTipo_Cambio() {
         return Tipo_Cambio;
     }
 
-    public void setTipo_Cambio(int Tipo_Cambio) {
+    public void setTipo_Cambio(String Tipo_Cambio) {
         this.Tipo_Cambio = Tipo_Cambio;
     }
 
