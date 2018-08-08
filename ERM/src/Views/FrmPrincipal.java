@@ -332,7 +332,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         JmiHerramientas.add(JmIControlVentas);
 
-        jmIUpdateDollar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, 0));
+        jmIUpdateDollar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.CTRL_MASK));
         jmIUpdateDollar.setBackground(new java.awt.Color(255, 255, 255));
         jmIUpdateDollar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jmIUpdateDollar.setText("Actualizar Costo Dolar");

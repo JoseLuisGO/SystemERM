@@ -1,12 +1,12 @@
 package Views;
 
 import Connection.DB_Manager;
+import DAO.DAO_Configuracion;
 import java.sql.Connection;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
@@ -170,6 +170,10 @@ public class rptVentasPorAlmacen extends javax.swing.JInternalFrame {
 
             HashMap<String, Object> parametro = new HashMap<>();
             parametro.put("path", ruta);
+            
+            DAO_Configuracion funcion = new DAO_Configuracion();
+            float dolar = funcion.getValueDollar();
+            parametro.put("dolar", dolar);
 
             parametro.put("fecha_inicio", dcFecha_Inicio.getDate());
             parametro.put("fecha_termino", dcFecha_termino.getDate());
