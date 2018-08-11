@@ -20,7 +20,7 @@ import javax.swing.text.MaskFormatter;
  * @author Jose_Gonzalez
  */
 public class JPanelFrmDolar extends javax.swing.JPanel {
-
+static boolean desactivarHerramientas;
     /**
      * Creates new form JPanelFrmDolar
      */
@@ -305,16 +305,28 @@ public class JPanelFrmDolar extends javax.swing.JPanel {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaMouseClicked
-        JPanelFrmConsultarVentas panel = new JPanelFrmConsultarVentas();
-        cambiarPanelContenedorBranch(panel, "ConsultarVentas");
+        if (desactivarHerramientas) {
+            
+        } else {
+            JPanelFrmConsultarVentas panel = new JPanelFrmConsultarVentas();
+            cambiarPanelContenedorBranch(panel, "ConsultarVentas");
+        }
     }//GEN-LAST:event_btnVentaMouseClicked
 
     private void btnVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaMouseEntered
-        cambiarColorMenu(jPanelvENTA, btnVenta);
+        if (desactivarHerramientas) {
+            
+        } else {
+            cambiarColorMenu(jPanelvENTA, btnVenta);
+        }
     }//GEN-LAST:event_btnVentaMouseEntered
 
     private void btnVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaMouseExited
-        cambiarColorMenuDefecto(jPanelvENTA, btnVenta);
+        if (desactivarHerramientas) {
+            
+        } else {
+            cambiarColorMenuDefecto(jPanelvENTA, btnVenta);
+        }
     }//GEN-LAST:event_btnVentaMouseExited
 
     private void btnDolarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDolarMouseClicked

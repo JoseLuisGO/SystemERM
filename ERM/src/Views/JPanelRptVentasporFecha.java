@@ -18,7 +18,6 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-
 /**
  *
  * @author Jose_Gonzalez
@@ -27,67 +26,41 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
 
     DB_Manager db_manager;
     Connection connection;
-    public static int comprobar;
-    
+
     /**
      * Creates new form JPanelRptVentasporFecha
      */
     CardLayout card;
-    
+
+    int comprobarNueva;
+
     public JPanelRptVentasporFecha() {
         initComponents();
-        
+        cambiarColorBtn(jPanelVentaFecha, btnVentasporFecha);
         card = (CardLayout) FrmPrincipal.jPanelBranch.getLayout();
-        
+
         db_manager = new DB_Manager();
         connection = db_manager.getConnection();
-        
-        color();
     }
-    
-    public void color() {
-        if (comprobar == 2) {
-            cambiarColorBtn(jPanelVentaFecha, btnVentasporFecha);
-        } else if (comprobar == 1) {
-             cambiarColorBtn(jPanelVentaproductosFecha, btnVentaProductosFecha);
-            
-        }
-    }
-    
+
     public void cambiarColorBtn(JPanel panel, JLabel btn) {
         panel.setBackground(new java.awt.Color(255, 255, 255));
         btn.setForeground(new java.awt.Color(255, 50, 0));
     }
-    
+
     public void cambiarPanelContenedorBranch(JPanel panel, String name) {
         FrmPrincipal.jPanelBranch.add(panel, name);
         card.show(FrmPrincipal.jPanelBranch, name);
     }
-    
+
     public void cambiarColorMenu(JPanel panel, JLabel btn) {
         panel.setBackground(new java.awt.Color(255, 255, 255));
         btn.setForeground(new java.awt.Color(0, 0, 0));
     }
-    
+
     public void cambiarColorMenuDefecto(JPanel panel, JLabel btn) {
         panel.setBackground(new java.awt.Color(0, 0, 0));
         btn.setForeground(new java.awt.Color(255, 255, 255));
-    }
-    
-    public void vistaFechaEntered() {
-        if (comprobar == 2) {
-            cambiarColorMenu(jPanelVentaproductosFecha, btnVentaProductosFecha);
-        } else if (comprobar == 1) {
-           cambiarColorMenu(jPanelVentaFecha, btnVentasporFecha);
-        }
-    }
-    
-    public void vistaFechaExited() {
-        if (comprobar == 2) {
-            cambiarColorMenuDefecto(jPanelVentaproductosFecha, btnVentaProductosFecha);
-        } else if (comprobar == 1) {
-           cambiarColorMenuDefecto(jPanelVentaFecha, btnVentasporFecha);
-        }
     }
 
     /**
@@ -343,80 +316,52 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 
-        if (comprobar == 2) {
-            try {
+        try {
 
-                JasperReport jr = (JasperReport) JRLoader.loadObject(VistaReporte.class.getResource("/Report/RptVentasPorFechas.jasper"));
+            JasperReport jr = (JasperReport) JRLoader.loadObject(VistaReporte.class.getResource("/Report/RptVentasPorFechas.jasper"));
 
-                String ruta = System.getProperty("user.dir");
-                ruta += "\\src\\Images\\Report\\Logo (Gris, Actual).png";
-                System.out.println("PATH: " + ruta);
+            String ruta = System.getProperty("user.dir");
+            ruta += "\\src\\Images\\Report\\Logo (Gris, Actual).png";
+            System.out.println("PATH: " + ruta);
 
-                HashMap<String, Object> parametro = new HashMap<>();
-                parametro.put("path", ruta);
+            HashMap<String, Object> parametro = new HashMap<>();
+            parametro.put("path", ruta);
 
-                parametro.put("fecha_inicio", dcFecha_Inicio.getDate());
-                parametro.put("fecha_termino", dcFecha_termino.getDate());
+            parametro.put("fecha_inicio", dcFecha_Inicio.getDate());
+            parametro.put("fecha_termino", dcFecha_termino.getDate());
 
-                JasperPrint jp = JasperFillManager.fillReport(jr, parametro, connection);
-                JasperViewer jv = new JasperViewer(jp, false);
-                jv.show();
-                //JasperPrintManager.printReport(jp, true);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "error" + e);
-            }
-
-        } else if (comprobar == 1) {
-
-            try {
-                JasperReport jr = (JasperReport) JRLoader.loadObject(VistaReporte.class.getResource("/Report/RptProductosVendidos.jasper"));
-
-                String ruta = System.getProperty("user.dir");
-                ruta += "\\src\\Images\\Report\\Logo (Gris, Actual).png";
-                System.out.println("PATH: " + ruta);
-
-                HashMap<String, Object> parametro = new HashMap<>();
-                parametro.put("path", ruta);
-
-                parametro.put("fecha_inicio", dcFecha_Inicio.getDate());
-                parametro.put("fecha_termino", dcFecha_termino.getDate());
-
-                JasperPrint jp = JasperFillManager.fillReport(jr, parametro, connection);
-                JasperViewer jv = new JasperViewer(jp, false);
-                jv.show();
-                //JasperPrintManager.printReport(jp, true);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "error" + e);
-            }
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametro, connection);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.show();
+            //JasperPrintManager.printReport(jp, true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error" + e);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnVentasporFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasporFechaMouseClicked
-        JPanelRptVentasporFecha panel = new JPanelRptVentasporFecha();
-        cambiarPanelContenedorBranch(panel, "VentasFecha");
-        comprobar = 2;
+        
     }//GEN-LAST:event_btnVentasporFechaMouseClicked
 
     private void btnVentasporFechaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasporFechaMouseEntered
-        vistaFechaEntered();
+
     }//GEN-LAST:event_btnVentasporFechaMouseEntered
 
     private void btnVentasporFechaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasporFechaMouseExited
-        vistaFechaExited();
+
     }//GEN-LAST:event_btnVentasporFechaMouseExited
 
     private void btnVentaProductosFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaProductosFechaMouseClicked
-        JPanelRptVentasporFecha panel = new JPanelRptVentasporFecha();
+        JPanelRptVentasProductosporFecha panel = new JPanelRptVentasProductosporFecha();
         cambiarPanelContenedorBranch(panel, "VentasProductoFecha");
-        comprobar = 1;
     }//GEN-LAST:event_btnVentaProductosFechaMouseClicked
 
     private void btnVentaProductosFechaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaProductosFechaMouseEntered
-        vistaFechaEntered();
+        cambiarColorMenu(jPanelVentaproductosFecha, btnVentaProductosFecha);
     }//GEN-LAST:event_btnVentaProductosFechaMouseEntered
 
     private void btnVentaProductosFechaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaProductosFechaMouseExited
-        vistaFechaExited();
+        cambiarColorMenuDefecto(jPanelVentaproductosFecha, btnVentaProductosFecha);
     }//GEN-LAST:event_btnVentaProductosFechaMouseExited
 
     private void btnRecaudacionAlmacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRecaudacionAlmacenMouseClicked
@@ -434,7 +379,7 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
 
     private void btnHistorialStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHistorialStockMouseClicked
         try {
-            
+
             String ruta = System.getProperty("user.dir");
             ruta += "\\src\\Images\\Report\\Logo (Gris, Actual).png";
             System.out.println("PATH: " + ruta);

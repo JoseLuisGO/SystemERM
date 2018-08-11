@@ -6,6 +6,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static Views.JPanelFrmCliente.desactivarPersonal;
+import static Views.JPanelFrmConsultaStock.desactivarProductos;
+import static Views.JPanelFrmDolar.desactivarHerramientas;
+import static Views.FrmPrincipal.menu;
 
 
 public class FrmLogin extends javax.swing.JFrame {
@@ -383,17 +387,18 @@ public class FrmLogin extends javax.swing.JFrame {
                 FrmPrincipal.lblTipo.setText(tablalistado.getValueAt(0, 6).toString());               
 
                 if (!FrmPrincipal.lblTipo.getText().equals("Administrador")) {
+                    menu = true;
                     
-                    JPanelFrmCliente.btnUsuarios.setEnabled(false);
-                    JPanelFrmCliente.btnProveedores.setEnabled(false);
+                    desactivarPersonal = true;
+                    desactivarProductos = true;
+                    desactivarHerramientas = true;    
+                }  else {
+                    menu = false;
                     
-                    //FrmPrincipal.JmIProductos.setEnabled(false);
-                    //FrmPrincipal.JmIEntrada.setEnabled(false);
-                    //FrmPrincipal.JmIUbicacion.setEnabled(false);
-                    //FrmPrincipal.JmIStock.setEnabled(true);                   
-                    
-                    //FrmPrincipal.JmiHerramientas.setEnabled(false);    
-                }                
+                    desactivarPersonal = false;
+                    desactivarProductos = false;
+                    desactivarHerramientas = false;   
+                }              
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrectos", "¡ Alerta !", JOptionPane.ERROR_MESSAGE);
             }

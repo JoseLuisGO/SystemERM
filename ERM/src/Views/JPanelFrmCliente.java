@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Jose_Gonzalez
  */
 public class JPanelFrmCliente extends javax.swing.JPanel {
-
+static boolean desactivarPersonal;
     /**
      * Creates new form JPanelFrmCliente
      */
@@ -161,7 +161,7 @@ public class JPanelFrmCliente extends javax.swing.JPanel {
         panel.setBackground(new java.awt.Color(0, 0, 0));
         btn.setForeground(new java.awt.Color(255, 255, 255));
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1019,29 +1019,53 @@ public class JPanelFrmCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarFocusLost
 
     private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
-        JPanelFrmUsuario panel = new JPanelFrmUsuario();
-        cambiarPanelContenedorBranch(panel, "Usuarios");
+        if (desactivarPersonal) {
+            
+        } else {
+            JPanelFrmUsuario panel = new JPanelFrmUsuario();
+            cambiarPanelContenedorBranch(panel, "Usuarios");
+        }
     }//GEN-LAST:event_btnUsuariosMouseClicked
 
     private void btnUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseEntered
-        cambiarColorMenu(jPanelUsuarios, btnUsuarios);
+        if (desactivarPersonal) {
+            
+        } else {
+            cambiarColorMenu(jPanelUsuarios, btnUsuarios);
+        }
     }//GEN-LAST:event_btnUsuariosMouseEntered
 
     private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
-        cambiarColorMenuDefecto(jPanelUsuarios, btnUsuarios);
+        if (desactivarPersonal) {
+            
+        } else {
+            cambiarColorMenuDefecto(jPanelUsuarios, btnUsuarios);
+        }
     }//GEN-LAST:event_btnUsuariosMouseExited
 
     private void btnProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMouseClicked
-        JPanelFrmProveedor panel = new JPanelFrmProveedor();
-        cambiarPanelContenedorBranch(panel, "Proveedor");
+        if (desactivarPersonal) {
+            
+        } else {
+            JPanelFrmProveedor panel = new JPanelFrmProveedor();
+            cambiarPanelContenedorBranch(panel, "Proveedor");
+        }
     }//GEN-LAST:event_btnProveedoresMouseClicked
 
     private void btnProveedoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMouseEntered
-        cambiarColorMenu(jPanelProveedores, btnProveedores);
+        if (desactivarPersonal) {
+            
+        } else {
+            cambiarColorMenu(jPanelProveedores, btnProveedores);
+        }
     }//GEN-LAST:event_btnProveedoresMouseEntered
 
     private void btnProveedoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMouseExited
-        cambiarColorMenuDefecto(jPanelProveedores, btnProveedores);
+        if (desactivarPersonal) {
+            
+        } else {
+            cambiarColorMenuDefecto(jPanelProveedores, btnProveedores);
+        }
     }//GEN-LAST:event_btnProveedoresMouseExited
 
 

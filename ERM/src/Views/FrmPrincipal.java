@@ -5,7 +5,6 @@
  */
 package Views;
 
-import static Views.JPanelRptVentasporFecha.comprobar;
 import java.awt.CardLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -17,10 +16,16 @@ import javax.swing.JPanel;
  * @author Jose_Gonzalez
  */
 public class FrmPrincipal extends javax.swing.JFrame {
-
+static boolean menu;
+    boolean desactivarVenta = false;
+    boolean desactivarPersonal = false;
+    boolean desactivarProducto = false;
+    boolean desactivarInforme = false;
+    boolean desactivarHerramienta = false;
+    
     /**
      * Creates new form FrmPrincipal
-     */
+    */
     
     CardLayout card;
     
@@ -404,106 +409,156 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarMouseExited
 
     private void JmIVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JmIVentasMouseEntered
-        jPanelMVenta.setBackground(new java.awt.Color(255,255,255));
-        JmIVentas.setForeground(new java.awt.Color(0,0,0));
+        if (desactivarVenta) {
+            
+        } else {
+            jPanelMVenta.setBackground(new java.awt.Color(255,255,255));
+            JmIVentas.setForeground(new java.awt.Color(0,0,0));
+        }
     }//GEN-LAST:event_JmIVentasMouseEntered
 
     private void JmIVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JmIVentasMouseExited
-        jPanelMVenta.setBackground(new java.awt.Color(0,0,0));
-        JmIVentas.setForeground(new java.awt.Color(255,255,255));
+        if (desactivarVenta) {
+            
+        } else {
+            jPanelMVenta.setBackground(new java.awt.Color(0,0,0));
+            JmIVentas.setForeground(new java.awt.Color(255,255,255));
+        }
     }//GEN-LAST:event_JmIVentasMouseExited
 
     private void jPanelMPersonalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMPersonalMouseEntered
-        jPanelMPersonal.setBackground(new java.awt.Color(255,255,255));
-        MenuPersonal.setForeground(new java.awt.Color(0,0,0));
+        
     }//GEN-LAST:event_jPanelMPersonalMouseEntered
 
     private void jPanelMPersonalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMPersonalMouseExited
-        jPanelMPersonal.setBackground(new java.awt.Color(0,0,0));
-        MenuPersonal.setForeground(new java.awt.Color(255,255,255));
+        ;
     }//GEN-LAST:event_jPanelMPersonalMouseExited
 
     private void jPanelMProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMProductoMouseEntered
-        jPanelMProducto.setBackground(new java.awt.Color(255,255,255));
-        MenuProductos.setForeground(new java.awt.Color(0,0,0));
+        
     }//GEN-LAST:event_jPanelMProductoMouseEntered
 
     private void jPanelMProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMProductoMouseExited
-        jPanelMProducto.setBackground(new java.awt.Color(0,0,0));
-        MenuProductos.setForeground(new java.awt.Color(255,255,255));
+        
     }//GEN-LAST:event_jPanelMProductoMouseExited
 
     private void jPanelMInformeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMInformeMouseEntered
-        jPanelMInforme.setBackground(new java.awt.Color(255,255,255));
-        MenuInformes.setForeground(new java.awt.Color(0,0,0));
+        
     }//GEN-LAST:event_jPanelMInformeMouseEntered
 
     private void jPanelMInformeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMInformeMouseExited
-        jPanelMInforme.setBackground(new java.awt.Color(0,0,0));
-        MenuInformes.setForeground(new java.awt.Color(255,255,255));
+        
     }//GEN-LAST:event_jPanelMInformeMouseExited
 
     private void jPanelMHerramientaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMHerramientaMouseEntered
-        jPanelMHerramienta.setBackground(new java.awt.Color(255,255,255));
-        MenuHerramientas.setForeground(new java.awt.Color(0,0,0));
+        
     }//GEN-LAST:event_jPanelMHerramientaMouseEntered
 
     private void jPanelMHerramientaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMHerramientaMouseExited
-        jPanelMHerramienta.setBackground(new java.awt.Color(0,0,0));
-        MenuHerramientas.setForeground(new java.awt.Color(255,255,255));
+       
     }//GEN-LAST:event_jPanelMHerramientaMouseExited
 
     private void jPanelMSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMSesionMouseEntered
-        jPanelMSesion.setBackground(new java.awt.Color(255,255,255));
-        btnCerrarSesion.setForeground(new java.awt.Color(0,0,0));
+        
     }//GEN-LAST:event_jPanelMSesionMouseEntered
 
     private void jPanelMSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMSesionMouseExited
-        jPanelMSesion.setBackground(new java.awt.Color(0,0,0));
-        btnCerrarSesion.setForeground(new java.awt.Color(255,255,255));
+        
     }//GEN-LAST:event_jPanelMSesionMouseExited
 
     private void JmIVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JmIVentasMouseClicked
-        cambiarColorBtn(JmIVentas);
+        defaultMenu();
+        cambiarColorBtn(jPanelMVenta, JmIVentas);
         JPanelFrmVenta panel = new JPanelFrmVenta();
         cambiarPanelContenedorBranch(panel,"Ventas");
         JPanelFrmVenta.txtCod_usuario.setText(lblId_Usuario.getText());
         JPanelFrmVenta.txtNombre_usuario.setText(lblNombre.getText());
+        
+        desactivarVenta = true;
+        desactivarPersonal = false;
+        desactivarProducto = false;
+        desactivarInforme = false;
+        desactivarHerramienta = false;
     }//GEN-LAST:event_JmIVentasMouseClicked
 
     private void MenuPersonalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPersonalMouseClicked
-        cambiarColorBtn(MenuPersonal);
+        defaultMenu();
+        cambiarColorBtn(jPanelMPersonal, MenuPersonal);
         JPanelFrmCliente panel = new JPanelFrmCliente();
         cambiarPanelContenedorBranch(panel,"Cliente");
+        desactivarPersonal = true;
+        desactivarVenta = false;
+        desactivarProducto = false;
+        desactivarInforme = false;
+        desactivarHerramienta = false;
     }//GEN-LAST:event_MenuPersonalMouseClicked
 
     private void MenuPersonalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPersonalMouseEntered
-        jPanelMPersonal.setBackground(new java.awt.Color(255,255,255));
-        MenuPersonal.setForeground(new java.awt.Color(0,0,0));
+        if (desactivarPersonal) {
+            
+        } else {
+            jPanelMPersonal.setBackground(new java.awt.Color(255,255,255));
+            MenuPersonal.setForeground(new java.awt.Color(0,0,0));
+        }
     }//GEN-LAST:event_MenuPersonalMouseEntered
 
     private void MenuPersonalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPersonalMouseExited
-        jPanelMPersonal.setBackground(new java.awt.Color(0,0,0));
-        MenuPersonal.setForeground(new java.awt.Color(255,255,255));
+        if (desactivarPersonal) {
+            
+        } else {
+            jPanelMPersonal.setBackground(new java.awt.Color(0,0,0));
+            MenuPersonal.setForeground(new java.awt.Color(255,255,255));
+        }
     }//GEN-LAST:event_MenuPersonalMouseExited
 
     private void MenuProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuProductosMouseClicked
-        cambiarColorBtn(MenuProductos);
-        JPanelFrmProductos panel = new JPanelFrmProductos();
-        cambiarPanelContenedorBranch(panel,"Productos");
+        if (menu) {
+            defaultMenu();
+            cambiarColorBtn(jPanelMProducto, MenuProductos);
+            JPanelFrmConsultaStock panel = new JPanelFrmConsultaStock();
+            cambiarPanelContenedorBranch(panel,"ConsultaStock");
+        } else {
+            defaultMenu();
+            cambiarColorBtn(jPanelMProducto, MenuProductos);
+            JPanelFrmProductos panel = new JPanelFrmProductos();
+            cambiarPanelContenedorBranch(panel,"Productos");
+        }
+        desactivarProducto = true;
+        desactivarVenta = false;
+        desactivarPersonal = false;
+        desactivarInforme = false;
+        desactivarHerramienta = false;
     }//GEN-LAST:event_MenuProductosMouseClicked
 
     private void MenuInformesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuInformesMouseClicked
-        cambiarColorBtn(MenuInformes);
+        defaultMenu();
+        cambiarColorBtn(jPanelMInforme, MenuInformes);
         JPanelRptVentasporFecha panel = new JPanelRptVentasporFecha();
         cambiarPanelContenedorBranch(panel,"Informes");
-        comprobar = 2;
+        desactivarInforme = true;
+        desactivarVenta = false;
+        desactivarPersonal = false;
+        desactivarProducto = false;
+        desactivarHerramienta = false;
     }//GEN-LAST:event_MenuInformesMouseClicked
 
     private void MenuHerramientasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuHerramientasMouseClicked
-        cambiarColorBtn(MenuHerramientas);
-        JPanelFrmConsultarVentas panel = new JPanelFrmConsultarVentas();
-        cambiarPanelContenedorBranch(panel,"ConsultarVentas");
+        if (menu) {
+            defaultMenu();
+            cambiarColorBtn(jPanelMHerramienta, MenuHerramientas);
+            JPanelFrmDolar panel = new JPanelFrmDolar();
+            cambiarPanelContenedorBranch(panel,"Dolar");
+        } else {
+            defaultMenu();
+            cambiarColorBtn(jPanelMHerramienta, MenuHerramientas);
+            JPanelFrmConsultarVentas panel = new JPanelFrmConsultarVentas();
+            cambiarPanelContenedorBranch(panel,"ConsultarVentas");
+        }
+        desactivarHerramienta = true;
+        desactivarVenta = false;
+        desactivarPersonal = false;
+        desactivarProducto = false;
+        desactivarInforme = false;
     }//GEN-LAST:event_MenuHerramientasMouseClicked
 
     private void btnCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseClicked
@@ -513,18 +568,30 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarSesionMouseClicked
 
     private void MenuProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuProductosMouseEntered
-        jPanelMProducto.setBackground(new java.awt.Color(255,255,255));
-        MenuProductos.setForeground(new java.awt.Color(0,0,0));
+        if (desactivarProducto) {
+            
+        } else {
+            jPanelMProducto.setBackground(new java.awt.Color(255,255,255));
+            MenuProductos.setForeground(new java.awt.Color(0,0,0));
+        }
     }//GEN-LAST:event_MenuProductosMouseEntered
 
     private void MenuProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuProductosMouseExited
-        jPanelMProducto.setBackground(new java.awt.Color(0,0,0));
-        MenuProductos.setForeground(new java.awt.Color(255,255,255));
+        if (desactivarProducto) {
+            
+        } else {
+            jPanelMProducto.setBackground(new java.awt.Color(0,0,0));
+            MenuProductos.setForeground(new java.awt.Color(255,255,255));
+        }
     }//GEN-LAST:event_MenuProductosMouseExited
 
     private void MenuInformesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuInformesMouseEntered
-        jPanelMInforme.setBackground(new java.awt.Color(255,255,255));
-        MenuInformes.setForeground(new java.awt.Color(0,0,0));
+        if (desactivarInforme) {
+            
+        } else {
+            jPanelMInforme.setBackground(new java.awt.Color(255,255,255));
+            MenuInformes.setForeground(new java.awt.Color(0,0,0));
+        }
     }//GEN-LAST:event_MenuInformesMouseEntered
 
     private void MenuInformesMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuInformesMouseMoved
@@ -532,13 +599,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuInformesMouseMoved
 
     private void MenuHerramientasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuHerramientasMouseEntered
-        jPanelMHerramienta.setBackground(new java.awt.Color(255,255,255));
-        MenuHerramientas.setForeground(new java.awt.Color(0,0,0));
+        if (desactivarHerramienta) {
+            
+        } else {
+            jPanelMHerramienta.setBackground(new java.awt.Color(255,255,255));
+            MenuHerramientas.setForeground(new java.awt.Color(0,0,0));
+        }
     }//GEN-LAST:event_MenuHerramientasMouseEntered
 
     private void MenuHerramientasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuHerramientasMouseExited
-        jPanelMHerramienta.setBackground(new java.awt.Color(0,0,0));
-        MenuHerramientas.setForeground(new java.awt.Color(255,255,255));
+        if (desactivarHerramienta) {
+            
+        } else {
+            jPanelMHerramienta.setBackground(new java.awt.Color(0,0,0));
+            MenuHerramientas.setForeground(new java.awt.Color(255,255,255));
+        }
     }//GEN-LAST:event_MenuHerramientasMouseExited
 
     private void btnCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseEntered
@@ -552,8 +627,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarSesionMouseExited
 
     private void MenuInformesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuInformesMouseExited
-        jPanelMInforme.setBackground(new java.awt.Color(0,0,0));
-        MenuInformes.setForeground(new java.awt.Color(255,255,255));
+        if (desactivarInforme) {
+            
+        } else {
+            jPanelMInforme.setBackground(new java.awt.Color(0,0,0));
+            MenuInformes.setForeground(new java.awt.Color(255,255,255));
+        }
     }//GEN-LAST:event_MenuInformesMouseExited
 
     
@@ -562,14 +641,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
         card.show(jPanelBranch, name);
     }
     
-    public void cambiarColorBtn(JLabel btn) {
+    public void cambiarColorBtn(JPanel panel, JLabel btn) {
+        panel.setBackground(new java.awt.Color(255,255,255));
+        btn.setForeground(new java.awt.Color(255, 50, 0));
+    }
+    
+    public void defaultMenu(){
         JmIVentas.setForeground(new java.awt.Color(255, 255, 255));
         MenuPersonal.setForeground(new java.awt.Color(255, 255, 255));
         MenuProductos.setForeground(new java.awt.Color(255, 255, 255));
         MenuInformes.setForeground(new java.awt.Color(255, 255, 255));
         MenuHerramientas.setForeground(new java.awt.Color(255, 255, 255));
-        btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        btn.setForeground(new java.awt.Color(255, 50, 0));
+        jPanelMVenta.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMProducto.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMPersonal.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMInforme.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMHerramienta.setBackground(new java.awt.Color(0, 0, 0));;
     }
     
     /**

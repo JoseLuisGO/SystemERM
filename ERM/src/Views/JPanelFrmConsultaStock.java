@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Jose_Gonzalez
  */
 public class JPanelFrmConsultaStock extends javax.swing.JPanel {
-
+static boolean desactivarProductos;
     /**
      * Creates new form JPanelFrmConsultaStock
      */
@@ -416,29 +416,53 @@ public class JPanelFrmConsultaStock extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEntradaSalidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntradaSalidaMouseClicked
-        JPanelFrmStock panel = new JPanelFrmStock();
-        cambiarPanelContenedorBranch(panel, "EntradaSalida");
+        if (desactivarProductos) {
+            
+        } else {
+            JPanelFrmStock panel = new JPanelFrmStock();
+            cambiarPanelContenedorBranch(panel, "EntradaSalida");
+        }
     }//GEN-LAST:event_btnEntradaSalidaMouseClicked
 
     private void btnEntradaSalidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntradaSalidaMouseEntered
-        cambiarColorMenu(jPanelEntradaSalida, btnEntradaSalida);
+        if (desactivarProductos) {
+            
+        } else {
+            cambiarColorMenu(jPanelEntradaSalida, btnEntradaSalida);
+        }
     }//GEN-LAST:event_btnEntradaSalidaMouseEntered
 
     private void btnEntradaSalidaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntradaSalidaMouseExited
-        cambiarColorMenuDefecto(jPanelEntradaSalida, btnEntradaSalida);
+        if (desactivarProductos) {
+            
+        } else {
+            cambiarColorMenuDefecto(jPanelEntradaSalida, btnEntradaSalida);
+        }
     }//GEN-LAST:event_btnEntradaSalidaMouseExited
 
     private void btnUbicacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUbicacionMouseClicked
-        JPanelFrmAlmacen panel = new JPanelFrmAlmacen();
-        cambiarPanelContenedorBranch(panel, "Almacen");
+        if (desactivarProductos) {
+            
+        } else {
+            JPanelFrmAlmacen panel = new JPanelFrmAlmacen();
+            cambiarPanelContenedorBranch(panel, "Almacen");
+        }
     }//GEN-LAST:event_btnUbicacionMouseClicked
 
     private void btnUbicacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUbicacionMouseEntered
-        cambiarColorMenu(jPanelUbicacion, btnUbicacion);
+        if (desactivarProductos) {
+            
+        } else {
+            cambiarColorMenu(jPanelUbicacion, btnUbicacion);
+        }
     }//GEN-LAST:event_btnUbicacionMouseEntered
 
     private void btnUbicacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUbicacionMouseExited
-        cambiarColorMenuDefecto(jPanelUbicacion, btnUbicacion);
+        if (desactivarProductos) {
+            
+        } else {
+            cambiarColorMenuDefecto(jPanelUbicacion, btnUbicacion);
+        }
     }//GEN-LAST:event_btnUbicacionMouseExited
 
     private void btnStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStockMouseClicked
@@ -462,16 +486,28 @@ public class JPanelFrmConsultaStock extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarFocusLost
 
     private void btnProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseClicked
-        JPanelFrmProductos panel = new JPanelFrmProductos();
-        cambiarPanelContenedorBranch(panel, "Productos");
+        if (desactivarProductos) {
+            
+        } else {
+            JPanelFrmProductos panel = new JPanelFrmProductos();
+            cambiarPanelContenedorBranch(panel, "Productos");
+        }
     }//GEN-LAST:event_btnProductosMouseClicked
 
     private void btnProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseEntered
-        cambiarColorMenu(jPanelProductos, btnProductos);
+        if (desactivarProductos) {
+            
+        } else {
+            cambiarColorMenu(jPanelProductos, btnProductos);
+        }
     }//GEN-LAST:event_btnProductosMouseEntered
 
     private void btnProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseExited
-        cambiarColorMenuDefecto(jPanelProductos, btnProductos);
+        if (desactivarProductos) {
+            
+        } else {
+            cambiarColorMenuDefecto(jPanelProductos, btnProductos);
+        }
     }//GEN-LAST:event_btnProductosMouseExited
 
 
