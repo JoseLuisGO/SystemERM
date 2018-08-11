@@ -29,4 +29,4 @@ private Connection connection;
 
 - Crear la base de datos llamada inventario_erm.
 - Importar el respaldo sql en la base creada.
-- Ejecutar el proyecto.
+- Ejecutar el archivo JAR dentro de la carpeta dist (Dentro de esta carpeta se encuentran las librerias del proyecto por si requieren modificar codigo).

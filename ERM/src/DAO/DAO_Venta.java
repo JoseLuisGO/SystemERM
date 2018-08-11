@@ -3,7 +3,7 @@ package DAO;
 import Connection.DB_Manager;
 import Model.Producto;
 import Model.Venta;
-import Views.FrmMostrarVentas;
+import Views.JPanelFrmConsultarVentas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -160,7 +160,7 @@ public class DAO_Venta {
     
       public boolean RestaurarProd(Venta datos) {
           
-        int codigo = Integer.parseInt(FrmMostrarVentas.txtCod_venta.getText());
+        int codigo = Integer.parseInt(JPanelFrmConsultarVentas.txtCod_venta.getText());
         
     /*******AL ELIMINAR UNA VENTA VUELVEN LOS PRODUCTOS AL STOCK ANTERIOR***********/
         

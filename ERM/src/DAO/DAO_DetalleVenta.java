@@ -2,7 +2,7 @@ package DAO;
 
 import Connection.DB_Manager;
 import Model.DetalleVenta;
-import Views.FrmVentaDetalle1;
+import Views.JPanelFrmVenta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -111,7 +111,7 @@ public class DAO_DetalleVenta {
 
     public long selecProd() {
         
-        String codigo = (FrmVentaDetalle1.txtCod_producto.getText());
+        String codigo = (JPanelFrmVenta.txtCod_producto.getText());
         sSQL = "SELECT Cod_Producto FROM Producto WHERE Cod_Producto = " + codigo;
         try {
             long cod = 0;
@@ -128,7 +128,7 @@ public class DAO_DetalleVenta {
     }//cierre funcion */
 
     public String SelectNombre() {
-        String codigo = (FrmVentaDetalle1.txtCod_producto.getText());
+        String codigo = (JPanelFrmVenta.txtCod_producto.getText());
         sSQL = "SELECT Nombre_Producto FROM Producto WHERE Cod_Producto = " + codigo;
         try {
             String nombre = "";
@@ -145,7 +145,7 @@ public class DAO_DetalleVenta {
     }//cierre funcion */
 
     public int selecStock() {
-        String codigo = (FrmVentaDetalle1.txtCod_producto.getText());
+        String codigo = (JPanelFrmVenta.txtCod_producto.getText());
         sSQL = "SELECT Existencia FROM Producto WHERE Cod_Producto = " + codigo;
         try {
             int stock = 0;
@@ -162,7 +162,7 @@ public class DAO_DetalleVenta {
     }//cierre funcion */
 
     public float selectPrecio() {
-        String codigo = (FrmVentaDetalle1.txtCod_producto.getText());
+        String codigo = (JPanelFrmVenta.txtCod_producto.getText());
         sSQL = "SELECT Precio_Venta FROM Producto WHERE Cod_Producto = " + codigo;
         try {
             float precio_producto = 0;
@@ -179,7 +179,7 @@ public class DAO_DetalleVenta {
     }//cierre funcion
 
     public float selectPrecioCompra() {
-        String codigo = (FrmVentaDetalle1.txtCod_producto.getText());
+        String codigo = (JPanelFrmVenta.txtCod_producto.getText());
         sSQL = "SELECT Precio_Compra FROM Producto WHERE Cod_Producto = " + codigo;
         try {
             float precio_productoCompra = 0;

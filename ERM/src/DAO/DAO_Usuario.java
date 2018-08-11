@@ -1,6 +1,6 @@
 package DAO;
 
-import Views.FrmUsuario;
+import Views.JPanelFrmUsuario;
 import Model.Usuario;
 import Connection.DB_Manager;
 import java.sql.Connection;
@@ -203,7 +203,7 @@ public class DAO_Usuario {
     }
 
     public int verificarLogin() {
-        String login = FrmUsuario.txtLogin.getText();
+        String login = JPanelFrmUsuario.txtLogin.getText();
         SQL = "SELECT COUNT(Usuario) AS Usuario FROM Usuario WHERE Usuario = " + login;
 
         try {

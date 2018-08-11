@@ -71,6 +71,7 @@ public class DAO_HistorialStock {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+            System.out.println("Error consulta: "+e);
             return false;
         }
     }
