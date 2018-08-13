@@ -64,7 +64,7 @@ static boolean desactivarProductos;
     }
     
     public void cambiarColorBtn(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(255, 255, 255));
+        panel.setBackground(new java.awt.Color(204, 204, 204));
         btn.setForeground(new java.awt.Color(255, 50, 0));
     }
     
@@ -83,13 +83,13 @@ static boolean desactivarProductos;
     }
     
     public void cambiarColorMenu(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(255, 255, 255));
-        btn.setForeground(new java.awt.Color(0, 0, 0));
+        panel.setBackground(new java.awt.Color(102, 102, 102));
+        btn.setForeground(new java.awt.Color(255, 255, 255));
     }
     
     public void cambiarColorMenuDefecto(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(0, 0, 0));
-        btn.setForeground(new java.awt.Color(255, 255, 255));
+        panel.setBackground(new java.awt.Color(255, 255, 255));
+        btn.setForeground(new java.awt.Color(0, 0, 0));
     }
 
     /**
@@ -237,16 +237,16 @@ static boolean desactivarProductos;
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 610));
 
-        jPanelMenu.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMenu.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelProductos.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelProductos.setBackground(new java.awt.Color(255, 255, 255));
         jPanelProductos.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnProductos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnProductos.setForeground(new java.awt.Color(255, 255, 255));
         btnProductos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnProductos.setText("Productos");
+        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnProductosMouseClicked(evt);
@@ -278,13 +278,13 @@ static boolean desactivarProductos;
 
         jPanelMenu.add(jPanelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
 
-        jPanelEntradaSalida.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelEntradaSalida.setBackground(new java.awt.Color(255, 255, 255));
         jPanelEntradaSalida.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnEntradaSalida.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnEntradaSalida.setForeground(new java.awt.Color(255, 255, 255));
         btnEntradaSalida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnEntradaSalida.setText("Entrada/Salida");
+        btnEntradaSalida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEntradaSalida.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEntradaSalidaMouseClicked(evt);
@@ -316,13 +316,13 @@ static boolean desactivarProductos;
 
         jPanelMenu.add(jPanelEntradaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 120, 50));
 
-        jPanelUbicacion.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelUbicacion.setBackground(new java.awt.Color(255, 255, 255));
         jPanelUbicacion.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnUbicacion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnUbicacion.setForeground(new java.awt.Color(255, 255, 255));
         btnUbicacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnUbicacion.setText("Ubicación");
+        btnUbicacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUbicacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnUbicacionMouseClicked(evt);
@@ -354,13 +354,13 @@ static boolean desactivarProductos;
 
         jPanelMenu.add(jPanelUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, -1));
 
-        jPanelStock.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelStock.setBackground(new java.awt.Color(255, 255, 255));
         jPanelStock.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnStock.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnStock.setForeground(new java.awt.Color(255, 255, 255));
         btnStock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnStock.setText("Stock");
+        btnStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnStock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnStockMouseClicked(evt);

@@ -118,7 +118,7 @@ public class JPanelFrmProveedor extends javax.swing.JPanel {
     }
     
     public void cambiarColorBtn(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(255, 255, 255));
+        panel.setBackground(new java.awt.Color(204, 204, 204));
         btn.setForeground(new java.awt.Color(255, 50, 0));
     }
     
@@ -147,13 +147,13 @@ public class JPanelFrmProveedor extends javax.swing.JPanel {
     }
     
     public void cambiarColorMenu(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(255, 255, 255));
-        btn.setForeground(new java.awt.Color(0, 0, 0));
+        panel.setBackground(new java.awt.Color(102, 102, 102));
+        btn.setForeground(new java.awt.Color(255, 255, 255));
     }
     
     public void cambiarColorMenuDefecto(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(0, 0, 0));
-        btn.setForeground(new java.awt.Color(255, 255, 255));
+        panel.setBackground(new java.awt.Color(255, 255, 255));
+        btn.setForeground(new java.awt.Color(0, 0, 0));
     }
 
     /**
@@ -214,16 +214,16 @@ public class JPanelFrmProveedor extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelMenu.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMenu.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelClientes.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelClientes.setBackground(new java.awt.Color(255, 255, 255));
         jPanelClientes.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnClientes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnClientes.setForeground(new java.awt.Color(255, 255, 255));
         btnClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnClientes.setText("Clientes");
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnClientesMouseClicked(evt);
@@ -255,13 +255,13 @@ public class JPanelFrmProveedor extends javax.swing.JPanel {
 
         jPanelMenu.add(jPanelClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
 
-        jPanelUsuarios.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         jPanelUsuarios.setPreferredSize(new java.awt.Dimension(130, 41));
 
         btnUsuarios.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         btnUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnUsuarios.setText("Usuarios");
+        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnUsuariosMouseClicked(evt);
@@ -293,13 +293,13 @@ public class JPanelFrmProveedor extends javax.swing.JPanel {
 
         jPanelMenu.add(jPanelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, -1, 50));
 
-        jPanelProveedores.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelProveedores.setBackground(new java.awt.Color(255, 255, 255));
         jPanelProveedores.setPreferredSize(new java.awt.Dimension(130, 41));
 
         btnProveedores.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnProveedores.setForeground(new java.awt.Color(255, 255, 255));
         btnProveedores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnProveedores.setText("Proveedores");
+        btnProveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnProveedoresMouseClicked(evt);
@@ -707,7 +707,7 @@ public class JPanelFrmProveedor extends javax.swing.JPanel {
 
         jPanelContenedor.add(lineaBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 593, 150, 2));
 
-        add(jPanelContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 53, 830, 610));
+        add(jPanelContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 610));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaMouseClicked

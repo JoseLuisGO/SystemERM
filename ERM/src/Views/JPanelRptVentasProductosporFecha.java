@@ -43,7 +43,7 @@ public class JPanelRptVentasProductosporFecha extends javax.swing.JPanel {
     }
 
     public void cambiarColorBtn(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(255, 255, 255));
+        panel.setBackground(new java.awt.Color(204, 204, 204));
         btn.setForeground(new java.awt.Color(255, 50, 0));
     }
 
@@ -53,13 +53,13 @@ public class JPanelRptVentasProductosporFecha extends javax.swing.JPanel {
     }
 
     public void cambiarColorMenu(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(255, 255, 255));
-        btn.setForeground(new java.awt.Color(0, 0, 0));
+        panel.setBackground(new java.awt.Color(102, 102, 102));
+        btn.setForeground(new java.awt.Color(255, 255, 255));
     }
 
     public void cambiarColorMenuDefecto(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(0, 0, 0));
-        btn.setForeground(new java.awt.Color(255, 255, 255));
+        panel.setBackground(new java.awt.Color(255, 255, 255));
+        btn.setForeground(new java.awt.Color(0, 0, 0));
     }
 
     /**
@@ -90,6 +90,7 @@ public class JPanelRptVentasProductosporFecha extends javax.swing.JPanel {
         btnHistorialStock = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(65, 139, 66)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -154,16 +155,16 @@ public class JPanelRptVentasProductosporFecha extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 510, 430));
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelVentaFecha.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelVentaFecha.setBackground(new java.awt.Color(255, 255, 255));
         jPanelVentaFecha.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnVentasporFecha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVentasporFecha.setForeground(new java.awt.Color(255, 255, 255));
         btnVentasporFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnVentasporFecha.setText("Ventas por Fecha");
+        btnVentasporFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVentasporFecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVentasporFechaMouseClicked(evt);
@@ -195,13 +196,13 @@ public class JPanelRptVentasProductosporFecha extends javax.swing.JPanel {
 
         jPanel3.add(jPanelVentaFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 50));
 
-        jPanelVentaproductosFecha.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelVentaproductosFecha.setBackground(new java.awt.Color(255, 255, 255));
         jPanelVentaproductosFecha.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnVentaProductosFecha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVentaProductosFecha.setForeground(new java.awt.Color(255, 255, 255));
         btnVentaProductosFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnVentaProductosFecha.setText("Venta Productos por Fecha");
+        btnVentaProductosFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVentaProductosFecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVentaProductosFechaMouseClicked(evt);
@@ -233,13 +234,13 @@ public class JPanelRptVentasProductosporFecha extends javax.swing.JPanel {
 
         jPanel3.add(jPanelVentaproductosFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 210, 50));
 
-        jPanelRecaudacionAlmacen.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelRecaudacionAlmacen.setBackground(new java.awt.Color(255, 255, 255));
         jPanelRecaudacionAlmacen.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnRecaudacionAlmacen.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnRecaudacionAlmacen.setForeground(new java.awt.Color(255, 255, 255));
         btnRecaudacionAlmacen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnRecaudacionAlmacen.setText("Recaudación por Almacén");
+        btnRecaudacionAlmacen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRecaudacionAlmacen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRecaudacionAlmacenMouseClicked(evt);
@@ -271,13 +272,13 @@ public class JPanelRptVentasProductosporFecha extends javax.swing.JPanel {
 
         jPanel3.add(jPanelRecaudacionAlmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 200, 50));
 
-        jPanelModificacionStock.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelModificacionStock.setBackground(new java.awt.Color(255, 255, 255));
         jPanelModificacionStock.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnHistorialStock.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnHistorialStock.setForeground(new java.awt.Color(255, 255, 255));
         btnHistorialStock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnHistorialStock.setText("Historial de Modificación Stock");
+        btnHistorialStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnHistorialStock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnHistorialStockMouseClicked(evt);

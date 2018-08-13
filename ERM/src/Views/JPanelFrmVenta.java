@@ -20,10 +20,13 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -46,10 +49,10 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
     DB_Manager db_manager;
     Connection connection;
     DAO_Configuracion function;
-    
+
     public JPanelFrmVenta() {
         initComponents();
-        
+
         db_manager = new DB_Manager();
         connection = db_manager.getConnection();
         function = new DAO_Configuracion();
@@ -249,7 +252,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                 String codProducto = (String) jTabla.getValueAt(i, 0);
                 String cantidadd = (String) jTabla.getValueAt(i, 3);
                 String stockk = (String) jTabla.getValueAt(i, 5);
-                
+
                 int cantidad = 0;
                 int stock = Integer.parseInt(stockk);
                 Producto datos = new Producto();
@@ -301,8 +304,8 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
             return false;
         }
     }
-    
-    public boolean agregarProducto () {
+
+    public boolean agregarProducto() {
         DecimalFormat formatea = new DecimalFormat("######.##");
         if (txtCod_producto.getText().length() == 0 || txtNombre_producto.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Seleccione un producto");
@@ -459,13 +462,13 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         cboFormaPago.setEnabled(true);
         cboTipoCambio.setEnabled(true);
     }
-    
+
     public void cambiarColorBtn(JPanel panel, JLabel btn) {
         panel.setBackground(new java.awt.Color(255, 255, 255));
         btn.setForeground(new java.awt.Color(255, 50, 0));
     }
-    
-   public void cambiarColorLinea(JPanel panel) {
+
+    public void cambiarColorLinea(JPanel panel) {
         lineaCodigo.setBackground(new java.awt.Color(153, 153, 153));
         lineaCliente.setBackground(new java.awt.Color(204, 204, 204));
         lineaBusqueda1.setBackground(new java.awt.Color(204, 204, 204));
@@ -476,7 +479,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         lineaCantidad.setBackground(new java.awt.Color(153, 153, 153));
         panel.setBackground(new java.awt.Color(255, 50, 0));
     }
-    
+
     public void cambiarColorLineaDefecto() {
         lineaCodigo.setBackground(new java.awt.Color(153, 153, 153));
         lineaCliente.setBackground(new java.awt.Color(204, 204, 204));
@@ -487,7 +490,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         lineaProducto.setBackground(new java.awt.Color(153, 153, 153));
         lineaCantidad.setBackground(new java.awt.Color(153, 153, 153));
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -894,7 +897,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                 txtSubTotalKeyTyped(evt);
             }
         });
-        jPanel6.add(txtSubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 32, 144, 34));
+        jPanel6.add(txtSubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 32, 160, 34));
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setText("TOTAL DE VENTA");
@@ -907,16 +910,16 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         txtTotalVenta.setBorder(null);
         txtTotalVenta.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txtTotalVenta.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel6.add(txtTotalVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 91, 144, 29));
+        jPanel6.add(txtTotalVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 91, 160, 29));
 
         lineaBusqueda4.setBackground(new java.awt.Color(153, 153, 153));
-        lineaBusqueda4.setPreferredSize(new java.awt.Dimension(144, 2));
+        lineaBusqueda4.setPreferredSize(new java.awt.Dimension(160, 2));
 
         javax.swing.GroupLayout lineaBusqueda4Layout = new javax.swing.GroupLayout(lineaBusqueda4);
         lineaBusqueda4.setLayout(lineaBusqueda4Layout);
         lineaBusqueda4Layout.setHorizontalGroup(
             lineaBusqueda4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 144, Short.MAX_VALUE)
+            .addGap(0, 160, Short.MAX_VALUE)
         );
         lineaBusqueda4Layout.setVerticalGroup(
             lineaBusqueda4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -926,13 +929,13 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         jPanel6.add(lineaBusqueda4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 66, -1, -1));
 
         lineaBusqueda5.setBackground(new java.awt.Color(153, 153, 153));
-        lineaBusqueda5.setPreferredSize(new java.awt.Dimension(144, 2));
+        lineaBusqueda5.setPreferredSize(new java.awt.Dimension(160, 2));
 
         javax.swing.GroupLayout lineaBusqueda5Layout = new javax.swing.GroupLayout(lineaBusqueda5);
         lineaBusqueda5.setLayout(lineaBusqueda5Layout);
         lineaBusqueda5Layout.setHorizontalGroup(
             lineaBusqueda5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 144, Short.MAX_VALUE)
+            .addGap(0, 160, Short.MAX_VALUE)
         );
         lineaBusqueda5Layout.setVerticalGroup(
             lineaBusqueda5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -941,7 +944,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
 
         jPanel6.add(lineaBusqueda5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        jPanelVenta.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, 160, 130));
+        jPanelVenta.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, 180, 130));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(65, 139, 66)));
@@ -978,7 +981,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                 txtFacturaKeyTyped(evt);
             }
         });
-        jPanel7.add(txtFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 138, 20));
+        jPanel7.add(txtFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 160, 20));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 147, -1, -1));
@@ -988,7 +991,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         jPanel7.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         cboFormaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una opcion...", "Contado", "Pagos", "Transferencia" }));
-        jPanel7.add(cboFormaPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 24));
+        jPanel7.add(cboFormaPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 160, 24));
 
         cboTipoCambio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una opcion...", "Pesos", "Dolares" }));
         cboTipoCambio.addItemListener(new java.awt.event.ItemListener() {
@@ -996,7 +999,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                 cboTipoCambioItemStateChanged(evt);
             }
         });
-        jPanel7.add(cboTipoCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+        jPanel7.add(cboTipoCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 160, -1));
 
         jLabel17.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel17.setText("DESCUENTO");
@@ -1042,13 +1045,13 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         jPanel7.add(lineaDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 62, -1, -1));
 
         lineaFactura.setBackground(new java.awt.Color(153, 153, 153));
-        lineaFactura.setPreferredSize(new java.awt.Dimension(138, 2));
+        lineaFactura.setPreferredSize(new java.awt.Dimension(160, 2));
 
         javax.swing.GroupLayout lineaFacturaLayout = new javax.swing.GroupLayout(lineaFactura);
         lineaFactura.setLayout(lineaFacturaLayout);
         lineaFacturaLayout.setHorizontalGroup(
             lineaFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 138, Short.MAX_VALUE)
+            .addGap(0, 160, Short.MAX_VALUE)
         );
         lineaFacturaLayout.setVerticalGroup(
             lineaFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1057,14 +1060,14 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
 
         jPanel7.add(lineaFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 112, -1, -1));
 
-        jPanelVenta.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 160, 240));
+        jPanelVenta.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 180, 240));
 
         jPanel2.setBackground(new java.awt.Color(65, 139, 66));
 
         jPanel3.setBackground(new java.awt.Color(65, 139, 66));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        dcFecha_venta.setBackground(new java.awt.Color(36, 33, 33));
+        dcFecha_venta.setBackground(new java.awt.Color(255, 255, 255));
         dcFecha_venta.setForeground(new java.awt.Color(207, 207, 207));
         dcFecha_venta.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jPanel3.add(dcFecha_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 179, 23));
@@ -1347,7 +1350,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
     private void txtSubTotalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSubTotalKeyTyped
         char c = evt.getKeyChar();
         if (((c < '0') || (c > '9')) && (c != evt.VK_BACK_SPACE)
-            && (c != '.')) {
+                && (c != '.')) {
             evt.consume();
         }
     }//GEN-LAST:event_txtSubTotalKeyTyped
@@ -1386,6 +1389,9 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
 
         if (jTabla.getRowCount() > 0) {
             if (registrarVenta() && registrarDetalle()) {
+                JOptionPane.showMessageDialog(null, "Venta registrada Exitosamente");
+                btnNuevo.setEnabled(true);
+                nuevo();
                 if (cboComprobante.getSelectedItem().equals("Factura")) {
                     /*
                     try {
@@ -1409,8 +1415,9 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(rootPane, "error" + e);
                     }
-                    */
+                     */
                 } else if (cboComprobante.getSelectedItem().equals("Reporte")) {
+                    /*
                     try {
                         int codigo = Integer.parseInt(txtCod_venta.getText());
 
@@ -1426,9 +1433,9 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                         parametro.put("cod_venta", codigo);
                         System.out.println(codigo);
 
-                        /**
-                        * Obtener utilidad
-                        */
+                        
+                        //Obtener utilidad
+                        
                         float utilidad = 0;
                         String SQL = "CALL getUtilidad(" + codigo + ")";
                         PreparedStatement ps = connection.prepareCall(SQL);
@@ -1448,6 +1455,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                         System.out.println(e);
                         JOptionPane.showMessageDialog(null, "error" + e);
                     }
+                     */
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo registrar la Venta");
@@ -1832,6 +1840,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void setClosable(boolean b) {
-        
+
     }
 }

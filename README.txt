@@ -27,6 +27,6 @@ private Connection connection;
 
 ## Installation
 
-- Crear la base de datos llamada inventario_erm.
-- Importar el respaldo sql en la base creada.
-- Ejecutar el archivo JAR dentro de la carpeta dist (Dentro de esta carpeta se encuentran las librerias del proyecto por si requieren modificar codigo).
+- Ejecutar el archivo 'SystemERM-Setup.exe' que se encuentra dentro de la carpeta 'Installation'.
+	NOTA: Para que pueda crearse la BASE DE DATOS deberá de aceptar que se ejecute wampserver al finalizar la instalacion, en caso de que ya cuente con wampserver 	      debera iniciarlo antes de comezar la instalacion para que pueda cargar los complementos de la BASE (De no hacer esto debera ingresar la BASE DE DATOS 	      manualmente).
+- Si desea instalar el sistema en otro equipo deberá tener todo el contenido que se encuentra dentro de la carpeta Installation.

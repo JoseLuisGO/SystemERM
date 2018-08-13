@@ -78,21 +78,21 @@ static boolean menu;
 
         jPanelMaster.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelMenu.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMenu.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(65, 139, 66)));
         jPanelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         icono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/Logo.png"))); // NOI18N
         jPanelMenu.add(icono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 140));
 
-        jPanelMVenta.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMVenta.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMVenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JmIVentas.setBackground(new java.awt.Color(255, 255, 255));
         JmIVentas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        JmIVentas.setForeground(new java.awt.Color(255, 255, 255));
         JmIVentas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        JmIVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/venta.png"))); // NOI18N
+        JmIVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/ventaN.png"))); // NOI18N
         JmIVentas.setText("   Venta");
         JmIVentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -109,7 +109,7 @@ static boolean menu;
 
         jPanelMenu.add(jPanelMVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 180, 50));
 
-        jPanelMPersonal.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMPersonal.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMPersonal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMPersonal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -122,9 +122,8 @@ static boolean menu;
         jPanelMPersonal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuPersonal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        MenuPersonal.setForeground(new java.awt.Color(255, 255, 255));
         MenuPersonal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MenuPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/usuario.png"))); // NOI18N
+        MenuPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/usuarioN.png"))); // NOI18N
         MenuPersonal.setText("   Personal");
         MenuPersonal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -141,7 +140,7 @@ static boolean menu;
 
         jPanelMenu.add(jPanelMPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 180, 50));
 
-        jPanelMProducto.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMProducto.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -153,10 +152,10 @@ static boolean menu;
         });
         jPanelMProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        MenuProductos.setBackground(new java.awt.Color(255, 255, 255));
         MenuProductos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        MenuProductos.setForeground(new java.awt.Color(255, 255, 255));
         MenuProductos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MenuProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/producto.png"))); // NOI18N
+        MenuProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/productoN.png"))); // NOI18N
         MenuProductos.setText("   Productos");
         MenuProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -173,7 +172,7 @@ static boolean menu;
 
         jPanelMenu.add(jPanelMProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 180, 50));
 
-        jPanelMInforme.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMInforme.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMInforme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMInforme.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -186,9 +185,8 @@ static boolean menu;
         jPanelMInforme.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuInformes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        MenuInformes.setForeground(new java.awt.Color(255, 255, 255));
         MenuInformes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MenuInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/informe.png"))); // NOI18N
+        MenuInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/informeN.png"))); // NOI18N
         MenuInformes.setText("   Informes");
         MenuInformes.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -210,7 +208,7 @@ static boolean menu;
 
         jPanelMenu.add(jPanelMInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 180, 50));
 
-        jPanelMHerramienta.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMHerramienta.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMHerramienta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMHerramienta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -223,9 +221,8 @@ static boolean menu;
         jPanelMHerramienta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuHerramientas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        MenuHerramientas.setForeground(new java.awt.Color(255, 255, 255));
         MenuHerramientas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MenuHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/herramientas.png"))); // NOI18N
+        MenuHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/herramientasN.png"))); // NOI18N
         MenuHerramientas.setText("   Herramientas");
         MenuHerramientas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -242,7 +239,7 @@ static boolean menu;
 
         jPanelMenu.add(jPanelMHerramienta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 180, 50));
 
-        jPanelMSesion.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMSesion.setBackground(new java.awt.Color(255, 255, 255));
         jPanelMSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -255,9 +252,8 @@ static boolean menu;
         jPanelMSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCerrarSesion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/cerrar.png"))); // NOI18N
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/cerrarN.png"))); // NOI18N
         btnCerrarSesion.setText("   Cerrar Sesión");
         btnCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -412,8 +408,9 @@ static boolean menu;
         if (desactivarVenta) {
             
         } else {
-            jPanelMVenta.setBackground(new java.awt.Color(255,255,255));
-            JmIVentas.setForeground(new java.awt.Color(0,0,0));
+            JmIVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/venta.png")));
+            jPanelMVenta.setBackground(new java.awt.Color(102,102,102));
+            JmIVentas.setForeground(new java.awt.Color(255,255,255));
         }
     }//GEN-LAST:event_JmIVentasMouseEntered
 
@@ -421,8 +418,9 @@ static boolean menu;
         if (desactivarVenta) {
             
         } else {
-            jPanelMVenta.setBackground(new java.awt.Color(0,0,0));
-            JmIVentas.setForeground(new java.awt.Color(255,255,255));
+            JmIVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/ventaN.png")));
+            jPanelMVenta.setBackground(new java.awt.Color(255,255,255));
+            JmIVentas.setForeground(new java.awt.Color(0,0,0));
         }
     }//GEN-LAST:event_JmIVentasMouseExited
 
@@ -497,8 +495,9 @@ static boolean menu;
         if (desactivarPersonal) {
             
         } else {
-            jPanelMPersonal.setBackground(new java.awt.Color(255,255,255));
-            MenuPersonal.setForeground(new java.awt.Color(0,0,0));
+            MenuPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/usuario.png")));
+            jPanelMPersonal.setBackground(new java.awt.Color(102,102,102));
+            MenuPersonal.setForeground(new java.awt.Color(255,255,255));
         }
     }//GEN-LAST:event_MenuPersonalMouseEntered
 
@@ -506,8 +505,9 @@ static boolean menu;
         if (desactivarPersonal) {
             
         } else {
-            jPanelMPersonal.setBackground(new java.awt.Color(0,0,0));
-            MenuPersonal.setForeground(new java.awt.Color(255,255,255));
+            MenuPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/usuarioN.png")));
+            jPanelMPersonal.setBackground(new java.awt.Color(255,255,255));
+            MenuPersonal.setForeground(new java.awt.Color(0,0,0));
         }
     }//GEN-LAST:event_MenuPersonalMouseExited
 
@@ -571,8 +571,9 @@ static boolean menu;
         if (desactivarProducto) {
             
         } else {
-            jPanelMProducto.setBackground(new java.awt.Color(255,255,255));
-            MenuProductos.setForeground(new java.awt.Color(0,0,0));
+            MenuProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/producto.png")));
+            jPanelMProducto.setBackground(new java.awt.Color(102,102,102));
+            MenuProductos.setForeground(new java.awt.Color(255,255,255));
         }
     }//GEN-LAST:event_MenuProductosMouseEntered
 
@@ -580,8 +581,9 @@ static boolean menu;
         if (desactivarProducto) {
             
         } else {
-            jPanelMProducto.setBackground(new java.awt.Color(0,0,0));
-            MenuProductos.setForeground(new java.awt.Color(255,255,255));
+            MenuProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/productoN.png")));
+            jPanelMProducto.setBackground(new java.awt.Color(255,255,255));
+            MenuProductos.setForeground(new java.awt.Color(0,0,0));
         }
     }//GEN-LAST:event_MenuProductosMouseExited
 
@@ -589,8 +591,9 @@ static boolean menu;
         if (desactivarInforme) {
             
         } else {
-            jPanelMInforme.setBackground(new java.awt.Color(255,255,255));
-            MenuInformes.setForeground(new java.awt.Color(0,0,0));
+            MenuInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/informe.png")));
+            jPanelMInforme.setBackground(new java.awt.Color(102,102,102));
+            MenuInformes.setForeground(new java.awt.Color(255,255,255));
         }
     }//GEN-LAST:event_MenuInformesMouseEntered
 
@@ -602,8 +605,9 @@ static boolean menu;
         if (desactivarHerramienta) {
             
         } else {
-            jPanelMHerramienta.setBackground(new java.awt.Color(255,255,255));
-            MenuHerramientas.setForeground(new java.awt.Color(0,0,0));
+            MenuHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/herramientas.png")));
+            jPanelMHerramienta.setBackground(new java.awt.Color(102,102,102));
+            MenuHerramientas.setForeground(new java.awt.Color(255,255,255));
         }
     }//GEN-LAST:event_MenuHerramientasMouseEntered
 
@@ -611,27 +615,31 @@ static boolean menu;
         if (desactivarHerramienta) {
             
         } else {
-            jPanelMHerramienta.setBackground(new java.awt.Color(0,0,0));
-            MenuHerramientas.setForeground(new java.awt.Color(255,255,255));
+            MenuHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/herramientasN.png")));
+            jPanelMHerramienta.setBackground(new java.awt.Color(255,255,255));
+            MenuHerramientas.setForeground(new java.awt.Color(0,0,0));
         }
     }//GEN-LAST:event_MenuHerramientasMouseExited
 
     private void btnCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseEntered
-        jPanelMSesion.setBackground(new java.awt.Color(255,255,255));
-        btnCerrarSesion.setForeground(new java.awt.Color(0,0,0));
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/cerrar.png")));
+        jPanelMSesion.setBackground(new java.awt.Color(102,102,102));
+        btnCerrarSesion.setForeground(new java.awt.Color(255,255,255));
     }//GEN-LAST:event_btnCerrarSesionMouseEntered
 
     private void btnCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseExited
-        jPanelMSesion.setBackground(new java.awt.Color(0,0,0));
-        btnCerrarSesion.setForeground(new java.awt.Color(255,255,255));
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/cerrarN.png")));
+        jPanelMSesion.setBackground(new java.awt.Color(255,255,255));
+        btnCerrarSesion.setForeground(new java.awt.Color(0,0,0));
     }//GEN-LAST:event_btnCerrarSesionMouseExited
 
     private void MenuInformesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuInformesMouseExited
         if (desactivarInforme) {
             
         } else {
-            jPanelMInforme.setBackground(new java.awt.Color(0,0,0));
-            MenuInformes.setForeground(new java.awt.Color(255,255,255));
+            MenuInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/informeN.png")));
+            jPanelMInforme.setBackground(new java.awt.Color(255,255,255));
+            MenuInformes.setForeground(new java.awt.Color(0,0,0));
         }
     }//GEN-LAST:event_MenuInformesMouseExited
 
@@ -642,21 +650,27 @@ static boolean menu;
     }
     
     public void cambiarColorBtn(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(255,255,255));
+        panel.setBackground(new java.awt.Color(204,204,204));
         btn.setForeground(new java.awt.Color(255, 50, 0));
     }
     
     public void defaultMenu(){
-        JmIVentas.setForeground(new java.awt.Color(255, 255, 255));
-        MenuPersonal.setForeground(new java.awt.Color(255, 255, 255));
-        MenuProductos.setForeground(new java.awt.Color(255, 255, 255));
-        MenuInformes.setForeground(new java.awt.Color(255, 255, 255));
-        MenuHerramientas.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelMVenta.setBackground(new java.awt.Color(0, 0, 0));
-        jPanelMProducto.setBackground(new java.awt.Color(0, 0, 0));
-        jPanelMPersonal.setBackground(new java.awt.Color(0, 0, 0));
-        jPanelMInforme.setBackground(new java.awt.Color(0, 0, 0));
-        jPanelMHerramienta.setBackground(new java.awt.Color(0, 0, 0));;
+        JmIVentas.setForeground(new java.awt.Color(0, 0, 0));
+        MenuPersonal.setForeground(new java.awt.Color(0, 0, 0));
+        MenuProductos.setForeground(new java.awt.Color(0, 0, 0));
+        MenuInformes.setForeground(new java.awt.Color(0, 0, 0));
+        MenuHerramientas.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelMVenta.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelMProducto.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelMPersonal.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelMInforme.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelMHerramienta.setBackground(new java.awt.Color(255, 255, 255));
+        JmIVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/ventaN.png")));
+        MenuPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/usuarioN.png")));
+        MenuProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/productoN.png")));
+        MenuInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/informeN.png")));
+        MenuHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/herramientasN.png")));
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Principal/cerrarN.png")));
     }
     
     /**

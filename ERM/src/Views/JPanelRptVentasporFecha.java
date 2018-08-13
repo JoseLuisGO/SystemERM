@@ -6,8 +6,11 @@
 package Views;
 
 import Connection.DB_Manager;
+import DAO.DAO_Configuracion;
+import DAO.DAO_Usuario;
 import java.awt.CardLayout;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -36,6 +39,7 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
 
     public JPanelRptVentasporFecha() {
         initComponents();
+        mostrar();
         cambiarColorBtn(jPanelVentaFecha, btnVentasporFecha);
         card = (CardLayout) FrmPrincipal.jPanelBranch.getLayout();
 
@@ -44,7 +48,7 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
     }
 
     public void cambiarColorBtn(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(255, 255, 255));
+        panel.setBackground(new java.awt.Color(204, 204, 204));
         btn.setForeground(new java.awt.Color(255, 50, 0));
     }
 
@@ -54,13 +58,23 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
     }
 
     public void cambiarColorMenu(JPanel panel, JLabel btn) {
+        panel.setBackground(new java.awt.Color(102, 102, 102));
+        btn.setForeground(new java.awt.Color(255, 255, 255));
+    }
+
+    public void cambiarColorMenuDefecto(JPanel panel, JLabel btn) {
         panel.setBackground(new java.awt.Color(255, 255, 255));
         btn.setForeground(new java.awt.Color(0, 0, 0));
     }
 
-    public void cambiarColorMenuDefecto(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(0, 0, 0));
-        btn.setForeground(new java.awt.Color(255, 255, 255));
+    public void mostrar() {
+        DAO_Usuario funcion = new DAO_Usuario();
+        //jComboBox1.removeAllItems();
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = funcion.llenar_combo();
+        for (int i = 0; i < lista.size(); i++) {
+            jComboBox1.addItem(lista.get(i));
+        }
     }
 
     /**
@@ -79,6 +93,8 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
         dcFecha_termino = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanelVentaFecha = new javax.swing.JPanel();
@@ -109,7 +125,7 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
                 btnAceptarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
+        jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
 
         dcFecha_Inicio.setBackground(new java.awt.Color(0, 0, 0));
         dcFecha_Inicio.setForeground(new java.awt.Color(207, 207, 207));
@@ -126,8 +142,16 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel2.setText("Termino :");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        jLabel2.setText("Usuario:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(56, 30));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 250, -1));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel3.setText("Termino :");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(65, 139, 66));
@@ -150,22 +174,22 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 510, 430));
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelVentaFecha.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelVentaFecha.setBackground(new java.awt.Color(255, 255, 255));
         jPanelVentaFecha.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnVentasporFecha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVentasporFecha.setForeground(new java.awt.Color(255, 255, 255));
         btnVentasporFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnVentasporFecha.setText("Ventas por Fecha");
+        btnVentasporFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVentasporFecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVentasporFechaMouseClicked(evt);
@@ -197,13 +221,13 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
 
         jPanel3.add(jPanelVentaFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 50));
 
-        jPanelVentaproductosFecha.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelVentaproductosFecha.setBackground(new java.awt.Color(255, 255, 255));
         jPanelVentaproductosFecha.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnVentaProductosFecha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVentaProductosFecha.setForeground(new java.awt.Color(255, 255, 255));
         btnVentaProductosFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnVentaProductosFecha.setText("Venta Productos por Fecha");
+        btnVentaProductosFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVentaProductosFecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVentaProductosFechaMouseClicked(evt);
@@ -235,13 +259,13 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
 
         jPanel3.add(jPanelVentaproductosFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 210, 50));
 
-        jPanelRecaudacionAlmacen.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelRecaudacionAlmacen.setBackground(new java.awt.Color(255, 255, 255));
         jPanelRecaudacionAlmacen.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnRecaudacionAlmacen.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnRecaudacionAlmacen.setForeground(new java.awt.Color(255, 255, 255));
         btnRecaudacionAlmacen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnRecaudacionAlmacen.setText("Recaudación por Almacén");
+        btnRecaudacionAlmacen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRecaudacionAlmacen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRecaudacionAlmacenMouseClicked(evt);
@@ -273,13 +297,13 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
 
         jPanel3.add(jPanelRecaudacionAlmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 200, 50));
 
-        jPanelModificacionStock.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelModificacionStock.setBackground(new java.awt.Color(255, 255, 255));
         jPanelModificacionStock.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnHistorialStock.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnHistorialStock.setForeground(new java.awt.Color(255, 255, 255));
         btnHistorialStock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnHistorialStock.setText("Historial de Modificación Stock");
+        btnHistorialStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnHistorialStock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnHistorialStockMouseClicked(evt);
@@ -317,30 +341,52 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 
         try {
+            String usuario = (String) jComboBox1.getSelectedItem();
+            if (usuario.equalsIgnoreCase("Todos")) {
+                JasperReport jr = (JasperReport) JRLoader.loadObject(VistaReporte.class.getResource("/Report/RptVentasPorFechasTodos.jasper"));
 
-            JasperReport jr = (JasperReport) JRLoader.loadObject(VistaReporte.class.getResource("/Report/RptVentasPorFechas.jasper"));
+                String ruta = System.getProperty("user.dir");
+                ruta += "\\src\\Images\\Report\\Logo (Gris, Actual).png";
+                System.out.println("PATH: " + ruta);
 
-            String ruta = System.getProperty("user.dir");
-            ruta += "\\src\\Images\\Report\\Logo (Gris, Actual).png";
-            System.out.println("PATH: " + ruta);
+                HashMap<String, Object> parametro = new HashMap<>();
+                parametro.put("path", ruta);
+                parametro.put("fecha_inicio", dcFecha_Inicio.getDate());
+                parametro.put("fecha_termino", dcFecha_termino.getDate());
+                DAO_Configuracion funcion = new DAO_Configuracion();
+                float dolar = funcion.getValueDollar();
+                parametro.put("dolar", dolar);
 
-            HashMap<String, Object> parametro = new HashMap<>();
-            parametro.put("path", ruta);
+                JasperPrint jp = JasperFillManager.fillReport(jr, parametro, connection);
+                JasperViewer jv = new JasperViewer(jp, false);
+                jv.show();
+            } else {
+                JasperReport jr = (JasperReport) JRLoader.loadObject(VistaReporte.class.getResource("/Report/RptVentasPorFechas.jasper"));
 
-            parametro.put("fecha_inicio", dcFecha_Inicio.getDate());
-            parametro.put("fecha_termino", dcFecha_termino.getDate());
+                String ruta = System.getProperty("user.dir");
+                ruta += "\\src\\Images\\Report\\Logo (Gris, Actual).png";
+                System.out.println("PATH: " + ruta);
 
-            JasperPrint jp = JasperFillManager.fillReport(jr, parametro, connection);
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.show();
-            //JasperPrintManager.printReport(jp, true);
+                HashMap<String, Object> parametro = new HashMap<>();
+                parametro.put("path", ruta);
+                parametro.put("fecha_inicio", dcFecha_Inicio.getDate());
+                parametro.put("fecha_termino", dcFecha_termino.getDate());
+                parametro.put("usuario", usuario);
+                DAO_Configuracion funcion = new DAO_Configuracion();
+                float dolar = funcion.getValueDollar();
+                parametro.put("dolar", dolar);
+
+                JasperPrint jp = JasperFillManager.fillReport(jr, parametro, connection);
+                JasperViewer jv = new JasperViewer(jp, false);
+                jv.show();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "error" + e);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnVentasporFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasporFechaMouseClicked
-        
+
     }//GEN-LAST:event_btnVentasporFechaMouseClicked
 
     private void btnVentasporFechaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasporFechaMouseEntered
@@ -412,9 +458,11 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
     private javax.swing.JLabel btnVentasporFecha;
     private com.toedter.calendar.JDateChooser dcFecha_Inicio;
     private com.toedter.calendar.JDateChooser dcFecha_termino;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

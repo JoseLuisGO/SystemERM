@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -217,5 +218,21 @@ public class DAO_Usuario {
         } catch (Exception e) {
             return 0;
         }
+    }
+    
+    public ArrayList<String> llenar_combo() {
+        ArrayList<String> lista = new ArrayList<String>();
+        SQL = "SELECT Nombre FROM usuario";
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(SQL);
+
+            while (rs.next()) {
+                lista.add(rs.getString("Nombre"));              
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return lista;
     }
 }

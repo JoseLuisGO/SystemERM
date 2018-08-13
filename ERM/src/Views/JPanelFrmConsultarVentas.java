@@ -116,7 +116,7 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
     }
     
     public void cambiarColorBtn(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(255, 255, 255));
+        panel.setBackground(new java.awt.Color(204, 204, 204));
         btn.setForeground(new java.awt.Color(255, 50, 0));
     }
     
@@ -135,13 +135,13 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
     }
     
     public void cambiarColorMenu(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(255, 255, 255));
-        btn.setForeground(new java.awt.Color(0, 0, 0));
+        panel.setBackground(new java.awt.Color(102, 102, 102));
+        btn.setForeground(new java.awt.Color(255, 255, 255));
     }
     
     public void cambiarColorMenuDefecto(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(0, 0, 0));
-        btn.setForeground(new java.awt.Color(255, 255, 255));
+        panel.setBackground(new java.awt.Color(255, 255, 255));
+        btn.setForeground(new java.awt.Color(0, 0, 0));
     }
 
     /**
@@ -394,16 +394,16 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 610));
 
-        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelvENTA.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelvENTA.setBackground(new java.awt.Color(255, 255, 255));
         jPanelvENTA.setPreferredSize(new java.awt.Dimension(130, 50));
 
         btnVenta.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVenta.setForeground(new java.awt.Color(255, 255, 255));
         btnVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnVenta.setText("Herramientas de venta");
+        btnVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVentaMouseClicked(evt);
@@ -435,12 +435,12 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
 
         jPanel5.add(jPanelvENTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 50));
 
-        jPanelDolar.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelDolar.setBackground(new java.awt.Color(255, 255, 255));
 
         btnDolar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnDolar.setForeground(new java.awt.Color(255, 255, 255));
         btnDolar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnDolar.setText("Actualizar Costo Dolar");
+        btnDolar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDolar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDolarMouseClicked(evt);

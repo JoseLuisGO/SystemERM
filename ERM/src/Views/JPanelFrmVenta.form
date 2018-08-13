@@ -676,7 +676,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="630" y="450" width="160" height="130"/>
+              <AbsoluteConstraints x="630" y="450" width="180" height="130"/>
             </Constraint>
           </Constraints>
 
@@ -716,7 +716,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="32" width="144" height="34"/>
+                  <AbsoluteConstraints x="10" y="32" width="160" height="34"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -755,7 +755,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="91" width="144" height="29"/>
+                  <AbsoluteConstraints x="10" y="91" width="160" height="29"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -765,7 +765,7 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[144, 2]"/>
+                  <Dimension value="[160, 2]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -777,7 +777,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="144" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="160" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -793,7 +793,7 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[144, 2]"/>
+                  <Dimension value="[160, 2]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -805,7 +805,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="144" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="160" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -832,7 +832,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="630" y="200" width="160" height="240"/>
+              <AbsoluteConstraints x="630" y="200" width="180" height="240"/>
             </Constraint>
           </Constraints>
 
@@ -890,7 +890,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="90" width="138" height="20"/>
+                  <AbsoluteConstraints x="10" y="90" width="160" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -935,7 +935,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="150" width="-1" height="24"/>
+                  <AbsoluteConstraints x="10" y="150" width="160" height="24"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -957,7 +957,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="200" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="10" y="200" width="160" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1039,7 +1039,7 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[138, 2]"/>
+                  <Dimension value="[160, 2]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1051,7 +1051,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="138" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="160" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1117,7 +1117,7 @@
                 <Component class="com.toedter.calendar.JDateChooser" name="dcFecha_venta">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="21" green="21" red="24" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cf" green="cf" red="cf" type="rgb"/>
