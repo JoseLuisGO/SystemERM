@@ -1564,14 +1564,16 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                             int cantT = Cantidad + Integer.parseInt((String) cant1);
                             float subT = total + Float.parseFloat((String) subt1);
                             c++;
-                            String mostrar0 = formatea.format(resultado);
-                            txtSubTotal.setText(String.valueOf(mostrar0));
-
-                            String mostrar3 = formatea.format(resultadoDescuento);
-                            txtTotalVenta.setText(String.valueOf(mostrar3));
                             if (cantT > Stock) {
                                 JOptionPane.showMessageDialog(null, "La cantidad a vender supera el stock existente del producto disponible en almácen.");
+                                txtCantidadProducto.setText("");
                             } else {
+                                //String mostrar0 = formatea.format(resultado);
+                                txtSubTotal.setText(String.valueOf(resultado));
+
+                                //String mostrar3 = formatea.format(resultadoDescuento);
+                                txtTotalVenta.setText(String.valueOf(resultadoDescuento));
+
                                 jTabla.setValueAt(String.valueOf(cantT), i, 3);
                                 jTabla.setValueAt(String.valueOf(subT), i, 4);
                             }
@@ -1588,11 +1590,11 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                         modelo.addRow(dato);
                         jTabla.setModel(modelo);
 
-                        String mostrar0 = formatea.format(resultado);
-                        txtSubTotal.setText(String.valueOf(mostrar0));
+                        //String mostrar0 = formatea.format(resultado);
+                        txtSubTotal.setText(String.valueOf(resultado));
 
-                        String mostrar3 = formatea.format(resultadoDescuento);
-                        txtTotalVenta.setText(String.valueOf(mostrar3));
+                        //String mostrar3 = formatea.format(resultadoDescuento);
+                        txtTotalVenta.setText(String.valueOf(resultadoDescuento));
                     }
                 }
             } catch (Exception e) {
