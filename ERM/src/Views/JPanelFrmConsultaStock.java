@@ -33,7 +33,6 @@ static boolean desactivarProductos;
         cambiarColorBtn(jPanelStock, btnStock);
         
         mostrar("");
-        jTabla.getColumnModel().getColumn(1).setPreferredWidth(220);
 
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jTabla.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
@@ -58,6 +57,9 @@ static boolean desactivarProductos;
             DAO_Producto funcion = new DAO_Producto();
             modelo = funcion.mostrar(buscar);
             jTabla.setModel(modelo);
+            if (desactivarProductos) {
+                ocultar_columnas();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -90,6 +92,12 @@ static boolean desactivarProductos;
     public void cambiarColorMenuDefecto(JPanel panel, JLabel btn) {
         panel.setBackground(new java.awt.Color(255, 255, 255));
         btn.setForeground(new java.awt.Color(0, 0, 0));
+    }
+    
+    public void ocultar_columnas() {
+        jTabla.getColumnModel().getColumn(1).setMaxWidth(0);
+        jTabla.getColumnModel().getColumn(1).setMinWidth(0);
+        jTabla.getColumnModel().getColumn(1).setPreferredWidth(0);
     }
 
     /**

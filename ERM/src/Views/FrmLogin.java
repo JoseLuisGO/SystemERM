@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static Views.JPanelFrmCliente.desactivarPersonal;
 import static Views.JPanelFrmConsultaStock.desactivarProductos;
-import static Views.JPanelFrmDolar.desactivarHerramientas;
+import static Views.JPanelRptVentasporFecha.desactivarInforme;
 import static Views.FrmPrincipal.menu;
 
 
@@ -391,13 +391,13 @@ public class FrmLogin extends javax.swing.JFrame {
                     
                     desactivarPersonal = true;
                     desactivarProductos = true;
-                    desactivarHerramientas = true;    
+                    desactivarInforme = true;  
                 }  else {
                     menu = false;
                     
                     desactivarPersonal = false;
                     desactivarProductos = false;
-                    desactivarHerramientas = false;   
+                    desactivarInforme = false; 
                 }              
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrectos", "¡ Alerta !", JOptionPane.ERROR_MESSAGE);

@@ -27,6 +27,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class JPanelRptVentasporFecha extends javax.swing.JPanel {
 
+    static boolean desactivarInforme;
     DB_Manager db_manager;
     Connection connection;
 
@@ -398,55 +399,91 @@ public class JPanelRptVentasporFecha extends javax.swing.JPanel {
     }//GEN-LAST:event_btnVentasporFechaMouseExited
 
     private void btnVentaProductosFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaProductosFechaMouseClicked
-        JPanelRptVentasProductosporFecha panel = new JPanelRptVentasProductosporFecha();
-        cambiarPanelContenedorBranch(panel, "VentasProductoFecha");
+        if (desactivarInforme) {
+
+        } else {
+            JPanelRptVentasProductosporFecha panel = new JPanelRptVentasProductosporFecha();
+            cambiarPanelContenedorBranch(panel, "VentasProductoFecha");
+        }
     }//GEN-LAST:event_btnVentaProductosFechaMouseClicked
 
     private void btnVentaProductosFechaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaProductosFechaMouseEntered
-        cambiarColorMenu(jPanelVentaproductosFecha, btnVentaProductosFecha);
+        if (desactivarInforme) {
+
+        } else {
+            cambiarColorMenu(jPanelVentaproductosFecha, btnVentaProductosFecha);
+        }
     }//GEN-LAST:event_btnVentaProductosFechaMouseEntered
 
     private void btnVentaProductosFechaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaProductosFechaMouseExited
-        cambiarColorMenuDefecto(jPanelVentaproductosFecha, btnVentaProductosFecha);
+        if (desactivarInforme) {
+
+        } else {
+            cambiarColorMenuDefecto(jPanelVentaproductosFecha, btnVentaProductosFecha);
+        }
     }//GEN-LAST:event_btnVentaProductosFechaMouseExited
 
     private void btnRecaudacionAlmacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRecaudacionAlmacenMouseClicked
-        JPanelRptVentasporAlmacen panel = new JPanelRptVentasporAlmacen();
-        cambiarPanelContenedorBranch(panel, "VentasAlmacen");
+        if (desactivarInforme) {
+
+        } else {
+            JPanelRptVentasporAlmacen panel = new JPanelRptVentasporAlmacen();
+            cambiarPanelContenedorBranch(panel, "VentasAlmacen");
+        }
     }//GEN-LAST:event_btnRecaudacionAlmacenMouseClicked
 
     private void btnRecaudacionAlmacenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRecaudacionAlmacenMouseEntered
-        cambiarColorMenu(jPanelRecaudacionAlmacen, btnRecaudacionAlmacen);
+        if (desactivarInforme) {
+
+        } else {
+            cambiarColorMenu(jPanelRecaudacionAlmacen, btnRecaudacionAlmacen);
+        }
     }//GEN-LAST:event_btnRecaudacionAlmacenMouseEntered
 
     private void btnRecaudacionAlmacenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRecaudacionAlmacenMouseExited
-        cambiarColorMenuDefecto(jPanelRecaudacionAlmacen, btnRecaudacionAlmacen);
+        if (desactivarInforme) {
+
+        } else {
+            cambiarColorMenuDefecto(jPanelRecaudacionAlmacen, btnRecaudacionAlmacen);
+        }
     }//GEN-LAST:event_btnRecaudacionAlmacenMouseExited
 
     private void btnHistorialStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHistorialStockMouseClicked
-        try {
+        if (desactivarInforme) {
 
-            String ruta = System.getProperty("user.dir");
-            ruta += "\\src\\Images\\Report\\Logo (Gris, Actual).png";
-            System.out.println("PATH: " + ruta);
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("path", ruta);
+        } else {
+            try {
 
-            JasperReport jr = (JasperReport) JRLoader.loadObject(VistaReporte.class.getResource("/Report/RptHistorial.jasper"));
-            JasperPrint jp = JasperFillManager.fillReport(jr, map, connection);
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.show();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "error" + e);
+                String ruta = System.getProperty("user.dir");
+                ruta += "\\src\\Images\\Report\\Logo (Gris, Actual).png";
+                System.out.println("PATH: " + ruta);
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("path", ruta);
+
+                JasperReport jr = (JasperReport) JRLoader.loadObject(VistaReporte.class.getResource("/Report/RptHistorial.jasper"));
+                JasperPrint jp = JasperFillManager.fillReport(jr, map, connection);
+                JasperViewer jv = new JasperViewer(jp, false);
+                jv.show();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "error" + e);
+            }
         }
     }//GEN-LAST:event_btnHistorialStockMouseClicked
 
     private void btnHistorialStockMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHistorialStockMouseEntered
-        cambiarColorMenu(jPanelModificacionStock, btnHistorialStock);
+        if (desactivarInforme) {
+            
+        } else {
+            cambiarColorMenu(jPanelModificacionStock, btnHistorialStock);
+        }
     }//GEN-LAST:event_btnHistorialStockMouseEntered
 
     private void btnHistorialStockMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHistorialStockMouseExited
-        cambiarColorMenuDefecto(jPanelModificacionStock, btnHistorialStock);
+        if (desactivarInforme) {
+            
+        } else {
+            cambiarColorMenuDefecto(jPanelModificacionStock, btnHistorialStock);
+        }
     }//GEN-LAST:event_btnHistorialStockMouseExited
 
 
