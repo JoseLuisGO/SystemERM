@@ -32,8 +32,6 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
     public JPanelFrmConsultarVentas() {
         initComponents();
         
-        cambiarColorBtn(jPanelvENTA, btnVenta);
-        
         card = (CardLayout) FrmPrincipal.jPanelBranch.getLayout();
         
         mostrar();
@@ -115,11 +113,6 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
         txtBuscar.setText("");
     }
     
-    public void cambiarColorBtn(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(204, 204, 204));
-        btn.setForeground(new java.awt.Color(255, 50, 0));
-    }
-    
     public void cambiarColorLinea(JPanel panel) {
         lineaBusqueda.setBackground(new java.awt.Color(153, 153, 153));
         panel.setBackground(new java.awt.Color(255, 50, 0));
@@ -132,16 +125,6 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
     public void cambiarPanelContenedorBranch(JPanel panel, String name) {
         FrmPrincipal.jPanelBranch.add(panel, name);
         card.show(FrmPrincipal.jPanelBranch, name);
-    }
-    
-    public void cambiarColorMenu(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(102, 102, 102));
-        btn.setForeground(new java.awt.Color(255, 255, 255));
-    }
-    
-    public void cambiarColorMenuDefecto(JPanel panel, JLabel btn) {
-        panel.setBackground(new java.awt.Color(255, 255, 255));
-        btn.setForeground(new java.awt.Color(0, 0, 0));
     }
 
     /**
@@ -187,11 +170,6 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
         lblTotalRegistros = new javax.swing.JLabel();
         lineaBusqueda = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanelvENTA = new javax.swing.JPanel();
-        btnVenta = new javax.swing.JLabel();
-        jPanelDolar = new javax.swing.JPanel();
-        btnDolar = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -387,92 +365,12 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
+            .addGap(0, 330, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 305));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 330));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 610));
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelvENTA.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelvENTA.setPreferredSize(new java.awt.Dimension(130, 50));
-
-        btnVenta.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnVenta.setText("Herramientas de venta");
-        btnVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVenta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVentaMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnVentaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnVentaMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelvENTALayout = new javax.swing.GroupLayout(jPanelvENTA);
-        jPanelvENTA.setLayout(jPanelvENTALayout);
-        jPanelvENTALayout.setHorizontalGroup(
-            jPanelvENTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelvENTALayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnVenta)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelvENTALayout.setVerticalGroup(
-            jPanelvENTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelvENTALayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel5.add(jPanelvENTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 50));
-
-        jPanelDolar.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnDolar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnDolar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnDolar.setText("Actualizar Costo Dolar");
-        btnDolar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDolar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDolarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnDolarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnDolarMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelDolarLayout = new javax.swing.GroupLayout(jPanelDolar);
-        jPanelDolar.setLayout(jPanelDolarLayout);
-        jPanelDolarLayout.setHorizontalGroup(
-            jPanelDolarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDolarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnDolar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelDolarLayout.setVerticalGroup(
-            jPanelDolarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDolarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnDolar, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel5.add(jPanelDolar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 170, 50));
-
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 50));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 660));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtTotal_ventaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTotal_ventaKeyTyped
@@ -525,37 +423,10 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
         cambiarColorLineaDefecto();
     }//GEN-LAST:event_txtBuscarFocusLost
 
-    private void btnVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaMouseClicked
-        
-    }//GEN-LAST:event_btnVentaMouseClicked
-
-    private void btnVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaMouseEntered
-        
-    }//GEN-LAST:event_btnVentaMouseEntered
-
-    private void btnVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaMouseExited
-        
-    }//GEN-LAST:event_btnVentaMouseExited
-
-    private void btnDolarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDolarMouseClicked
-        JPanelFrmDolar panel = new JPanelFrmDolar();
-        cambiarPanelContenedorBranch(panel, "Dolar");
-    }//GEN-LAST:event_btnDolarMouseClicked
-
-    private void btnDolarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDolarMouseEntered
-        cambiarColorMenu(jPanelDolar, btnDolar);
-    }//GEN-LAST:event_btnDolarMouseEntered
-
-    private void btnDolarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDolarMouseExited
-        cambiarColorMenuDefecto(jPanelDolar, btnDolar);
-    }//GEN-LAST:event_btnDolarMouseExited
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscarCliente;
-    private javax.swing.JLabel btnDolar;
-    private javax.swing.JLabel btnVenta;
     private com.toedter.calendar.JDateChooser dcFecha_venta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -570,9 +441,6 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanelDolar;
-    private javax.swing.JPanel jPanelvENTA;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTabla;
     private javax.swing.JLabel lblTotalRegistros;
