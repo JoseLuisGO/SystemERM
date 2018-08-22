@@ -92,12 +92,12 @@ public class DAO_DetalleForanea {
         }
     }//cierre funcion
 
-    public boolean eliminar(DetalleVenta datos) {
+    public boolean eliminar(DetalleForanea datos) {
 
-        sSQL = "DELETE FROM Detalle_Venta WHERE Cod_Detalle = ?";
+        sSQL = "DELETE FROM Detalle_Foranea WHERE Id_VentaFK = ?";
         try {
             PreparedStatement pst = connection.prepareStatement(sSQL);
-            pst.setInt(1, datos.getCod_Detalle());
+            pst.setInt(1, datos.getId_VentaFK());
             int N = pst.executeUpdate();
             if (N != 0) {
                 return true;

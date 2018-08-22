@@ -158,7 +158,7 @@ public class DAO_Venta {
         }
     }//cierre funcion   
     
-      public boolean RestaurarProd(Venta datos) {
+      public boolean RestaurarProd() {
           
         int codigo = Integer.parseInt(JPanelFrmConsultarVentas.txtCod_venta.getText());
         
@@ -166,9 +166,9 @@ public class DAO_Venta {
         
         sSQL2 = "SELECT Cod_ProductoFK,sum(Cantidad_Detalle) AS Cantidad_Detalle1,"
                 + "(SELECT Existencia FROM Producto WHERE Cod_Producto = Cod_ProductoFK) "
-                + "AS Existencia FROM Detalle_Venta WHERE Id_VentaFK =" + codigo + " GROUP"
-                + "BY Cod_ProductoFK";
+                + "AS Existencia FROM Detalle_Venta WHERE Id_VentaFK ='" + codigo + "' GROUP BY Cod_ProductoFK";
         try {
+            boolean retorno = false;
             String codigo_producto;
             int cantidad_detalle = 0;
             int stock = 0;
@@ -186,27 +186,9 @@ public class DAO_Venta {
                 
                 datos2.setCod_Producto(codigo_producto);
                 datos2.setExistencia(stock);
-                funcion2.ModificarStockProductos(datos2);
+                retorno = funcion2.ModificarStockProductos(datos2);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        
-        /**************** TERMINO FUNCIÓN DE VOLVER PRODUCTOS *****************/
-        
-        sSQL = "DELETE FROM Venta WHERE Id_Venta = ?";
-
-        try {
-            PreparedStatement pst = connection.prepareStatement(sSQL);
-
-            pst.setInt(1, datos.getId_Venta());
-            int N = pst.executeUpdate();
-
-            if (N != 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return retorno;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             return false;

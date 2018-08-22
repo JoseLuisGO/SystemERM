@@ -5,10 +5,15 @@
  */
 package Views;
 
+import DAO.DAO_DetalleForanea;
+import DAO.DAO_DetalleVenta;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import static Views.FrmConsultaCliente.Comprueba;
 import DAO.DAO_Venta;
+import Model.DetalleForanea;
+import Model.DetalleVenta;
+import Model.Venta;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.sql.Date;
@@ -104,12 +109,12 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
     }
 
     public void limpiar() {
-        txtCod_cliente.setText("");
-        txtCod_usuario.setText("");
-        txtNombre_cliente.setText("");
         txtCod_venta.setText("");
-        txtTotal_venta.setText("");
+        dcFecha_venta.setDateFormatString("");
+        txtNombre_cliente.setText("");
+        txtTotal_venta.setText("0");
         txtComprobante.setText("");
+        txtNum_factura.setText("");
         txtBuscar.setText("");
     }
     
@@ -166,9 +171,10 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         lblTotalRegistros = new javax.swing.JLabel();
         lineaBusqueda = new javax.swing.JPanel();
+        btnBuscar1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -306,7 +312,7 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(65, 139, 66));
         jLabel7.setText("Nombre Cliente :");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 8, -1, 30));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, 30));
 
         txtBuscar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtBuscar.setBorder(null);
@@ -319,23 +325,23 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
                 txtBuscarFocusLost(evt);
             }
         });
-        jPanel3.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 360, 30));
+        jPanel3.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 360, 30));
 
-        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Views/buscar.png"))); // NOI18N
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Views/eliminar.png"))); // NOI18N
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, -1, 30));
+        jPanel3.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, 30));
 
         lblTotalRegistros.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         lblTotalRegistros.setForeground(new java.awt.Color(65, 139, 66));
         lblTotalRegistros.setText("TOTAL REGISTROS");
-        jPanel3.add(lblTotalRegistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 137, 30));
+        jPanel3.add(lblTotalRegistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 137, 30));
 
         lineaBusqueda.setBackground(new java.awt.Color(153, 153, 153));
         lineaBusqueda.setPreferredSize(new java.awt.Dimension(360, 2));
@@ -351,7 +357,18 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
             .addGap(0, 2, Short.MAX_VALUE)
         );
 
-        jPanel3.add(lineaBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
+        jPanel3.add(lineaBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
+
+        btnBuscar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnBuscar1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnBuscar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Views/buscar.png"))); // NOI18N
+        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscar1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, 30));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 790, 50));
 
@@ -411,9 +428,45 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jTablaMouseClicked
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        Buscar(txtBuscar.getText());
-    }//GEN-LAST:event_btnBuscarActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if (txtCod_venta.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Seleccione un registro de la tabla");
+            return;
+        }
+        int i = JOptionPane.showConfirmDialog(this, "¿Seguro que desea eliminar la venta?", "Confirmar Eliminacion", JOptionPane.YES_NO_OPTION);
+        if (i == 0) {
+            if (!txtCod_venta.getText().equals("")) {
+                DAO_DetalleVenta funcionDV = new DAO_DetalleVenta();
+                DAO_DetalleForanea funcionDF = new DAO_DetalleForanea();
+                DAO_Venta funcionV = new DAO_Venta();
+                
+                DetalleVenta datosDV = new DetalleVenta();
+                datosDV.setId_VentaFK(Integer.parseInt(txtCod_venta.getText()));
+                
+                DetalleForanea datosDF = new DetalleForanea();
+                datosDF.setId_VentaFK(Integer.parseInt(txtCod_venta.getText()));
+                
+                Venta datosV = new Venta();
+                datosV.setId_Venta(Integer.parseInt(txtCod_venta.getText()));
+                
+                boolean restaurar = funcionV.RestaurarProd();
+                boolean detailV = funcionDV.eliminar(datosDV);
+                boolean detailF = funcionDF.eliminar(datosDF);
+                boolean vent = funcionV.eliminar(datosV);
+                
+                
+                if (vent) {
+                    JOptionPane.showMessageDialog(null, "La venta ha sido eliminada.");
+                    mostrar();
+                    limpiar();
+                } else {
+                  JOptionPane.showMessageDialog(null, "Error al eliminar la venta.");  
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "El codigo de venta no se encuentra.");
+            }
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void txtBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusGained
         cambiarColorLinea(lineaBusqueda);
@@ -423,10 +476,15 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
         cambiarColorLineaDefecto();
     }//GEN-LAST:event_txtBuscarFocusLost
 
+    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
+        Buscar(txtBuscar.getText());
+    }//GEN-LAST:event_btnBuscar1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscar1;
     private javax.swing.JButton btnBuscarCliente;
+    private javax.swing.JButton btnEliminar;
     private com.toedter.calendar.JDateChooser dcFecha_venta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
