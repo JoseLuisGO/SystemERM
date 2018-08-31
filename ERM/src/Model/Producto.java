@@ -14,6 +14,8 @@ public class Producto {
     private float Precio_Compra;       
     private int Existencia;
     private String Cod_AlmacenFK;
+    private String Tipo_Moneda;
+    private float Dolar;
 
     public Producto() {
     }
@@ -80,6 +82,22 @@ public class Producto {
 
     public void setCod_AlmacenFK(String Cod_AlmacenFK) {
         this.Cod_AlmacenFK = Cod_AlmacenFK;
+    }
+
+    public String getTipo_Moneda() {
+        return Tipo_Moneda;
+    }
+
+    public void setTipo_Moneda(String Tipo_Moneda) {
+        this.Tipo_Moneda = Tipo_Moneda;
+    }
+
+    public float getDolar() {
+        return Dolar;
+    }
+
+    public void setDolar(float Dolar) {
+        this.Dolar = Dolar;
     }
     
     

@@ -33,14 +33,14 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
      * Creates new form JPanelFrmConsultarVentas
      */
     CardLayout card;
-    
+
     public JPanelFrmConsultarVentas() {
         initComponents();
-        
+
         card = (CardLayout) FrmPrincipal.jPanelBranch.getLayout();
-        
+
         mostrar();
-        
+
         txtTotal_venta.setEditable(false);
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         txtCod_venta.setEditable(false);
@@ -56,14 +56,14 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
 
                 JLabel l = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-                 l.setBackground(new java.awt.Color(255, 255, 255));
+                l.setBackground(new java.awt.Color(255, 255, 255));
                 l.setForeground(new java.awt.Color(0, 0, 0));
                 l.setFont(new java.awt.Font("Dialog", 3, 14));
                 return l;
             }
         });
     }
-    
+
     public void mostrar() {
         txtCod_cliente.setVisible(false);
         txtCod_usuario.setVisible(false);
@@ -117,16 +117,16 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
         txtNum_factura.setText("");
         txtBuscar.setText("");
     }
-    
+
     public void cambiarColorLinea(JPanel panel) {
         lineaBusqueda.setBackground(new java.awt.Color(153, 153, 153));
         panel.setBackground(new java.awt.Color(255, 50, 0));
     }
-    
+
     public void cambiarColorLineaDefecto() {
         lineaBusqueda.setBackground(new java.awt.Color(153, 153, 153));
     }
-    
+
     public void cambiarPanelContenedorBranch(JPanel panel, String name) {
         FrmPrincipal.jPanelBranch.add(panel, name);
         card.show(FrmPrincipal.jPanelBranch, name);
@@ -393,7 +393,7 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
     private void txtTotal_ventaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTotal_ventaKeyTyped
         char c = evt.getKeyChar();
         if (((c < '0') || (c > '9')) && (c != evt.VK_BACK_SPACE)
-            && (c != '.')) {
+                && (c != '.')) {
             evt.consume();
         }
     }//GEN-LAST:event_txtTotal_ventaKeyTyped
@@ -411,7 +411,6 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
 
         /*btnEliminar.setEnabled(true);
         btnEditar.setEnabled(true);*/
-
         int fila = jTabla.rowAtPoint(evt.getPoint());
 
         txtCod_venta.setText(jTabla.getValueAt(fila, 0).toString());
@@ -429,42 +428,41 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
     }//GEN-LAST:event_jTablaMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if (txtCod_venta.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Seleccione un registro de la tabla");
-            return;
-        }
-        int i = JOptionPane.showConfirmDialog(this, "¿Seguro que desea eliminar la venta?", "Confirmar Eliminacion", JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
-            if (!txtCod_venta.getText().equals("")) {
-                DAO_DetalleVenta funcionDV = new DAO_DetalleVenta();
-                DAO_DetalleForanea funcionDF = new DAO_DetalleForanea();
-                DAO_Venta funcionV = new DAO_Venta();
-                
-                DetalleVenta datosDV = new DetalleVenta();
-                datosDV.setId_VentaFK(Integer.parseInt(txtCod_venta.getText()));
-                
-                DetalleForanea datosDF = new DetalleForanea();
-                datosDF.setId_VentaFK(Integer.parseInt(txtCod_venta.getText()));
-                
-                Venta datosV = new Venta();
-                datosV.setId_Venta(Integer.parseInt(txtCod_venta.getText()));
-                
-                boolean restaurar = funcionV.RestaurarProd();
-                boolean detailV = funcionDV.eliminar(datosDV);
-                boolean detailF = funcionDF.eliminar(datosDF);
-                boolean vent = funcionV.eliminar(datosV);
-                
-                
-                if (vent) {
-                    JOptionPane.showMessageDialog(null, "La venta ha sido eliminada.");
-                    mostrar();
-                    limpiar();
+        if (jTabla.getSelectedRow() >= 0) {
+            int i = JOptionPane.showConfirmDialog(this, "¿Seguro que desea eliminar la venta?", "Confirmar Eliminacion", JOptionPane.YES_NO_OPTION);
+            if (i == 0) {
+                if (!txtCod_venta.getText().equals("")) {
+                    DAO_DetalleVenta funcionDV = new DAO_DetalleVenta();
+                    DAO_DetalleForanea funcionDF = new DAO_DetalleForanea();
+                    DAO_Venta funcionV = new DAO_Venta();
+
+                    DetalleVenta datosDV = new DetalleVenta();
+                    datosDV.setId_VentaFK(Integer.parseInt(txtCod_venta.getText()));
+
+                    DetalleForanea datosDF = new DetalleForanea();
+                    datosDF.setId_VentaFK(Integer.parseInt(txtCod_venta.getText()));
+
+                    Venta datosV = new Venta();
+                    datosV.setId_Venta(Integer.parseInt(txtCod_venta.getText()));
+
+                    boolean restaurar = funcionV.RestaurarProd();
+                    boolean detailV = funcionDV.eliminar(datosDV);
+                    boolean detailF = funcionDF.eliminar(datosDF);
+                    boolean vent = funcionV.eliminar(datosV);
+
+                    if (vent) {
+                        JOptionPane.showMessageDialog(null, "La venta ha sido eliminada.");
+                        mostrar();
+                        limpiar();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error al eliminar la venta.");
+                    }
                 } else {
-                  JOptionPane.showMessageDialog(null, "Error al eliminar la venta.");  
+                    JOptionPane.showMessageDialog(null, "El codigo de venta no se encuentra.");
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "El codigo de venta no se encuentra.");
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un registro de la tabla");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 

@@ -31,13 +31,13 @@ public class DAO_Producto {
                 = {"Código","Proveedor", "Número Parte",
                     "Descripción", "Precio Venta",
                     "Precio Compra", "Existencia",
-                    "Ubicación"};
+                    "Ubicación","Moneda","Dolar"};
 
-        String[] registros = new String[8];
+        String[] registros = new String[10];
         totalRegistros = 0;
         modelo = new DefaultTableModel(null, titulos);
 
-        sSQL = "SELECT Cod_Producto,Proveedor,Nombre_Producto,Descripcion,Precio_Venta ,Precio_Compra ,Existencia,(SELECT Nombre_Almacen FROM Almacen WHERE Cod_Almacen = Cod_AlmacenFK) AS Nombre_Almacen FROM Producto WHERE Descripcion LIKE '%" + buscar + "%' ORDER BY Cod_Producto DESC";
+        sSQL = "SELECT Cod_Producto,Proveedor,Nombre_Producto,Descripcion,Precio_Venta ,Precio_Compra ,Existencia,(SELECT Nombre_Almacen FROM Almacen WHERE Cod_Almacen = Cod_AlmacenFK) AS Nombre_Almacen, Tipo_Moneda, Dolar FROM Producto WHERE Descripcion LIKE '%" + buscar + "%' ORDER BY Cod_Producto DESC";
 
         try {
 
@@ -54,6 +54,8 @@ public class DAO_Producto {
                 registros[5] = rs.getString("Precio_Compra");
                 registros[6] = rs.getString("Existencia");
                 registros[7] = rs.getString("Nombre_Almacen");
+                registros[8] = rs.getString("Tipo_Moneda");
+                registros[9] = rs.getString("Dolar");
 
                 totalRegistros = totalRegistros + 1;
                 modelo.addRow(registros);
@@ -68,9 +70,9 @@ public class DAO_Producto {
     public boolean insertar(Producto datos,String nombre) {
         
         sSQL = "INSERT INTO Producto (Cod_Producto,Proveedor"
-                + ",Nombre_Producto,Descripcion,Precio_Venta,Precio_Compra,Existencia,Cod_AlmacenFK)"
+                + ",Nombre_Producto,Descripcion,Precio_Venta,Precio_Compra,Existencia,Cod_AlmacenFK,Tipo_Moneda,Dolar)"
                 + " VALUES (?,?,?,?,?,?,?,"
-                + "(SELECT Cod_Almacen FROM Almacen WHERE Nombre_Almacen LIKE '%" + nombre + "%'))";
+                + "(SELECT Cod_Almacen FROM Almacen WHERE Nombre_Almacen LIKE '%" + nombre + "%'),?,?)";
         try {
 
             PreparedStatement pst = connection.prepareStatement(sSQL);
@@ -81,7 +83,9 @@ public class DAO_Producto {
             pst.setString(4, datos.getDescripcion());
             pst.setFloat(5, datos.getPrecio_Venta());
             pst.setFloat(6, datos.getPrecio_Compra());            
-            pst.setInt(7, datos.getExistencia());           
+            pst.setInt(7, datos.getExistencia());  
+            pst.setString(8, datos.getTipo_Moneda());
+            pst.setFloat(9, datos.getDolar());
             
             int N = pst.executeUpdate();
             if (N != 0) {
@@ -97,7 +101,7 @@ public class DAO_Producto {
 
     public boolean editar(Producto datos, String nombre) {
 
-        sSQL = "UPDATE Producto SET Proveedor = ?, Nombre_Producto = ?, Descripcion = ?  , Precio_Venta = ? , Precio_Compra = ? , Existencia = ? , Cod_AlmacenFK =(SELECT Cod_Almacen FROM Almacen WHERE Nombre_Almacen LIKE '%" + nombre + "%' LIMIT 1) WHERE Cod_Producto =? ";
+        sSQL = "UPDATE Producto SET Proveedor = ?, Nombre_Producto = ?, Descripcion = ?  , Precio_Venta = ? , Precio_Compra = ? , Existencia = ? , Cod_AlmacenFK =(SELECT Cod_Almacen FROM Almacen WHERE Nombre_Almacen LIKE '%" + nombre + "%' LIMIT 1), Tipo_Moneda = ?, Dolar = ? WHERE Cod_Producto =? ";
 
         try {
 
@@ -109,8 +113,10 @@ public class DAO_Producto {
             pst.setFloat(4, datos.getPrecio_Venta());
             pst.setFloat(5, datos.getPrecio_Compra());            
             pst.setInt(6, datos.getExistencia());
-
-            pst.setString(7, datos.getCod_Producto());
+            pst.setString(7, datos.getTipo_Moneda());
+            pst.setFloat(8, datos.getDolar());
+            
+            pst.setString(9, datos.getCod_Producto());
 
             int N = pst.executeUpdate();
             if (N != 0) {

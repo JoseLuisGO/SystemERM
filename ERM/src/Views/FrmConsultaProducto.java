@@ -28,7 +28,7 @@ public static int comprobarProducto;
         
         mostrar("");
       
-
+        ocultar_columnas();
         jTabla.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
 
             @Override
@@ -56,6 +56,15 @@ public static int comprobarProducto;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+    }
+    
+    public void ocultar_columnas() {
+        jTabla.getColumnModel().getColumn(8).setMaxWidth(0);
+        jTabla.getColumnModel().getColumn(8).setMinWidth(0);
+        jTabla.getColumnModel().getColumn(8).setPreferredWidth(0);
+        jTabla.getColumnModel().getColumn(9).setMaxWidth(0);
+        jTabla.getColumnModel().getColumn(9).setMinWidth(0);
+        jTabla.getColumnModel().getColumn(9).setPreferredWidth(0);
     }
 
     /**

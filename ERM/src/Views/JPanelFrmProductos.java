@@ -39,16 +39,17 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
     private List<JTable> tabla;
     private List<String> nom_files;
     CardLayout card;
+
     /**
      * Creates new form JPanelFrmProductos
      */
     public JPanelFrmProductos() {
         initComponents();
-        
+
         card = (CardLayout) FrmPrincipal.jPanelBranch.getLayout();
-        
+
         cambiarColorBtn(jPanelProductos, btnProductos);
-        
+
         inhabilitar();
         mostrar("");
         ocultar_columnas();
@@ -70,16 +71,16 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
             }
         });
     }
-    
+
     public JPanelFrmProductos(File file, List<JTable> tabla, List<String> nom_files)
-        throws Exception {
-            this.file = file;
-            this.tabla = tabla;
-            this.nom_files = nom_files;
-            if (nom_files.size() != tabla.size()) {
-                throw new Exception("Error");
-            }
+            throws Exception {
+        this.file = file;
+        this.tabla = tabla;
+        this.nom_files = nom_files;
+        if (nom_files.size() != tabla.size()) {
+            throw new Exception("Error");
         }
+    }
 
     public boolean export() {
         try {
@@ -112,6 +113,12 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         jTabla.getColumnModel().getColumn(7).setMaxWidth(0);
         jTabla.getColumnModel().getColumn(7).setMinWidth(0);
         jTabla.getColumnModel().getColumn(7).setPreferredWidth(0);
+        jTabla.getColumnModel().getColumn(8).setMaxWidth(0);
+        jTabla.getColumnModel().getColumn(8).setMinWidth(0);
+        jTabla.getColumnModel().getColumn(8).setPreferredWidth(0);
+        jTabla.getColumnModel().getColumn(9).setMaxWidth(0);
+        jTabla.getColumnModel().getColumn(9).setMinWidth(0);
+        jTabla.getColumnModel().getColumn(9).setPreferredWidth(0);
     }
 
     public void inhabilitar() {
@@ -120,9 +127,11 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         txtRazon_Social.setEditable(false);
         txtNombre_Producto.setEditable(false);
         txtDescripcion.setEditable(false);
+        jComboBox2.setEditable(false);
+        txtValorDolar.setEditable(false);
         txtPrecio_Venta.setEditable(false);
         txtPrecio_Compra.setEditable(false);
-        txtExistencia.setEditable(false);       
+        txtExistencia.setEditable(false);
 
         txtBuscar.setEditable(false);
 
@@ -131,40 +140,46 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         btnEliminar.setEnabled(false);
         btnGuardar.setEnabled(false);
 
-        btnNuevo.setEnabled(true);        
+        btnNuevo.setEnabled(true);
 
         txtCod_Producto.setText("");
         txtRazon_Social.setText("");
         txtNombre_Producto.setText("");
         txtDescripcion.setText("");
+        jComboBox2.setSelectedIndex(0);
+        txtValorDolar.setText("");
         txtPrecio_Venta.setText("");
         txtPrecio_Compra.setText("");
-        txtExistencia.setText("");       
+        txtExistencia.setText("");
     }
 
     public void habilitar() {
-        
+
         txtCod_Producto.setEditable(true);
         txtRazon_Social.setEditable(true);
-        txtNombre_Producto.setEditable(true);        
+        txtNombre_Producto.setEditable(true);
         txtDescripcion.setEditable(true);
+        jComboBox2.setEditable(true);
+        txtValorDolar.setEditable(true);
         txtPrecio_Venta.setEditable(true);
         txtPrecio_Compra.setEditable(true);
         txtExistencia.setEditable(true);
-        txtBuscar.setEditable(true);        
-        
+        txtBuscar.setEditable(true);
+
         btnBuscar.setEnabled(true);
         btnEliminar.setEnabled(true);
         btnGuardar.setEnabled(true);
-        btnNuevo.setEnabled(false);        
-        
+        btnNuevo.setEnabled(false);
+
         txtCod_Producto.setText("");
         txtRazon_Social.setText("");
         txtNombre_Producto.setText("");
         txtDescripcion.setText("");
+        jComboBox2.setSelectedIndex(0);
+        txtValorDolar.setText("");
         txtPrecio_Venta.setText("");
         txtPrecio_Compra.setText("");
-        txtExistencia.setText("");  
+        txtExistencia.setText("");
     }
 
     public void mostrar(String buscar) {
@@ -172,7 +187,7 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
             DefaultTableModel modelo;
             DAO_Producto funcion = new DAO_Producto();
             modelo = funcion.mostrar(buscar);
-            jTabla.setModel(modelo);            
+            jTabla.setModel(modelo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -187,26 +202,27 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
     }
 
     public void mostrarExportar(String buscar) {
-       try {
+        try {
             DefaultTableModel modelo;
             DAO_Producto funcion = new DAO_Producto();
-            modelo = funcion.mostrarExportar(buscar);            
-            jTabla.setModel(modelo);            
+            modelo = funcion.mostrarExportar(buscar);
+            jTabla.setModel(modelo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
+
     public void cambiarColorBtn(JPanel panel, JLabel btn) {
         panel.setBackground(new java.awt.Color(204, 204, 204));
         btn.setForeground(new java.awt.Color(255, 50, 0));
     }
-    
-   public void cambiarColorLinea(JPanel panel) {
+
+    public void cambiarColorLinea(JPanel panel) {
         lineaCodigo.setBackground(new java.awt.Color(153, 153, 153));
         lineaProveedor.setBackground(new java.awt.Color(153, 153, 153));
         lineaNumero.setBackground(new java.awt.Color(153, 153, 153));
         lineaDescripcion.setBackground(new java.awt.Color(153, 153, 153));
+        lineaValorDolar.setBackground(new java.awt.Color(153, 153, 153));
         lineaPrecioVenta.setBackground(new java.awt.Color(153, 153, 153));
         lineaPrecioCompra.setBackground(new java.awt.Color(153, 153, 153));
         lineaExistencia.setBackground(new java.awt.Color(153, 153, 153));
@@ -214,29 +230,30 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         lineaBusqueda.setBackground(new java.awt.Color(153, 153, 153));
         panel.setBackground(new java.awt.Color(255, 50, 0));
     }
-    
+
     public void cambiarColorLineaDefecto() {
         lineaCodigo.setBackground(new java.awt.Color(153, 153, 153));
         lineaProveedor.setBackground(new java.awt.Color(153, 153, 153));
         lineaNumero.setBackground(new java.awt.Color(153, 153, 153));
         lineaDescripcion.setBackground(new java.awt.Color(153, 153, 153));
+        lineaValorDolar.setBackground(new java.awt.Color(153, 153, 153));
         lineaPrecioVenta.setBackground(new java.awt.Color(153, 153, 153));
         lineaPrecioCompra.setBackground(new java.awt.Color(153, 153, 153));
         lineaExistencia.setBackground(new java.awt.Color(153, 153, 153));
         lineaAlmacen.setBackground(new java.awt.Color(153, 153, 153));
         lineaBusqueda.setBackground(new java.awt.Color(153, 153, 153));
     }
-    
+
     public void cambiarPanelContenedorBranch(JPanel panel, String name) {
         FrmPrincipal.jPanelBranch.add(panel, name);
         card.show(FrmPrincipal.jPanelBranch, name);
     }
-    
+
     public void cambiarColorMenu(JPanel panel, JLabel btn) {
         panel.setBackground(new java.awt.Color(102, 102, 102));
         btn.setForeground(new java.awt.Color(255, 255, 255));
     }
-    
+
     public void cambiarColorMenuDefecto(JPanel panel, JLabel btn) {
         panel.setBackground(new java.awt.Color(255, 255, 255));
         btn.setForeground(new java.awt.Color(0, 0, 0));
@@ -260,13 +277,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
             }
         };
         jLabel12 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        txtBuscar = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
-        btnExportar = new javax.swing.JButton();
-        jLabel20 = new javax.swing.JLabel();
-        lineaBusqueda = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -292,6 +302,17 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         lineaPrecioCompra = new javax.swing.JPanel();
         lineaExistencia = new javax.swing.JPanel();
         lineaAlmacen = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        txtValorDolar = new javax.swing.JTextField();
+        lineaValorDolar = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnExportar = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        lineaBusqueda = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -346,6 +367,361 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
 
         jLabel12.setText(" ");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 534, -1, -1));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(65, 139, 66)));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel4.setText("Codigo :");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel2.setText("Proveedor :");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel5.setText("Número Parte :");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 50, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel6.setText("Descripción :");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 70, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel13.setText("Precio Venta :");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 130, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel7.setText("Precio Compra :");
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+
+        txtPrecio_Compra.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtPrecio_Compra.setBorder(null);
+        txtPrecio_Compra.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtPrecio_Compra.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPrecio_CompraFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPrecio_CompraFocusLost(evt);
+            }
+        });
+        txtPrecio_Compra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecio_CompraKeyTyped(evt);
+            }
+        });
+        jPanel4.add(txtPrecio_Compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 150, 464, -1));
+
+        txtDescripcion.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtDescripcion.setBorder(null);
+        txtDescripcion.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtDescripcion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDescripcionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDescripcionFocusLost(evt);
+            }
+        });
+        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescripcionKeyTyped(evt);
+            }
+        });
+        jPanel4.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 70, 464, -1));
+
+        txtRazon_Social.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtRazon_Social.setBorder(null);
+        txtRazon_Social.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtRazon_Social.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtRazon_SocialFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtRazon_SocialFocusLost(evt);
+            }
+        });
+        jPanel4.add(txtRazon_Social, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 30, 464, -1));
+
+        txtCod_Producto.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtCod_Producto.setBorder(null);
+        txtCod_Producto.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtCod_Producto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCod_ProductoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCod_ProductoFocusLost(evt);
+            }
+        });
+        txtCod_Producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCod_ProductoActionPerformed(evt);
+            }
+        });
+        txtCod_Producto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCod_ProductoKeyTyped(evt);
+            }
+        });
+        jPanel4.add(txtCod_Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 10, 464, -1));
+
+        txtPrecio_Venta.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtPrecio_Venta.setBorder(null);
+        txtPrecio_Venta.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtPrecio_Venta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPrecio_VentaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPrecio_VentaFocusLost(evt);
+            }
+        });
+        txtPrecio_Venta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecio_VentaActionPerformed(evt);
+            }
+        });
+        txtPrecio_Venta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecio_VentaKeyTyped(evt);
+            }
+        });
+        jPanel4.add(txtPrecio_Venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 130, 464, -1));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel9.setText("Existencia :");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
+
+        jComboBox1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione Ubicación" }));
+        jComboBox1.setBorder(null);
+        jComboBox1.setMinimumSize(new java.awt.Dimension(144, 18));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(144, 18));
+        jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBox1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBox1FocusLost(evt);
+            }
+        });
+        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 190, 464, -1));
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel11.setText("Almacen :");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+
+        txtNombre_Producto.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtNombre_Producto.setBorder(null);
+        txtNombre_Producto.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNombre_Producto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombre_ProductoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombre_ProductoFocusLost(evt);
+            }
+        });
+        jPanel4.add(txtNombre_Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 50, 464, -1));
+
+        txtExistencia.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtExistencia.setBorder(null);
+        txtExistencia.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtExistencia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtExistenciaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtExistenciaFocusLost(evt);
+            }
+        });
+        txtExistencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtExistenciaKeyTyped(evt);
+            }
+        });
+        jPanel4.add(txtExistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 170, 464, -1));
+
+        lineaCodigo.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout lineaCodigoLayout = new javax.swing.GroupLayout(lineaCodigo);
+        lineaCodigo.setLayout(lineaCodigoLayout);
+        lineaCodigoLayout.setHorizontalGroup(
+            lineaCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+        );
+        lineaCodigoLayout.setVerticalGroup(
+            lineaCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(lineaCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 26, 464, 2));
+
+        lineaProveedor.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout lineaProveedorLayout = new javax.swing.GroupLayout(lineaProveedor);
+        lineaProveedor.setLayout(lineaProveedorLayout);
+        lineaProveedorLayout.setHorizontalGroup(
+            lineaProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+        );
+        lineaProveedorLayout.setVerticalGroup(
+            lineaProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(lineaProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 46, -1, -1));
+
+        lineaPrecioVenta.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout lineaPrecioVentaLayout = new javax.swing.GroupLayout(lineaPrecioVenta);
+        lineaPrecioVenta.setLayout(lineaPrecioVentaLayout);
+        lineaPrecioVentaLayout.setHorizontalGroup(
+            lineaPrecioVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+        );
+        lineaPrecioVentaLayout.setVerticalGroup(
+            lineaPrecioVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(lineaPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 146, -1, -1));
+
+        lineaDescripcion.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout lineaDescripcionLayout = new javax.swing.GroupLayout(lineaDescripcion);
+        lineaDescripcion.setLayout(lineaDescripcionLayout);
+        lineaDescripcionLayout.setHorizontalGroup(
+            lineaDescripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+        );
+        lineaDescripcionLayout.setVerticalGroup(
+            lineaDescripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(lineaDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 86, -1, -1));
+
+        lineaNumero.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout lineaNumeroLayout = new javax.swing.GroupLayout(lineaNumero);
+        lineaNumero.setLayout(lineaNumeroLayout);
+        lineaNumeroLayout.setHorizontalGroup(
+            lineaNumeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+        );
+        lineaNumeroLayout.setVerticalGroup(
+            lineaNumeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(lineaNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 66, -1, -1));
+
+        lineaPrecioCompra.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout lineaPrecioCompraLayout = new javax.swing.GroupLayout(lineaPrecioCompra);
+        lineaPrecioCompra.setLayout(lineaPrecioCompraLayout);
+        lineaPrecioCompraLayout.setHorizontalGroup(
+            lineaPrecioCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+        );
+        lineaPrecioCompraLayout.setVerticalGroup(
+            lineaPrecioCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(lineaPrecioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 166, -1, -1));
+
+        lineaExistencia.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout lineaExistenciaLayout = new javax.swing.GroupLayout(lineaExistencia);
+        lineaExistencia.setLayout(lineaExistenciaLayout);
+        lineaExistenciaLayout.setHorizontalGroup(
+            lineaExistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+        );
+        lineaExistenciaLayout.setVerticalGroup(
+            lineaExistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(lineaExistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 186, -1, -1));
+
+        lineaAlmacen.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout lineaAlmacenLayout = new javax.swing.GroupLayout(lineaAlmacen);
+        lineaAlmacen.setLayout(lineaAlmacenLayout);
+        lineaAlmacenLayout.setHorizontalGroup(
+            lineaAlmacenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+        );
+        lineaAlmacenLayout.setVerticalGroup(
+            lineaAlmacenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(lineaAlmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 207, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel1.setText("Tipo Moneda:");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 90, -1, -1));
+
+        jComboBox2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione tipo moneda", "Pesos", "Dolares" }));
+        jComboBox2.setBorder(null);
+        jComboBox2.setMinimumSize(new java.awt.Dimension(158, 18));
+        jComboBox2.setPreferredSize(new java.awt.Dimension(158, 18));
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
+        jComboBox2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBox2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBox2FocusLost(evt);
+            }
+        });
+        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 90, 464, -1));
+
+        txtValorDolar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtValorDolar.setBorder(null);
+        txtValorDolar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtValorDolarFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtValorDolarFocusLost(evt);
+            }
+        });
+        txtValorDolar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorDolarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(txtValorDolar, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 110, 464, -1));
+
+        lineaValorDolar.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout lineaValorDolarLayout = new javax.swing.GroupLayout(lineaValorDolar);
+        lineaValorDolar.setLayout(lineaValorDolarLayout);
+        lineaValorDolarLayout.setHorizontalGroup(
+            lineaValorDolarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+        );
+        lineaValorDolarLayout.setVerticalGroup(
+            lineaValorDolarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(lineaValorDolar, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 126, -1, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 810, 240));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -423,304 +799,7 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
 
         jPanel3.add(lineaBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 53, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 480, 70));
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(65, 139, 66)));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel4.setText("Codigo :");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 29, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel2.setText("Proveedor :");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 52, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel5.setText("Número Parte :");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 75, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel6.setText("Descripción :");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 98, -1, -1));
-
-        jLabel13.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel13.setText("Precio Venta :");
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 122, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel7.setText("Precio Compra :");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 144, -1, -1));
-
-        txtPrecio_Compra.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        txtPrecio_Compra.setBorder(null);
-        txtPrecio_Compra.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPrecio_Compra.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtPrecio_CompraFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtPrecio_CompraFocusLost(evt);
-            }
-        });
-        txtPrecio_Compra.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPrecio_CompraKeyTyped(evt);
-            }
-        });
-        jPanel4.add(txtPrecio_Compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 143, 464, -1));
-
-        txtDescripcion.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        txtDescripcion.setBorder(null);
-        txtDescripcion.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtDescripcion.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDescripcionFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDescripcionFocusLost(evt);
-            }
-        });
-        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDescripcionKeyTyped(evt);
-            }
-        });
-        jPanel4.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 97, 464, -1));
-
-        txtRazon_Social.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        txtRazon_Social.setBorder(null);
-        txtRazon_Social.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtRazon_Social.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtRazon_SocialFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtRazon_SocialFocusLost(evt);
-            }
-        });
-        jPanel4.add(txtRazon_Social, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 51, 464, -1));
-
-        txtCod_Producto.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        txtCod_Producto.setBorder(null);
-        txtCod_Producto.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtCod_Producto.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCod_ProductoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCod_ProductoFocusLost(evt);
-            }
-        });
-        txtCod_Producto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCod_ProductoActionPerformed(evt);
-            }
-        });
-        txtCod_Producto.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCod_ProductoKeyTyped(evt);
-            }
-        });
-        jPanel4.add(txtCod_Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 28, 464, -1));
-
-        txtPrecio_Venta.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        txtPrecio_Venta.setBorder(null);
-        txtPrecio_Venta.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPrecio_Venta.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtPrecio_VentaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtPrecio_VentaFocusLost(evt);
-            }
-        });
-        txtPrecio_Venta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecio_VentaActionPerformed(evt);
-            }
-        });
-        txtPrecio_Venta.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPrecio_VentaKeyTyped(evt);
-            }
-        });
-        jPanel4.add(txtPrecio_Venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 120, 464, -1));
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel9.setText("Existencia :");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 171, -1, -1));
-
-        jComboBox1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione Ubicación" }));
-        jComboBox1.setBorder(null);
-        jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jComboBox1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jComboBox1FocusLost(evt);
-            }
-        });
-        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 193, 464, -1));
-
-        jLabel11.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel11.setText("Almacen :");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 196, -1, -1));
-
-        txtNombre_Producto.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        txtNombre_Producto.setBorder(null);
-        txtNombre_Producto.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtNombre_Producto.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNombre_ProductoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNombre_ProductoFocusLost(evt);
-            }
-        });
-        jPanel4.add(txtNombre_Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 74, 464, -1));
-
-        txtExistencia.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        txtExistencia.setBorder(null);
-        txtExistencia.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtExistencia.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtExistenciaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtExistenciaFocusLost(evt);
-            }
-        });
-        txtExistencia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtExistenciaKeyTyped(evt);
-            }
-        });
-        jPanel4.add(txtExistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 170, 464, -1));
-
-        lineaCodigo.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout lineaCodigoLayout = new javax.swing.GroupLayout(lineaCodigo);
-        lineaCodigo.setLayout(lineaCodigoLayout);
-        lineaCodigoLayout.setHorizontalGroup(
-            lineaCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
-        );
-        lineaCodigoLayout.setVerticalGroup(
-            lineaCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(lineaCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 46, 464, 2));
-
-        lineaProveedor.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout lineaProveedorLayout = new javax.swing.GroupLayout(lineaProveedor);
-        lineaProveedor.setLayout(lineaProveedorLayout);
-        lineaProveedorLayout.setHorizontalGroup(
-            lineaProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
-        );
-        lineaProveedorLayout.setVerticalGroup(
-            lineaProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(lineaProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 69, -1, -1));
-
-        lineaPrecioVenta.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout lineaPrecioVentaLayout = new javax.swing.GroupLayout(lineaPrecioVenta);
-        lineaPrecioVenta.setLayout(lineaPrecioVentaLayout);
-        lineaPrecioVentaLayout.setHorizontalGroup(
-            lineaPrecioVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
-        );
-        lineaPrecioVentaLayout.setVerticalGroup(
-            lineaPrecioVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(lineaPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 138, -1, -1));
-
-        lineaDescripcion.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout lineaDescripcionLayout = new javax.swing.GroupLayout(lineaDescripcion);
-        lineaDescripcion.setLayout(lineaDescripcionLayout);
-        lineaDescripcionLayout.setHorizontalGroup(
-            lineaDescripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
-        );
-        lineaDescripcionLayout.setVerticalGroup(
-            lineaDescripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(lineaDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 115, -1, -1));
-
-        lineaNumero.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout lineaNumeroLayout = new javax.swing.GroupLayout(lineaNumero);
-        lineaNumero.setLayout(lineaNumeroLayout);
-        lineaNumeroLayout.setHorizontalGroup(
-            lineaNumeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
-        );
-        lineaNumeroLayout.setVerticalGroup(
-            lineaNumeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(lineaNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 92, -1, -1));
-
-        lineaPrecioCompra.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout lineaPrecioCompraLayout = new javax.swing.GroupLayout(lineaPrecioCompra);
-        lineaPrecioCompra.setLayout(lineaPrecioCompraLayout);
-        lineaPrecioCompraLayout.setHorizontalGroup(
-            lineaPrecioCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
-        );
-        lineaPrecioCompraLayout.setVerticalGroup(
-            lineaPrecioCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(lineaPrecioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 161, -1, -1));
-
-        lineaExistencia.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout lineaExistenciaLayout = new javax.swing.GroupLayout(lineaExistencia);
-        lineaExistencia.setLayout(lineaExistenciaLayout);
-        lineaExistenciaLayout.setHorizontalGroup(
-            lineaExistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
-        );
-        lineaExistenciaLayout.setVerticalGroup(
-            lineaExistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(lineaExistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 188, -1, -1));
-
-        lineaAlmacen.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout lineaAlmacenLayout = new javax.swing.GroupLayout(lineaAlmacen);
-        lineaAlmacen.setLayout(lineaAlmacenLayout);
-        lineaAlmacenLayout.setHorizontalGroup(
-            lineaAlmacenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
-        );
-        lineaAlmacenLayout.setVerticalGroup(
-            lineaAlmacenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(lineaAlmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 215, -1, -1));
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 810, 230));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 545, 480, 60));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -775,10 +854,10 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
                     .addComponent(btnNuevo)
                     .addComponent(btnGuardar)
                     .addComponent(btnEditar))
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 530, 330, -1));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 545, 330, 60));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -966,10 +1045,31 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         txtRazon_Social.setText(jTabla.getValueAt(fila, 1).toString());
         txtNombre_Producto.setText(jTabla.getValueAt(fila, 2).toString());
         txtDescripcion.setText(jTabla.getValueAt(fila, 3).toString());
-        txtPrecio_Venta.setText(jTabla.getValueAt(fila, 4).toString());
-        txtPrecio_Compra.setText(jTabla.getValueAt(fila, 5).toString());
+
+        String Moneda = jTabla.getValueAt(fila, 8).toString();
+        if (Moneda.equalsIgnoreCase("Dolares")) {
+            String precio_venta = jTabla.getValueAt(fila, 4).toString();
+            String precio_compra = jTabla.getValueAt(fila, 5).toString();
+            String dolar = jTabla.getValueAt(fila, 9).toString();
+
+            float precioVenta = Float.parseFloat(precio_venta);
+            float precioCompra = Float.parseFloat(precio_compra);
+            float dollar = Float.parseFloat(dolar);
+            
+            float precioVentaDolar = precioVenta / dollar;
+            float precioCompraDolar = precioCompra / dollar;
+
+            txtPrecio_Venta.setText(precioVentaDolar + "");
+            txtPrecio_Compra.setText(precioCompraDolar + "");
+
+        } else {
+            txtPrecio_Venta.setText(jTabla.getValueAt(fila, 4).toString());
+            txtPrecio_Compra.setText(jTabla.getValueAt(fila, 5).toString());
+        }
         txtExistencia.setText(jTabla.getValueAt(fila, 6).toString());
         jComboBox1.setSelectedItem(jTabla.getValueAt(fila, 7).toString());
+        jComboBox2.setSelectedItem(jTabla.getValueAt(fila, 8).toString());
+        txtValorDolar.setText(jTabla.getValueAt(fila, 9).toString());
     }//GEN-LAST:event_jTablaMouseClicked
 
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
@@ -1096,6 +1196,18 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
             return;
         }
 
+        if (jComboBox2.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Debes ingresar un tipo de moneda.");
+            jComboBox2.requestFocus();
+            return;
+        }
+
+        if (jComboBox2.getSelectedIndex() == 2 && txtValorDolar.getText().equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar el valor del dolar.");
+            txtValorDolar.requestFocus();
+            return;
+        }
+
         if (txtPrecio_Venta.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Debe ingresar el precio de venta.");
             txtPrecio_Venta.requestFocus();
@@ -1108,7 +1220,7 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
             return;
         }
 
-        if (txtExistencia.getText().length() == 0){
+        if (txtExistencia.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Debe ingresar la existencia actual.");
             txtExistencia.requestFocus();
             return;
@@ -1128,11 +1240,27 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         datos.setNombre_Producto(txtNombre_Producto.getText());
         datos.setDescripcion(txtDescripcion.getText());
 
-        String Precio_Venta = txtPrecio_Venta.getText();
-        datos.setPrecio_Venta(Float.parseFloat(Precio_Venta));
+        String tipoMoneda = (String) jComboBox2.getSelectedItem();
+        datos.setTipo_Moneda(tipoMoneda);
+        
+        
 
-        String Precio_Compra = txtPrecio_Compra.getText();
-        datos.setPrecio_Compra(Float.parseFloat(Precio_Compra));
+        if (tipoMoneda.equalsIgnoreCase("Dolares")) {
+            float dolar = Float.parseFloat(txtValorDolar.getText());
+            datos.setDolar(dolar);
+            
+            float Precio_Venta = Float.parseFloat(txtPrecio_Venta.getText());
+            float precioVentaPesos = Precio_Venta * dolar;
+            datos.setPrecio_Venta(precioVentaPesos);
+
+            float Precio_Compra = Float.parseFloat(txtPrecio_Compra.getText());
+            float precioCompraPesos = Precio_Compra * dolar;
+            datos.setPrecio_Compra(precioCompraPesos);
+        } else {
+            datos.setPrecio_Venta(Float.parseFloat(txtPrecio_Venta.getText()));
+            datos.setPrecio_Compra(Float.parseFloat(txtPrecio_Compra.getText()));
+            datos.setDolar(Float.parseFloat("0"));
+        }
 
         datos.setExistencia(Integer.parseInt(txtExistencia.getText()));
 
@@ -1160,11 +1288,25 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         datos.setNombre_Producto(txtNombre_Producto.getText());
         datos.setDescripcion(txtDescripcion.getText());
 
-        String Precio_Venta = txtPrecio_Venta.getText();
-        datos.setPrecio_Venta(Float.parseFloat(Precio_Venta));
+        String tipoMoneda = (String) jComboBox2.getSelectedItem();
+        datos.setTipo_Moneda(tipoMoneda);
 
-        String Precio_Compra = txtPrecio_Compra.getText();
-        datos.setPrecio_Compra(Float.parseFloat(Precio_Compra));
+        if (tipoMoneda.equalsIgnoreCase("Dolares")) {
+            float dolar = Float.parseFloat(txtValorDolar.getText());
+            datos.setDolar(dolar);
+            
+            float Precio_Venta = Float.parseFloat(txtPrecio_Venta.getText());
+            float precioVentaPesos = Precio_Venta * dolar;
+            datos.setPrecio_Venta(precioVentaPesos);
+
+            float Precio_Compra = Float.parseFloat(txtPrecio_Compra.getText());
+            float precioCompraPesos = Precio_Compra * dolar;
+            datos.setPrecio_Compra(precioCompraPesos);
+        } else {
+            datos.setPrecio_Venta(Float.parseFloat(txtPrecio_Venta.getText()));
+            datos.setPrecio_Compra(Float.parseFloat(txtPrecio_Compra.getText()));
+            datos.setDolar(Float.parseFloat("0"));
+        }
 
         datos.setExistencia(Integer.parseInt(txtExistencia.getText()));
 
@@ -1292,6 +1434,37 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         cambiarColorLineaDefecto();
     }//GEN-LAST:event_txtBuscarFocusLost
 
+    private void jComboBox2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2FocusGained
+
+    private void jComboBox2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2FocusLost
+
+    private void txtValorDolarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorDolarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorDolarActionPerformed
+
+    private void txtValorDolarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtValorDolarFocusGained
+        cambiarColorLinea(lineaValorDolar);
+    }//GEN-LAST:event_txtValorDolarFocusGained
+
+    private void txtValorDolarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtValorDolarFocusLost
+        cambiarColorLineaDefecto();
+    }//GEN-LAST:event_txtValorDolarFocusLost
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        if (jComboBox2.getSelectedItem().equals("Dolares")) {
+            txtValorDolar.requestFocus();
+            txtValorDolar.setEditable(true);
+        } else {
+            txtValorDolar.setEditable(false);
+            txtValorDolar.setText("");
+            jComboBox2.requestFocus();
+        }
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -1305,6 +1478,8 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
     private javax.swing.JLabel btnStock;
     private javax.swing.JLabel btnUbicacion;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1338,6 +1513,7 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
     private javax.swing.JPanel lineaPrecioCompra;
     private javax.swing.JPanel lineaPrecioVenta;
     private javax.swing.JPanel lineaProveedor;
+    private javax.swing.JPanel lineaValorDolar;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCod_Producto;
     private javax.swing.JTextField txtDescripcion;
@@ -1346,5 +1522,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
     private javax.swing.JTextField txtPrecio_Compra;
     private javax.swing.JTextField txtPrecio_Venta;
     private javax.swing.JTextField txtRazon_Social;
+    private javax.swing.JTextField txtValorDolar;
     // End of variables declaration//GEN-END:variables
 }

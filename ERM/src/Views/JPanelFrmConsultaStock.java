@@ -33,7 +33,7 @@ static boolean desactivarProductos;
         cambiarColorBtn(jPanelStock, btnStock);
         
         mostrar("");
-
+        ocultar_columnasPrincipal();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jTabla.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
 
@@ -98,6 +98,21 @@ static boolean desactivarProductos;
         jTabla.getColumnModel().getColumn(1).setMaxWidth(0);
         jTabla.getColumnModel().getColumn(1).setMinWidth(0);
         jTabla.getColumnModel().getColumn(1).setPreferredWidth(0);
+        jTabla.getColumnModel().getColumn(8).setMaxWidth(0);
+        jTabla.getColumnModel().getColumn(8).setMinWidth(0);
+        jTabla.getColumnModel().getColumn(8).setPreferredWidth(0);
+        jTabla.getColumnModel().getColumn(9).setMaxWidth(0);
+        jTabla.getColumnModel().getColumn(9).setMinWidth(0);
+        jTabla.getColumnModel().getColumn(9).setPreferredWidth(0);
+    }
+    
+    public void ocultar_columnasPrincipal() {
+        jTabla.getColumnModel().getColumn(8).setMaxWidth(0);
+        jTabla.getColumnModel().getColumn(8).setMinWidth(0);
+        jTabla.getColumnModel().getColumn(8).setPreferredWidth(0);
+        jTabla.getColumnModel().getColumn(9).setMaxWidth(0);
+        jTabla.getColumnModel().getColumn(9).setMinWidth(0);
+        jTabla.getColumnModel().getColumn(9).setPreferredWidth(0);
     }
 
     /**

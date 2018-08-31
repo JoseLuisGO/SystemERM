@@ -295,14 +295,10 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                 datosF.setSubtotal(Float.parseFloat(subtotal));
 
                 if (funcion.insertar(datos) && updateStock()) {
-                    if (cboTipoVenta.getSelectedItem().equals("Foranea")) {
-                        if (funcionF.insertar(datosF) && updateStock()) {
-                            returnV = true;
-                        } else {
-                           returnV = false; 
-                        }
-                    } else {
+                    if (funcionF.insertar(datosF) && updateStock()) {
                         returnV = true;
+                    } else {
+                        returnV = false;
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "No se ingresaron datos del detalle de venta.");
@@ -467,7 +463,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         cboComprobante.setSelectedIndex(0);
         cboFormaPago.setSelectedIndex(0);
         cboTipoCambio.setSelectedIndex(0);
-        cboTipoVenta.setSelectedIndex(0);
 
         btnQuitarProducto.setEnabled(false);
         btnbuscarProducto.setEnabled(false);
@@ -475,8 +470,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         btnRegistrarVenta.setEnabled(false);
         cboFormaPago.setEnabled(true);
         cboTipoCambio.setEnabled(true);
-        cboTipoVenta.setEnabled(true);
-        cboTipoVenta.requestFocus();    
     }
 
     public void cambiarColorBtn(JPanel panel, JLabel btn) {
@@ -575,7 +568,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         dcFecha_venta = new com.toedter.calendar.JDateChooser();
-        jLabel2 = new javax.swing.JLabel();
         cboComprobante = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -587,7 +579,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         btnBuscarCliente = new javax.swing.JButton();
         lineaCliente = new javax.swing.JPanel();
         lineaBusqueda1 = new javax.swing.JPanel();
-        cboTipoVenta = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         btnRegistrarVenta = new javax.swing.JButton();
@@ -1123,12 +1114,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         dcFecha_venta.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jPanel3.add(dcFecha_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 179, 23));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Tipo Venta:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, -1));
-
         cboComprobante.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         cboComprobante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reporte" }));
         cboComprobante.addItemListener(new java.awt.event.ItemListener() {
@@ -1261,14 +1246,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
 
         jPanel3.add(lineaBusqueda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 100, -1, -1));
 
-        cboTipoVenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una opcion...", "Local", "Foranea" }));
-        cboTipoVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboTipoVentaActionPerformed(evt);
-            }
-        });
-        jPanel3.add(cboTipoVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 160, -1));
-
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -1337,11 +1314,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         /*PARTE VALIDACION DE CAMPOS*/
-        if (cboTipoVenta.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Selecciona un Tipo de Venta");
-            cboTipoVenta.requestFocus();
-            return;
-        }
         if (txtCod_cliente.getText().length() == 0 || txtNombre_cliente.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un cliente.");
             btnBuscarCliente.requestFocus();
@@ -1388,13 +1360,8 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         cboFormaPago.setEnabled(false);
         cboTipoCambio.setEnabled(false);
         txtDolar.setEnabled(false);
-        cboTipoVenta.setEnabled(false);
+        txtPrecio_producto.setEditable(true);
 
-        if (cboTipoVenta.getSelectedItem().equals("Foranea")) {
-            txtPrecio_producto.setEditable(true);
-        } else {
-            txtPrecio_producto.setEditable(false);
-        }
         DAO_Configuracion funcion = new DAO_Configuracion();
         if (cboTipoCambio.getSelectedItem().equals("Dolares")) {
 
@@ -1614,7 +1581,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
 
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
 
-        DecimalFormat formatea = new DecimalFormat("######.##");
+        //DecimalFormat formatea = new DecimalFormat("######.##");
         if (txtCod_producto.getText().length() == 0 || txtNombre_producto.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Seleccione un producto");
             btnbuscarProducto.requestFocus();
@@ -1717,11 +1684,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "No hay registros", "PRODUCTOS", JOptionPane.ERROR_MESSAGE);
         }
         limpiarProductosDetalle();
-        if (cboTipoVenta.getSelectedItem().equals("Foranea")) {
-            txtPrecio_producto.setEditable(true);
-        } else {
-            txtPrecio_producto.setEditable(false);
-        }
+        txtPrecio_producto.setEditable(true);
         txtCantidadProducto.setText("1");
         cboModoIngreso.setSelectedIndex(0);
         txtCod_producto.setEditable(true);
@@ -1739,7 +1702,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
 
     private void btnQuitarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarProductoActionPerformed
 
-        DecimalFormat formatea = new DecimalFormat("######.##");
+        //DecimalFormat formatea = new DecimalFormat("######.##");
         if (!txtCod_producto.getText().equals("")) {
 
             DefaultTableModel modelo = (DefaultTableModel) jTabla.getModel();
@@ -1781,7 +1744,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Seleccione un producto");
         }
         limpiarProductosDetalle();
-        txtPrecio_producto.setEditable(false);
+        txtPrecio_producto.setEditable(true);
         txtCantidadProducto.setEditable(false);
         txtCod_producto.setEditable(true);
         txtCantidadProducto.setText("1");
@@ -1892,10 +1855,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         cambiarColorLineaDefecto();
     }//GEN-LAST:event_txtDolarFocusLost
 
-    private void cboTipoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTipoVentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboTipoVentaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregarProducto;
@@ -1910,7 +1869,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
     public static javax.swing.JComboBox<String> cboFormaPago;
     public static javax.swing.JComboBox<String> cboModoIngreso;
     public static javax.swing.JComboBox<String> cboTipoCambio;
-    public static javax.swing.JComboBox<String> cboTipoVenta;
     public static com.toedter.calendar.JDateChooser dcFecha_venta;
     public static javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel10;
@@ -1922,7 +1880,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
     public static javax.swing.JLabel jLabel16;
     public static javax.swing.JLabel jLabel17;
     public static javax.swing.JLabel jLabel18;
-    public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel20;
     public static javax.swing.JLabel jLabel21;
     public static javax.swing.JLabel jLabel3;
