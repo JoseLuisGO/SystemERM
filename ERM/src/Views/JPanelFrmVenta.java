@@ -1607,15 +1607,31 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         float subTotal = resultadoDetalle;
 
         String valor = (String) cboTipoCambio.getSelectedItem();
-        float total;
+
+        float total = 0;
+
+        DAO_Producto funcionP = new DAO_Producto();
+        String tipoMoneda = funcionP.tipoMoneda(txtCod_producto.getText());
         if (valor.equalsIgnoreCase("Dolares")) {
-            float st = subTotal;
-            float dolar = function.getValueDollar();
-            float dolares = (st * 1) / dolar;
-            total = dolares;
-        } else {
-            float st = subTotal;
-            total = st;
+            if (tipoMoneda.equalsIgnoreCase("Dolares")) {
+                float st = subTotal;
+                total = st;
+            } else if (tipoMoneda.equalsIgnoreCase("Pesos")) {
+                float st = subTotal;
+                float dolar = function.getValueDollar();
+                float dolares = (st * 1) / dolar;
+                total = dolares;
+            }
+        } else if (valor.equalsIgnoreCase("Pesos")) {
+            if (tipoMoneda.equalsIgnoreCase("Dolares")) {
+                float st = subTotal;
+                float dolar = function.getValueDollar();
+                float dolares = st * dolar;
+                total = dolares;
+            } else if (tipoMoneda.equalsIgnoreCase("Pesos")) {
+                float st = subTotal;
+                total = st;
+            }
         }
 
         float valor2 = Float.parseFloat(txtSubTotal.getText());
@@ -1719,15 +1735,30 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
             float resultadoDetalle = valorProd * cantidadProd;
             float subTotal = resultadoDetalle;
             String valor = (String) cboTipoCambio.getSelectedItem();
-            float total;
+            float total = 0;
+
+            DAO_Producto funcionP = new DAO_Producto();
+            String tipoMoneda = funcionP.tipoMoneda(txtCod_producto.getText());
             if (valor.equalsIgnoreCase("Dolares")) {
-                float st = subTotal;
-                float dolar = function.getValueDollar();
-                float dolares = (st * 1) / dolar;
-                total = dolares;
-            } else {
-                float st = subTotal;
-                total = st;
+                if (tipoMoneda.equalsIgnoreCase("Dolares")) {
+                    float st = subTotal;
+                    total = st;
+                } else if (tipoMoneda.equalsIgnoreCase("Pesos")) {
+                    float st = subTotal;
+                    float dolar = function.getValueDollar();
+                    float dolares = (st * 1) / dolar;
+                    total = dolares;
+                }
+            } else if (valor.equalsIgnoreCase("Pesos")) {
+                if (tipoMoneda.equalsIgnoreCase("Dolares")) {
+                    float st = subTotal;
+                    float dolar = function.getValueDollar();
+                    float dolares = st * dolar;
+                    total = dolares;
+                } else if (tipoMoneda.equalsIgnoreCase("Pesos")) {
+                    float st = subTotal;
+                    total = st;
+                }
             }
             float resultado = valor2 - total;
 

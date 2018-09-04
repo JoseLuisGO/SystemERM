@@ -101,18 +101,12 @@ static boolean desactivarProductos;
         jTabla.getColumnModel().getColumn(8).setMaxWidth(0);
         jTabla.getColumnModel().getColumn(8).setMinWidth(0);
         jTabla.getColumnModel().getColumn(8).setPreferredWidth(0);
-        jTabla.getColumnModel().getColumn(9).setMaxWidth(0);
-        jTabla.getColumnModel().getColumn(9).setMinWidth(0);
-        jTabla.getColumnModel().getColumn(9).setPreferredWidth(0);
     }
     
     public void ocultar_columnasPrincipal() {
         jTabla.getColumnModel().getColumn(8).setMaxWidth(0);
         jTabla.getColumnModel().getColumn(8).setMinWidth(0);
         jTabla.getColumnModel().getColumn(8).setPreferredWidth(0);
-        jTabla.getColumnModel().getColumn(9).setMaxWidth(0);
-        jTabla.getColumnModel().getColumn(9).setMinWidth(0);
-        jTabla.getColumnModel().getColumn(9).setPreferredWidth(0);
     }
 
     /**

@@ -31,13 +31,13 @@ public class DAO_Producto {
                 = {"Código","Proveedor", "Número Parte",
                     "Descripción", "Precio Venta",
                     "Precio Compra", "Existencia",
-                    "Ubicación","Moneda","Dolar"};
+                    "Ubicación","Moneda"};
 
-        String[] registros = new String[10];
+        String[] registros = new String[9];
         totalRegistros = 0;
         modelo = new DefaultTableModel(null, titulos);
 
-        sSQL = "SELECT Cod_Producto,Proveedor,Nombre_Producto,Descripcion,Precio_Venta ,Precio_Compra ,Existencia,(SELECT Nombre_Almacen FROM Almacen WHERE Cod_Almacen = Cod_AlmacenFK) AS Nombre_Almacen, Tipo_Moneda, Dolar FROM Producto WHERE Descripcion LIKE '%" + buscar + "%' ORDER BY Cod_Producto DESC";
+        sSQL = "SELECT Cod_Producto,Proveedor,Nombre_Producto,Descripcion,Precio_Venta ,Precio_Compra ,Existencia,(SELECT Nombre_Almacen FROM Almacen WHERE Cod_Almacen = Cod_AlmacenFK) AS Nombre_Almacen, Tipo_Moneda FROM Producto WHERE Descripcion LIKE '%" + buscar + "%' ORDER BY Cod_Producto DESC";
 
         try {
 
@@ -55,7 +55,6 @@ public class DAO_Producto {
                 registros[6] = rs.getString("Existencia");
                 registros[7] = rs.getString("Nombre_Almacen");
                 registros[8] = rs.getString("Tipo_Moneda");
-                registros[9] = rs.getString("Dolar");
 
                 totalRegistros = totalRegistros + 1;
                 modelo.addRow(registros);
@@ -70,9 +69,9 @@ public class DAO_Producto {
     public boolean insertar(Producto datos,String nombre) {
         
         sSQL = "INSERT INTO Producto (Cod_Producto,Proveedor"
-                + ",Nombre_Producto,Descripcion,Precio_Venta,Precio_Compra,Existencia,Cod_AlmacenFK,Tipo_Moneda,Dolar)"
+                + ",Nombre_Producto,Descripcion,Precio_Venta,Precio_Compra,Existencia,Cod_AlmacenFK,Tipo_Moneda)"
                 + " VALUES (?,?,?,?,?,?,?,"
-                + "(SELECT Cod_Almacen FROM Almacen WHERE Nombre_Almacen LIKE '%" + nombre + "%'),?,?)";
+                + "(SELECT Cod_Almacen FROM Almacen WHERE Nombre_Almacen LIKE '%" + nombre + "%'),?)";
         try {
 
             PreparedStatement pst = connection.prepareStatement(sSQL);
@@ -85,7 +84,6 @@ public class DAO_Producto {
             pst.setFloat(6, datos.getPrecio_Compra());            
             pst.setInt(7, datos.getExistencia());  
             pst.setString(8, datos.getTipo_Moneda());
-            pst.setFloat(9, datos.getDolar());
             
             int N = pst.executeUpdate();
             if (N != 0) {
@@ -101,7 +99,7 @@ public class DAO_Producto {
 
     public boolean editar(Producto datos, String nombre) {
 
-        sSQL = "UPDATE Producto SET Proveedor = ?, Nombre_Producto = ?, Descripcion = ?  , Precio_Venta = ? , Precio_Compra = ? , Existencia = ? , Cod_AlmacenFK =(SELECT Cod_Almacen FROM Almacen WHERE Nombre_Almacen LIKE '%" + nombre + "%' LIMIT 1), Tipo_Moneda = ?, Dolar = ? WHERE Cod_Producto =? ";
+        sSQL = "UPDATE Producto SET Proveedor = ?, Nombre_Producto = ?, Descripcion = ?  , Precio_Venta = ? , Precio_Compra = ? , Existencia = ? , Cod_AlmacenFK =(SELECT Cod_Almacen FROM Almacen WHERE Nombre_Almacen LIKE '%" + nombre + "%' LIMIT 1), Tipo_Moneda = ? WHERE Cod_Producto =? ";
 
         try {
 
@@ -114,9 +112,8 @@ public class DAO_Producto {
             pst.setFloat(5, datos.getPrecio_Compra());            
             pst.setInt(6, datos.getExistencia());
             pst.setString(7, datos.getTipo_Moneda());
-            pst.setFloat(8, datos.getDolar());
             
-            pst.setString(9, datos.getCod_Producto());
+            pst.setString(8, datos.getCod_Producto());
 
             int N = pst.executeUpdate();
             if (N != 0) {
@@ -249,5 +246,21 @@ public class DAO_Producto {
             JOptionPane.showMessageDialog(null, e);
         }
         return lista;
+    }
+    
+    public String tipoMoneda(String codigo) {
+        sSQL = "SELECT Tipo_Moneda FROM Producto WHERE Cod_Producto = '" + codigo +"'";
+        String tipo = "";
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+            while (rs.next()) {
+                tipo = rs.getString("Tipo_Moneda");
+            }
+            return tipo;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return "";
+        }
     }
 }

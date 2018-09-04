@@ -116,9 +116,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         jTabla.getColumnModel().getColumn(8).setMaxWidth(0);
         jTabla.getColumnModel().getColumn(8).setMinWidth(0);
         jTabla.getColumnModel().getColumn(8).setPreferredWidth(0);
-        jTabla.getColumnModel().getColumn(9).setMaxWidth(0);
-        jTabla.getColumnModel().getColumn(9).setMinWidth(0);
-        jTabla.getColumnModel().getColumn(9).setPreferredWidth(0);
     }
 
     public void inhabilitar() {
@@ -128,7 +125,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         txtNombre_Producto.setEditable(false);
         txtDescripcion.setEditable(false);
         jComboBox2.setEditable(false);
-        txtValorDolar.setEditable(false);
         txtPrecio_Venta.setEditable(false);
         txtPrecio_Compra.setEditable(false);
         txtExistencia.setEditable(false);
@@ -147,7 +143,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         txtNombre_Producto.setText("");
         txtDescripcion.setText("");
         jComboBox2.setSelectedIndex(0);
-        txtValorDolar.setText("");
         txtPrecio_Venta.setText("");
         txtPrecio_Compra.setText("");
         txtExistencia.setText("");
@@ -160,7 +155,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         txtNombre_Producto.setEditable(true);
         txtDescripcion.setEditable(true);
         jComboBox2.setEditable(true);
-        txtValorDolar.setEditable(true);
         txtPrecio_Venta.setEditable(true);
         txtPrecio_Compra.setEditable(true);
         txtExistencia.setEditable(true);
@@ -176,7 +170,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         txtNombre_Producto.setText("");
         txtDescripcion.setText("");
         jComboBox2.setSelectedIndex(0);
-        txtValorDolar.setText("");
         txtPrecio_Venta.setText("");
         txtPrecio_Compra.setText("");
         txtExistencia.setText("");
@@ -222,7 +215,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         lineaProveedor.setBackground(new java.awt.Color(153, 153, 153));
         lineaNumero.setBackground(new java.awt.Color(153, 153, 153));
         lineaDescripcion.setBackground(new java.awt.Color(153, 153, 153));
-        lineaValorDolar.setBackground(new java.awt.Color(153, 153, 153));
         lineaPrecioVenta.setBackground(new java.awt.Color(153, 153, 153));
         lineaPrecioCompra.setBackground(new java.awt.Color(153, 153, 153));
         lineaExistencia.setBackground(new java.awt.Color(153, 153, 153));
@@ -236,7 +228,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         lineaProveedor.setBackground(new java.awt.Color(153, 153, 153));
         lineaNumero.setBackground(new java.awt.Color(153, 153, 153));
         lineaDescripcion.setBackground(new java.awt.Color(153, 153, 153));
-        lineaValorDolar.setBackground(new java.awt.Color(153, 153, 153));
         lineaPrecioVenta.setBackground(new java.awt.Color(153, 153, 153));
         lineaPrecioCompra.setBackground(new java.awt.Color(153, 153, 153));
         lineaExistencia.setBackground(new java.awt.Color(153, 153, 153));
@@ -304,8 +295,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         lineaAlmacen = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox();
-        txtValorDolar = new javax.swing.JTextField();
-        lineaValorDolar = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
@@ -689,38 +678,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         });
         jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 90, 464, -1));
 
-        txtValorDolar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        txtValorDolar.setBorder(null);
-        txtValorDolar.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtValorDolarFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtValorDolarFocusLost(evt);
-            }
-        });
-        txtValorDolar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtValorDolarActionPerformed(evt);
-            }
-        });
-        jPanel4.add(txtValorDolar, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 110, 464, -1));
-
-        lineaValorDolar.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout lineaValorDolarLayout = new javax.swing.GroupLayout(lineaValorDolar);
-        lineaValorDolar.setLayout(lineaValorDolarLayout);
-        lineaValorDolarLayout.setHorizontalGroup(
-            lineaValorDolarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
-        );
-        lineaValorDolarLayout.setVerticalGroup(
-            lineaValorDolarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(lineaValorDolar, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 126, -1, -1));
-
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 810, 240));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -1050,17 +1007,12 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         if (Moneda.equalsIgnoreCase("Dolares")) {
             String precio_venta = jTabla.getValueAt(fila, 4).toString();
             String precio_compra = jTabla.getValueAt(fila, 5).toString();
-            String dolar = jTabla.getValueAt(fila, 9).toString();
 
             float precioVenta = Float.parseFloat(precio_venta);
             float precioCompra = Float.parseFloat(precio_compra);
-            float dollar = Float.parseFloat(dolar);
-            
-            float precioVentaDolar = precioVenta / dollar;
-            float precioCompraDolar = precioCompra / dollar;
 
-            txtPrecio_Venta.setText(precioVentaDolar + "");
-            txtPrecio_Compra.setText(precioCompraDolar + "");
+            txtPrecio_Venta.setText(precioVenta + "");
+            txtPrecio_Compra.setText(precioCompra + "");
 
         } else {
             txtPrecio_Venta.setText(jTabla.getValueAt(fila, 4).toString());
@@ -1069,7 +1021,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         txtExistencia.setText(jTabla.getValueAt(fila, 6).toString());
         jComboBox1.setSelectedItem(jTabla.getValueAt(fila, 7).toString());
         jComboBox2.setSelectedItem(jTabla.getValueAt(fila, 8).toString());
-        txtValorDolar.setText(jTabla.getValueAt(fila, 9).toString());
     }//GEN-LAST:event_jTablaMouseClicked
 
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
@@ -1202,12 +1153,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
             return;
         }
 
-        if (jComboBox2.getSelectedIndex() == 2 && txtValorDolar.getText().equalsIgnoreCase("")) {
-            JOptionPane.showMessageDialog(null, "Debe ingresar el valor del dolar.");
-            txtValorDolar.requestFocus();
-            return;
-        }
-
         if (txtPrecio_Venta.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Debe ingresar el precio de venta.");
             txtPrecio_Venta.requestFocus();
@@ -1242,25 +1187,9 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
 
         String tipoMoneda = (String) jComboBox2.getSelectedItem();
         datos.setTipo_Moneda(tipoMoneda);
-        
-        
 
-        if (tipoMoneda.equalsIgnoreCase("Dolares")) {
-            float dolar = Float.parseFloat(txtValorDolar.getText());
-            datos.setDolar(dolar);
-            
-            float Precio_Venta = Float.parseFloat(txtPrecio_Venta.getText());
-            float precioVentaPesos = Precio_Venta * dolar;
-            datos.setPrecio_Venta(precioVentaPesos);
-
-            float Precio_Compra = Float.parseFloat(txtPrecio_Compra.getText());
-            float precioCompraPesos = Precio_Compra * dolar;
-            datos.setPrecio_Compra(precioCompraPesos);
-        } else {
-            datos.setPrecio_Venta(Float.parseFloat(txtPrecio_Venta.getText()));
-            datos.setPrecio_Compra(Float.parseFloat(txtPrecio_Compra.getText()));
-            datos.setDolar(Float.parseFloat("0"));
-        }
+        datos.setPrecio_Venta(Float.parseFloat(txtPrecio_Venta.getText()));
+        datos.setPrecio_Compra(Float.parseFloat(txtPrecio_Compra.getText()));
 
         datos.setExistencia(Integer.parseInt(txtExistencia.getText()));
 
@@ -1291,22 +1220,11 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         String tipoMoneda = (String) jComboBox2.getSelectedItem();
         datos.setTipo_Moneda(tipoMoneda);
 
-        if (tipoMoneda.equalsIgnoreCase("Dolares")) {
-            float dolar = Float.parseFloat(txtValorDolar.getText());
-            datos.setDolar(dolar);
-            
-            float Precio_Venta = Float.parseFloat(txtPrecio_Venta.getText());
-            float precioVentaPesos = Precio_Venta * dolar;
-            datos.setPrecio_Venta(precioVentaPesos);
+        float Precio_Venta = Float.parseFloat(txtPrecio_Venta.getText());
+        datos.setPrecio_Venta(Precio_Venta);
 
-            float Precio_Compra = Float.parseFloat(txtPrecio_Compra.getText());
-            float precioCompraPesos = Precio_Compra * dolar;
-            datos.setPrecio_Compra(precioCompraPesos);
-        } else {
-            datos.setPrecio_Venta(Float.parseFloat(txtPrecio_Venta.getText()));
-            datos.setPrecio_Compra(Float.parseFloat(txtPrecio_Compra.getText()));
-            datos.setDolar(Float.parseFloat("0"));
-        }
+        float Precio_Compra = Float.parseFloat(txtPrecio_Compra.getText());
+        datos.setPrecio_Compra(Precio_Compra);
 
         datos.setExistencia(Integer.parseInt(txtExistencia.getText()));
 
@@ -1442,27 +1360,8 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2FocusLost
 
-    private void txtValorDolarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorDolarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorDolarActionPerformed
-
-    private void txtValorDolarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtValorDolarFocusGained
-        cambiarColorLinea(lineaValorDolar);
-    }//GEN-LAST:event_txtValorDolarFocusGained
-
-    private void txtValorDolarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtValorDolarFocusLost
-        cambiarColorLineaDefecto();
-    }//GEN-LAST:event_txtValorDolarFocusLost
-
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
-        if (jComboBox2.getSelectedItem().equals("Dolares")) {
-            txtValorDolar.requestFocus();
-            txtValorDolar.setEditable(true);
-        } else {
-            txtValorDolar.setEditable(false);
-            txtValorDolar.setText("");
-            jComboBox2.requestFocus();
-        }
+        
     }//GEN-LAST:event_jComboBox2ItemStateChanged
 
 
@@ -1513,7 +1412,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
     private javax.swing.JPanel lineaPrecioCompra;
     private javax.swing.JPanel lineaPrecioVenta;
     private javax.swing.JPanel lineaProveedor;
-    private javax.swing.JPanel lineaValorDolar;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCod_Producto;
     private javax.swing.JTextField txtDescripcion;
@@ -1522,6 +1420,5 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
     private javax.swing.JTextField txtPrecio_Compra;
     private javax.swing.JTextField txtPrecio_Venta;
     private javax.swing.JTextField txtRazon_Social;
-    private javax.swing.JTextField txtValorDolar;
     // End of variables declaration//GEN-END:variables
 }
