@@ -248,14 +248,18 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                 String cantidadd = (String) jTabla.getValueAt(i, 3);
                 String stockk = (String) jTabla.getValueAt(i, 5);
 
+                String existencia = funcion.getExistencia(codProducto);
+
                 int cantidad = 0;
-                int stock = Integer.parseInt(stockk);
                 Producto datos = new Producto();
                 datos.setCod_Producto(codProducto);
 
                 cantidad = Integer.parseInt(cantidadd);
-                stock = stock - cantidad;
-                datos.setExistencia(stock);
+                int ex = Integer.parseInt(existencia);
+                int exist = ex - cantidad;
+                datos.setExistencia(exist);
+                System.out.println("Stock: " + exist);
+
                 if (funcion.ModificarStockProductos(datos)) {
                     returnV = true;
                 } else {
@@ -273,12 +277,16 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         try {
             DAO_DetalleVenta funcion = new DAO_DetalleVenta();
             DAO_DetalleForanea funcionF = new DAO_DetalleForanea();
+            DAO_Producto funcionP = new DAO_Producto();
             boolean returnV = false;
             for (int i = 0; i < jTabla.getRowCount(); i++) {
                 String codProducto = (String) jTabla.getValueAt(i, 0);
                 String precio = (String) jTabla.getValueAt(i, 2);
                 String cantidad = (String) jTabla.getValueAt(i, 3);
                 String subtotal = (String) jTabla.getValueAt(i, 4);
+
+                String cantidadd = (String) jTabla.getValueAt(i, 3);
+                String stockk = (String) jTabla.getValueAt(i, 5);
 
                 DetalleVenta datos = new DetalleVenta();
                 datos.setCantidad_Detalle(Integer.parseInt(cantidad));
@@ -294,9 +302,24 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                 datosF.setId_VentaFK(Integer.parseInt(txtCod_ventaFK.getText()));
                 datosF.setSubtotal(Float.parseFloat(subtotal));
 
-                if (funcion.insertar(datos) && updateStock()) {
-                    if (funcionF.insertar(datosF) && updateStock()) {
-                        returnV = true;
+                if (funcion.insertar(datos)) {
+                    if (funcionF.insertar(datosF)) {
+                        String existencia = funcionP.getExistencia(codProducto);
+
+                        int cantidadE = 0;
+                        Producto datosP = new Producto();
+                        datosP.setCod_Producto(codProducto);
+
+                        cantidadE = Integer.parseInt(cantidadd);
+                        int ex = Integer.parseInt(existencia);
+                        int exist = ex - cantidadE;
+                        datosP.setExistencia(exist);
+                        System.out.println("Stock: " + exist);
+                        if (funcionP.ModificarStockProductos(datosP)) {
+                            returnV = true;
+                        } else {
+                            returnV = false;
+                        }
                     } else {
                         returnV = false;
                     }
@@ -1670,6 +1693,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
                                 //String mostrar3 = formatea.format(resultadoDescuento);
                                 txtTotalVenta.setText(String.valueOf(resultadoDescuento));
 
+                                //txtStockDetalle1.setText(String.valueOf(Stockk-cantT));
                                 jTabla.setValueAt(String.valueOf(cantT), i, 3);
                                 jTabla.setValueAt(String.valueOf(subT), i, 4);
                             }

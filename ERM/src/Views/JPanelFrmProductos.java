@@ -124,7 +124,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         txtRazon_Social.setEditable(false);
         txtNombre_Producto.setEditable(false);
         txtDescripcion.setEditable(false);
-        jComboBox2.setEditable(false);
         txtPrecio_Venta.setEditable(false);
         txtPrecio_Compra.setEditable(false);
         txtExistencia.setEditable(false);
@@ -154,7 +153,6 @@ public class JPanelFrmProductos extends javax.swing.JPanel {
         txtRazon_Social.setEditable(true);
         txtNombre_Producto.setEditable(true);
         txtDescripcion.setEditable(true);
-        jComboBox2.setEditable(true);
         txtPrecio_Venta.setEditable(true);
         txtPrecio_Compra.setEditable(true);
         txtExistencia.setEditable(true);

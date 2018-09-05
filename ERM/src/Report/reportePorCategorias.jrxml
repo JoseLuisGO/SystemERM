@@ -18,7 +18,7 @@
 a.Cod_Almacen as Cod_Almacen1,
 a.Nombre_Almacen as Nom_Almacen,
 a.Descripcion as Descripcion_Almacen,
-(SELECT SUM(CASE WHEN (dv.subtotal)< dv.precio_venta THEN (dv.subtotal * $P{dolar}) ELSE (dv.subtotal) END) FROM Detalle_venta dv
+(SELECT SUM(CASE WHEN (v.Tipo_Cambio)='Dolares' THEN (dv.subtotal * $P{dolar}) ELSE (dv.subtotal) END) FROM Detalle_venta dv
 INNER JOIN Producto p ON 
 p.Cod_Producto = dv.Cod_ProductoFK 
 INNER JOIN venta v
@@ -26,7 +26,7 @@ ON dv.Id_VentaFK = v.Id_Venta
 WHERE (v.Fecha_Venta BETWEEN 
 $P{fecha_inicio} AND $P{fecha_termino})
 and p.Cod_AlmacenFK = Cod_Almacen1) as SubTotalPVenta,
-(SELECT SUM(p.Precio_Compra * dv.Cantidad_detalle) 
+(SELECT SUM(CASE WHEN (p.Tipo_Moneda)='Dolares' THEN (p.Precio_Compra * dv.Cantidad_detalle)*$P{dolar} ELSE (Precio_Compra * Cantidad_Detalle) END) 
 FROM producto p
 INNER JOIN Detalle_venta dv ON 
 dv.Cod_ProductoFK = p.Cod_Producto

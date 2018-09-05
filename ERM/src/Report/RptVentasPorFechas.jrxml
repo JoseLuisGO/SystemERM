@@ -27,23 +27,24 @@ v.Factura,
 v.Fecha_Venta,
 v.Tipo_Pago,
 v.Tipo_Cambio,
-v.SubTotal AS Total_Venta,
 v.Descuento,
 (SELECT Razon_Social FROM Cliente WHERE Id_Cliente = v.Id_ClienteFK )as cliente,
 d.Cod_ProductoFK,
-(SELECT SUM(CASE WHEN (d.subtotal)< d.precio_venta THEN (Precio_Compra * Cantidad_Detalle) ELSE (Precio_Compra * Cantidad_Detalle) END)from producto 
+(SELECT SUM(CASE WHEN (Tipo_Moneda)='Dolares' THEN (Precio_Compra * Cantidad_Detalle)*$P{dolar} ELSE (Precio_Compra * Cantidad_Detalle) END)from producto 
 inner join detalle_Venta 
 on detalle_Venta.Cod_ProductoFK = Producto.Cod_Producto
 inner join venta 
 on venta.Id_Venta = detalle_venta.Id_VentaFK
 where venta.Id_Venta = v.Id_Venta)as TotalCompra,
+(SELECT CASE WHEN (v.Tipo_Cambio)='Dolares' THEN (v.SubTotal * $P{dolar}) ELSE (v.SubTotal) END) as Total_Venta,
 (SELECT Descripcion FROM Producto WHERE Cod_Producto = d.Cod_ProductoFK)AS descripcion,
-d.Precio_Venta,
-d.Cantidad_Detalle,
-d.Subtotal
+IF(p.Tipo_Moneda='Dolares', d.Precio_Venta * $P{dolar}, d.Precio_Venta) as Precio_Venta,
+d.Cantidad_Detalle
 FROM Venta v 
 INNER JOIN Detalle_Venta d 
 ON v.Id_Venta = d.Id_VentaFK 
+INNER JOIN Producto p
+ON d.Cod_ProductoFK = p.Cod_Producto
 WHERE v.Fecha_Venta BETWEEN $P{fecha_inicio} AND $P{fecha_termino}
 AND(SELECT Nombre FROM usuario WHERE Id_Usuario = v.Id_UsuarioFK) = $P{usuario}
 ORDER BY v.Id_Venta ASC;]]>
@@ -63,9 +64,6 @@ ORDER BY v.Id_Venta ASC;]]>
 	<field name="Tipo_Cambio" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="Total_Venta" class="java.lang.Float">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="Descuento" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -74,16 +72,16 @@ ORDER BY v.Id_Venta ASC;]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="TotalCompra" class="java.lang.Double"/>
+	<field name="Total_Venta" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="descripcion" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="Precio_Venta" class="java.lang.Float">
+	<field name="Precio_Venta" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="Cantidad_Detalle" class="java.lang.Long">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Subtotal" class="java.lang.Float">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<variable name="TotCompra" class="java.lang.Double" resetType="Group" resetGroup="Id_Venta">

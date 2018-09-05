@@ -263,4 +263,20 @@ public class DAO_Producto {
             return "";
         }
     }
+    
+    public String getExistencia(String codigo) {
+        sSQL = "SELECT Existencia FROM Producto WHERE Cod_Producto = '" + codigo +"'";
+        String tipo = "";
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+            while (rs.next()) {
+                tipo = rs.getString("Existencia");
+            }
+            return tipo;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return "";
+        }
+    }
 }

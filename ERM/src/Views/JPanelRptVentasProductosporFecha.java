@@ -6,6 +6,7 @@
 package Views;
 
 import Connection.DB_Manager;
+import DAO.DAO_Configuracion;
 import java.awt.CardLayout;
 import java.sql.Connection;
 import java.util.HashMap;
@@ -327,6 +328,9 @@ public class JPanelRptVentasProductosporFecha extends javax.swing.JPanel {
 
             parametro.put("fecha_inicio", dcFecha_Inicio.getDate());
             parametro.put("fecha_termino", dcFecha_termino.getDate());
+            DAO_Configuracion funcion = new DAO_Configuracion();
+            float dolar = funcion.getValueDollar();
+            parametro.put("dolar", dolar);
 
             JasperPrint jp = JasperFillManager.fillReport(jr, parametro, connection);
             JasperViewer jv = new JasperViewer(jp, false);
@@ -343,23 +347,23 @@ public class JPanelRptVentasProductosporFecha extends javax.swing.JPanel {
     }//GEN-LAST:event_btnVentasporFechaMouseClicked
 
     private void btnVentasporFechaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasporFechaMouseEntered
-        cambiarColorMenu(jPanelVentaFecha, btnVentasporFecha);    
+        cambiarColorMenu(jPanelVentaFecha, btnVentasporFecha);
     }//GEN-LAST:event_btnVentasporFechaMouseEntered
 
     private void btnVentasporFechaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasporFechaMouseExited
-        cambiarColorMenuDefecto(jPanelVentaFecha, btnVentasporFecha);  
+        cambiarColorMenuDefecto(jPanelVentaFecha, btnVentasporFecha);
     }//GEN-LAST:event_btnVentasporFechaMouseExited
 
     private void btnVentaProductosFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaProductosFechaMouseClicked
-        
+
     }//GEN-LAST:event_btnVentaProductosFechaMouseClicked
 
     private void btnVentaProductosFechaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaProductosFechaMouseEntered
-        
+
     }//GEN-LAST:event_btnVentaProductosFechaMouseEntered
 
     private void btnVentaProductosFechaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaProductosFechaMouseExited
-        
+
     }//GEN-LAST:event_btnVentaProductosFechaMouseExited
 
     private void btnRecaudacionAlmacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRecaudacionAlmacenMouseClicked
