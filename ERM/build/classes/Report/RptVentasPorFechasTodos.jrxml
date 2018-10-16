@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e6cc69e8-072c-4653-a2c4-dff95addda00">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="96"/>
+	<property name="ireport.y" value="144"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -250,7 +250,7 @@ ORDER BY v.Id_Venta ASC;]]>
 					<reportElement x="0" y="90" width="555" height="14" uuid="bef333fc-c9eb-453c-a49a-7bfb35843f28"/>
 					<text><![CDATA[***********************************************************************************************************************************************]]></text>
 				</staticText>
-				<textField pattern="" isBlankWhenNull="false">
+				<textField pattern="¤ #,##0.00" isBlankWhenNull="false">
 					<reportElement mode="Transparent" x="52" y="60" width="126" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="d8af3774-4efe-4387-ba9c-d9918775ab91"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
@@ -273,6 +273,22 @@ ORDER BY v.Id_Venta ASC;]]>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{Descuento}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="246" y="0" width="69" height="15" forecolor="#666666" backcolor="#FFFFFF" uuid="f886799d-50e6-4c2a-84c9-2d32455cfe3b"/>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+						<font fontName="Times New Roman" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[Total Venta  $:]]></text>
+				</staticText>
+				<textField pattern="¤ #,##0.00" isBlankWhenNull="false">
+					<reportElement mode="Transparent" x="315" y="0" width="89" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="6a3923ad-9c68-4e5b-b3e7-95769bbbd8da"/>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TotVenta}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -402,7 +418,7 @@ ORDER BY v.Id_Venta ASC;]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false">
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="false">
 				<reportElement mode="Transparent" x="394" y="0" width="79" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="8aff84c0-b085-48c4-9c02-7c3d48ad2800"/>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
@@ -410,7 +426,7 @@ ORDER BY v.Id_Venta ASC;]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Precio_Venta}]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false">
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="false">
 				<reportElement mode="Transparent" x="472" y="0" width="83" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="efe695a0-ac0d-43a0-aad8-3797b2571485"/>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
@@ -430,7 +446,7 @@ ORDER BY v.Id_Venta ASC;]]>
 				</textElement>
 				<text><![CDATA[Utilidad Total:]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="¤ #,##0.00">
 				<reportElement x="455" y="0" width="100" height="15" uuid="184afd46-aae8-4c8e-abf1-fe21f038205b"/>
 				<textElement>
 					<font fontName="Times New Roman"/>

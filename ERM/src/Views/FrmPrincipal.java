@@ -33,6 +33,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         card = (CardLayout) jPanelBranch.getLayout();
+        
+        lblId_Usuario.setVisible(false);
     }
 
     /**

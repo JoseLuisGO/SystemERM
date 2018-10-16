@@ -99,13 +99,13 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
     }
 
     public void ocultar_columnas() {
-        jTabla.getColumnModel().getColumn(3).setMaxWidth(0);
-        jTabla.getColumnModel().getColumn(3).setMinWidth(0);
-        jTabla.getColumnModel().getColumn(3).setPreferredWidth(0);
+        jTabla.getColumnModel().getColumn(4).setMaxWidth(0);
+        jTabla.getColumnModel().getColumn(4).setMinWidth(0);
+        jTabla.getColumnModel().getColumn(4).setPreferredWidth(0);
 
-        jTabla.getColumnModel().getColumn(5).setMaxWidth(0);
-        jTabla.getColumnModel().getColumn(5).setMinWidth(0);
-        jTabla.getColumnModel().getColumn(5).setPreferredWidth(0);
+        jTabla.getColumnModel().getColumn(6).setMaxWidth(0);
+        jTabla.getColumnModel().getColumn(6).setMinWidth(0);
+        jTabla.getColumnModel().getColumn(6).setPreferredWidth(0);
     }
 
     public void limpiar() {
@@ -417,13 +417,13 @@ public class JPanelFrmConsultarVentas extends javax.swing.JPanel {
         dcFecha_venta.setDate(Date.valueOf(jTabla.getValueAt(fila, 1).toString()));
         txtTotal_venta.setText(jTabla.getValueAt(fila, 2).toString());
 
-        txtCod_usuario.setText(jTabla.getValueAt(fila, 3).toString());
-        txtNombre_usuario.setText(jTabla.getValueAt(fila, 4).toString());
+        txtCod_usuario.setText(jTabla.getValueAt(fila, 4).toString());
+        txtNombre_usuario.setText(jTabla.getValueAt(fila, 5).toString());
 
-        txtCod_cliente.setText(jTabla.getValueAt(fila, 5).toString());
-        txtNombre_cliente.setText(jTabla.getValueAt(fila, 6).toString());
-        txtComprobante.setText(jTabla.getValueAt(fila, 7).toString());
-        txtNum_factura.setText(jTabla.getValueAt(fila, 8).toString());
+        txtCod_cliente.setText(jTabla.getValueAt(fila, 6).toString());
+        txtNombre_cliente.setText(jTabla.getValueAt(fila, 7).toString());
+        txtComprobante.setText(jTabla.getValueAt(fila, 8).toString());
+        txtNum_factura.setText(jTabla.getValueAt(fila, 9).toString());
 
     }//GEN-LAST:event_jTablaMouseClicked
 

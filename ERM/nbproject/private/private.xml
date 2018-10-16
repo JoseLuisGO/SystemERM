@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Jose_Gonzalez/Documents/Workspace/SystemERM/ERM/src/Report/RptVentasPorFechas.jrxml</file>
+            <file>file:/C:/Users/Jose_Gonzalez/Documents/Workspace/SystemERM/ERM/src/DAO/DAO_Venta.java</file>
+            <file>file:/C:/Users/Jose_Gonzalez/Documents/Workspace/SystemERM/ERM/src/Views/FrmPrincipal.java</file>
+            <file>file:/C:/Users/Jose_Gonzalez/Documents/Workspace/SystemERM/ERM/src/Views/JPanelFrmConsultarVentas.java</file>
+            <file>file:/C:/Users/Jose_Gonzalez/Documents/Workspace/SystemERM/ERM/src/Connection/DB_Manager.java</file>
+            <file>file:/C:/Users/Jose_Gonzalez/Documents/Workspace/SystemERM/ERM/src/Report/RptVentasPorFechasTodos.jrxml</file>
+        </group>
     </open-files>
 </project-private>

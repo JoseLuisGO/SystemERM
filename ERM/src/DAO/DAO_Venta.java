@@ -30,14 +30,15 @@ public class DAO_Venta {
         DefaultTableModel modelo;
 
         String[] titulos = {"Número Venta",
-            "Fecha ", "Total", "Id Usuario",
+            "Fecha ", "Total", "Cantidad", "Id Usuario",
             "Usuario", "Id Cliente", "Cliente", "Comprobante", "Factura", "Descuento"};
 
-        String[] registros = new String[10];
+        String[] registros = new String[11];
         totalRegistros = 0;
         modelo = new DefaultTableModel(null, titulos);
 
-        sSQL = "SELECT Id_Venta , Fecha_Venta , Total_Venta  , Id_UsuarioFK,"
+        sSQL = "SELECT Id_Venta , Fecha_Venta , Total_Venta  ,"
+                + "(SELECT SUM(Cantidad_Detalle) FROM detalle_venta WHERE Id_VentaFK= Id_Venta) AS Cantidad,Id_UsuarioFK,"
                 + "(SELECT Nombre FROM Usuario WHERE Id_Usuario = Id_UsuarioFK)"
                 + "AS usuarioNom,Id_ClienteFK ,"
                 + "(SELECT Razon_Social FROM Cliente WHERE Id_Cliente = Id_ClienteFK)"
@@ -58,13 +59,14 @@ public class DAO_Venta {
                 registros[0] = rs.getString("Id_Venta");
                 registros[1] = rs.getString("Fecha_Venta");
                 registros[2] = rs.getString("Total_Venta");
-                registros[3] = rs.getString("Id_UsuarioFK");
-                registros[4] = rs.getString("usuarioNom");
-                registros[5] = rs.getString("Id_ClienteFK");
-                registros[6] = rs.getString("clienteNom");
-                registros[7] = rs.getString("Tipo_Comprobante");
-                registros[8] = rs.getString("Factura");
-                registros[9] = rs.getString("Descuento");
+                registros[3] = rs.getString("Cantidad");
+                registros[4] = rs.getString("Id_UsuarioFK");
+                registros[5] = rs.getString("usuarioNom");
+                registros[6] = rs.getString("Id_ClienteFK");
+                registros[7] = rs.getString("clienteNom");
+                registros[8] = rs.getString("Tipo_Comprobante");
+                registros[9] = rs.getString("Factura");
+                registros[10] = rs.getString("Descuento");
                 totalRegistros = totalRegistros + 1;
                 modelo.addRow(registros);
             }
@@ -202,14 +204,15 @@ public class DAO_Venta {
         DefaultTableModel modelo;
 
         String[] titulos = {"Número Venta",
-            "Fecha ", "Total", "Id Usuario",
+            "Fecha ", "Total", "Cantidad", "Id Usuario",
             "Usuario", "Id Cliente", "Cliente", "Comprobante", "Factura", "Descuento"};
 
-        String[] registros = new String[10];
+        String[] registros = new String[11];
         totalRegistros = 0;
         modelo = new DefaultTableModel(null, titulos);
 
-        sSQL = "SELECT Id_Venta , Fecha_Venta , Total_Venta ,Id_UsuarioFK, "
+        sSQL = "SELECT Id_Venta , Fecha_Venta , Total_Venta ,"
+                + "(SELECT SUM(Cantidad_Detalle) FROM detalle_venta WHERE Id_VentaFK= Id_Venta) AS Cantidad,Id_UsuarioFK, "
                 + "(SELECT Nombre FROM Usuario WHERE Id_Usuario = Id_UsuarioFK) AS usuarioNom,"
                 + "Id_ClienteFK , "
                 + "(SELECT  Razon_Social FROM Cliente WHERE Id_Cliente = Id_ClienteFK) AS clienteNom ,"
@@ -229,13 +232,14 @@ public class DAO_Venta {
                 registros[0] = rs.getString("Id_Venta");
                 registros[1] = rs.getString("Fecha_Venta");
                 registros[2] = rs.getString("Total_Venta");
-                registros[3] = rs.getString("Id_UsuarioFK");
-                registros[4] = rs.getString("usuarioNom");
-                registros[5] = rs.getString("Id_ClienteFK");
-                registros[6] = rs.getString("clienteNom");
-                registros[7] = rs.getString("Tipo_Comprobante");
-                registros[8] = rs.getString("Factura");
-                registros[9] = rs.getString("Descuento");
+                registros[3] = rs.getString("Cantidad");
+                registros[4] = rs.getString("Id_UsuarioFK");
+                registros[5] = rs.getString("usuarioNom");
+                registros[6] = rs.getString("Id_ClienteFK");
+                registros[7] = rs.getString("clienteNom");
+                registros[8] = rs.getString("Tipo_Comprobante");
+                registros[9] = rs.getString("Factura");
+                registros[10] = rs.getString("Descuento");
                 totalRegistros = totalRegistros + 1;
                 modelo.addRow(registros);
             }

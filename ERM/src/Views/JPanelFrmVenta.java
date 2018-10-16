@@ -547,7 +547,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
             }
         };
         jPanel4 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        jlTProducto = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -565,6 +565,8 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         lineaCantidad = new javax.swing.JPanel();
         lineaProducto = new javax.swing.JPanel();
         lineaPrecio = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jlTipoMonedaProducto = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -678,10 +680,10 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(65, 139, 66)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel11.setText("Cantidad :");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 42, -1, 20));
+        jlTProducto.setBackground(new java.awt.Color(255, 255, 255));
+        jlTProducto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jlTProducto.setText("Tipo Moneda:");
+        jPanel4.add(jlTProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 10, -1, 20));
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -907,6 +909,14 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         );
 
         jPanel4.add(lineaPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 102, -1, -1));
+
+        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel19.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel19.setText("Cantidad :");
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 42, -1, 20));
+
+        jlTipoMonedaProducto.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jPanel4.add(jlTipoMonedaProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 10, 90, 20));
 
         jPanelVenta.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 590, 120));
         jPanelVenta.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 31, -1, -1));
@@ -1730,6 +1740,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
         txtCod_producto.setEditable(true);
         txtCod_producto.requestFocus();
         txtCantidadProducto.setEditable(false);
+        jlTipoMonedaProducto.setText("");
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
 
     private void btnbuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarProductoActionPerformed
@@ -1927,7 +1938,6 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
     public static com.toedter.calendar.JDateChooser dcFecha_venta;
     public static javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel10;
-    public static javax.swing.JLabel jLabel11;
     public static javax.swing.JLabel jLabel12;
     public static javax.swing.JLabel jLabel13;
     public static javax.swing.JLabel jLabel14;
@@ -1935,6 +1945,7 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
     public static javax.swing.JLabel jLabel16;
     public static javax.swing.JLabel jLabel17;
     public static javax.swing.JLabel jLabel18;
+    public static javax.swing.JLabel jLabel19;
     public static javax.swing.JLabel jLabel20;
     public static javax.swing.JLabel jLabel21;
     public static javax.swing.JLabel jLabel3;
@@ -1952,6 +1963,8 @@ public class JPanelFrmVenta extends javax.swing.JPanel {
     public static javax.swing.JPanel jPanelVenta;
     public static javax.swing.JScrollPane jScrollPane3;
     public static javax.swing.JTable jTabla;
+    public static javax.swing.JLabel jlTProducto;
+    public static javax.swing.JLabel jlTipoMonedaProducto;
     public static javax.swing.JLabel lblModo;
     public static javax.swing.JPanel lineaBusqueda1;
     public static javax.swing.JPanel lineaBusqueda4;

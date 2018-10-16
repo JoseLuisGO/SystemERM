@@ -311,13 +311,14 @@ public static int comprobarProducto;
     private void jTablaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaMousePressed
         if (evt.getClickCount() == 2) {
             int fila = jTabla.getSelectedRow();
-            String cod , nombre , precio_venta , stock ,precio_compra ;
+            String cod , nombre , precio_venta , stock ,precio_compra, moneda;
 
             cod = jTabla.getValueAt(fila, 0).toString();
             nombre = jTabla.getValueAt(fila, 2).toString();
             precio_venta = jTabla.getValueAt(fila, 4).toString();
             stock = jTabla.getValueAt(fila, 6).toString();
             precio_compra = jTabla.getValueAt(fila, 5).toString();
+            moneda = jTabla.getValueAt(fila, 8).toString();
 
             if (comprobarProducto == 2) {
 
@@ -331,7 +332,7 @@ public static int comprobarProducto;
                 JPanelFrmVenta.txtCod_producto.setEditable(false);
                 JPanelFrmVenta.txtCantidadProducto.setText("");
                 JPanelFrmVenta.txtCantidadProducto.requestFocus();
-
+                JPanelFrmVenta.jlTipoMonedaProducto.setText(moneda);
             }
 
             this.dispose();
